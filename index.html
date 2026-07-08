@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- EDIT: Browser tab title -->
+  <title>Base on Hope</title>
+
+  <!-- EDIT: Short description shown on Google/social previews -->
+  <meta name="description" content="Base on Hope is a student-led organization creating hope through fundraising, community campaigns, and youth-led action." />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- =========================
+       HEADER / NAVIGATION
+       ========================= -->
+  <header class="site-header">
+    <a class="logo" href="#home">
+      <!-- EDIT: Replace this text with your organization name or use an image logo -->
+      <span>Base on Hope</span>
+    </a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#about" data-en="About" data-ko="소개">About</a>
+      <a href="#projects" data-en="Projects" data-ko="프로젝트">Projects</a>
+      <a href="#gallery" data-en="Gallery" data-ko="갤러리">Gallery</a>
+      <a href="#sponsor" data-en="Sponsor" data-ko="후원">Sponsor</a>
+      <a href="#join" data-en="Join" data-ko="참여">Join</a>
+      <a href="#contact" data-en="Contact" data-ko="연락">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="enBtn" class="lang-btn active" onclick="setLanguage('en')">EN</button>
+      <button id="koBtn" class="lang-btn" onclick="setLanguage('ko')">한국어</button>
+    </div>
+  </header>
+
+  <main id="home">
+
+    <!-- =========================
+         HERO SECTION
+         To change the main photo:
+         1. Put your image inside the images folder.
+         2. Change src="images/hero-placeholder.svg" to your file name.
+         Example: src="images/baseball-campaign.jpg"
+         ========================= -->
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow"
+           data-en="Student-led fundraising organization"
+           data-ko="학생 주도 모금 단체">
+           Student-led fundraising organization
+        </p>
+
+        <h1
+          data-en="Turning small acts of hope into real impact."
+          data-ko="작은 희망의 행동을 실제 변화로 만듭니다.">
+          Turning small acts of hope into real impact.
+        </h1>
+
+        <p class="hero-text"
+           data-en="Base on Hope is a student-led organization that raises awareness and funds through community campaigns, merchandise projects, and youth-led action."
+           data-ko="Base on Hope는 커뮤니티 캠페인, 굿즈 프로젝트, 학생 주도 활동을 통해 인식을 높이고 기금을 모으는 학생 단체입니다.">
+           Base on Hope is a student-led organization that raises awareness and funds through community campaigns, merchandise projects, and youth-led action.
+        </p>
+
+        <div class="button-row">
+          <a class="button primary" href="#join"
+             data-en="Join Our Campaign"
+             data-ko="캠페인 참여하기">
+             Join Our Campaign
+          </a>
+
+          <a class="button secondary" href="#sponsor"
+             data-en="Partner With Us"
+             data-ko="후원/협력 문의">
+             Partner With Us
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-image-card">
+        <img src="images/hero-placeholder.svg" alt="Base on Hope campaign placeholder image" />
+      </div>
+    </section>
+
+    <!-- =========================
+         IMPACT NUMBERS
+         You can edit the numbers directly.
+         If you do not need this section, add class="hidden" to the section tag.
+         Example: <section class="impact hidden">
+         ========================= -->
+    <section class="impact">
+      <div class="impact-item">
+        <strong>3+</strong>
+        <span data-en="Core Projects" data-ko="핵심 프로젝트">Core Projects</span>
+      </div>
+      <div class="impact-item">
+        <strong>10+</strong>
+        <span data-en="Student Members" data-ko="학생 멤버">Student Members</span>
+      </div>
+      <div class="impact-item">
+        <strong>1</strong>
+        <span data-en="Shared Mission" data-ko="공통 미션">Shared Mission</span>
+      </div>
+    </section>
+
+    <!-- =========================
+         ABOUT
+         ========================= -->
+    <section id="about" class="section two-column">
+      <div>
+        <p class="section-label" data-en="About Us" data-ko="소개">About Us</p>
+        <h2
+          data-en="We believe students can create meaningful change."
+          data-ko="우리는 학생들도 의미 있는 변화를 만들 수 있다고 믿습니다.">
+          We believe students can create meaningful change.
+        </h2>
+      </div>
+
+      <div>
+        <p
+          data-en="Our mission is to connect students, local communities, and supporters through fundraising projects that are simple, creative, and impactful. We use campaigns, events, and social media to make participation easier and more accessible."
+          data-ko="우리의 미션은 간단하면서도 창의적이고 영향력 있는 모금 프로젝트를 통해 학생, 지역사회, 후원자를 연결하는 것입니다. 우리는 캠페인, 이벤트, 소셜미디어를 활용해 더 많은 사람들이 쉽게 참여할 수 있도록 합니다.">
+          Our mission is to connect students, local communities, and supporters through fundraising projects that are simple, creative, and impactful. We use campaigns, events, and social media to make participation easier and more accessible.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================
+         MISSION / VISION / VALUES
+         ========================= -->
+    <section class="section">
+      <p class="section-label" data-en="Identity" data-ko="정체성">Identity</p>
+      <h2 data-en="Mission, Vision, and Values" data-ko="미션, 비전, 핵심 가치">Mission, Vision, and Values</h2>
+
+      <div class="card-grid three">
+        <article class="card">
+          <h3 data-en="Mission" data-ko="미션">Mission</h3>
+          <p
+            data-en="To create accessible fundraising opportunities where students can contribute to real community impact."
+            data-ko="학생들이 실제 지역사회 변화에 기여할 수 있는 참여하기 쉬운 모금 기회를 만드는 것입니다.">
+            To create accessible fundraising opportunities where students can contribute to real community impact.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3 data-en="Vision" data-ko="비전">Vision</h3>
+          <p
+            data-en="To become a youth-led platform that connects compassion, creativity, and action."
+            data-ko="공감, 창의성, 행동을 연결하는 청소년 주도 플랫폼이 되는 것입니다.">
+            To become a youth-led platform that connects compassion, creativity, and action.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3 data-en="Values" data-ko="핵심 가치">Values</h3>
+          <p
+            data-en="Hope, responsibility, transparency, teamwork, and consistent action."
+            data-ko="희망, 책임감, 투명성, 팀워크, 꾸준한 실천을 중요하게 생각합니다.">
+            Hope, responsibility, transparency, teamwork, and consistent action.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================
+         PROJECTS
+         To change project images:
+         Replace the image files inside the images folder or change each src.
+         ========================= -->
+    <section id="projects" class="section">
+      <p class="section-label" data-en="Projects" data-ko="프로젝트">Projects</p>
+      <h2 data-en="What We Do" data-ko="우리가 하는 일">What We Do</h2>
+
+      <div class="card-grid three">
+        <article class="project-card">
+          <img src="images/project-1.svg" alt="Baseball stadium fundraising project" />
+          <div class="project-content">
+            <h3 data-en="Baseball Stadium Fundraising" data-ko="야구장 모금 캠페인">Baseball Stadium Fundraising</h3>
+            <p
+              data-en="We plan to visit baseball stadiums across Korea, including Seoul and other major cities, to raise funds and bring more people into the campaign."
+              data-ko="우리는 서울을 비롯한 전국 주요 도시의 야구장을 방문하며 모금 활동을 진행하고, 더 많은 사람들이 캠페인에 참여할 수 있도록 할 계획입니다.">
+              We plan to visit baseball stadiums across Korea, including Seoul and other major cities, to raise funds and bring more people into the campaign.
+            </p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img src="images/project-2.svg" alt="Merchandise project" />
+          <div class="project-content">
+            <h3 data-en="Merchandise Project" data-ko="굿즈 프로젝트">Merchandise Project</h3>
+            <p
+              data-en="We design organization T-shirts and goods to build identity, spread our message, and support our fundraising goals."
+              data-ko="우리는 단체티와 굿즈를 제작하여 단체의 정체성을 만들고, 메시지를 알리며, 모금 목표를 지원합니다.">
+              We design organization T-shirts and goods to build identity, spread our message, and support our fundraising goals.
+            </p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img src="images/project-3.svg" alt="Corporate sponsorship project" />
+          <div class="project-content">
+            <h3 data-en="Corporate Sponsorship" data-ko="기업 후원">Corporate Sponsorship</h3>
+            <p
+              data-en="We reach out to companies and local organizations to build partnerships, gain support, and expand the scale of our activities."
+              data-ko="우리는 기업과 지역 단체에 연락하여 파트너십을 만들고, 후원을 확보하며, 활동 규모를 확장합니다.">
+              We reach out to companies and local organizations to build partnerships, gain support, and expand the scale of our activities.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================
+         CAMPAIGN TIMELINE
+         ========================= -->
+    <section class="section soft-background">
+      <p class="section-label" data-en="Campaign Plan" data-ko="캠페인 계획">Campaign Plan</p>
+      <h2 data-en="How our campaign grows" data-ko="캠페인이 성장하는 방식">How our campaign grows</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <span>01</span>
+          <div>
+            <h3 data-en="Prepare" data-ko="준비">Prepare</h3>
+            <p
+              data-en="Build our brand identity, website, forms, merchandise plan, and outreach materials."
+              data-ko="브랜드 정체성, 웹사이트, 신청서, 굿즈 계획, 연락 자료를 준비합니다.">
+              Build our brand identity, website, forms, merchandise plan, and outreach materials.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span>02</span>
+          <div>
+            <h3 data-en="Launch" data-ko="시작">Launch</h3>
+            <p
+              data-en="Begin social media promotion, recruit members, and organize fundraising activities."
+              data-ko="소셜미디어 홍보를 시작하고, 멤버를 모집하며, 모금 활동을 조직합니다.">
+              Begin social media promotion, recruit members, and organize fundraising activities.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span>03</span>
+          <div>
+            <h3 data-en="Expand" data-ko="확장">Expand</h3>
+            <p
+              data-en="Reach out to sponsors, visit more locations, and publish updates about our impact."
+              data-ko="후원자에게 연락하고, 더 많은 장소를 방문하며, 활동 결과를 공유합니다.">
+              Reach out to sponsors, visit more locations, and publish updates about our impact.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         GALLERY
+         To add your own photos:
+         1. Put photo in images folder.
+         2. Change src to your image path.
+         3. Edit alt text.
+         ========================= -->
+    <section id="gallery" class="section">
+      <p class="section-label" data-en="Gallery" data-ko="갤러리">Gallery</p>
+      <h2 data-en="Moments from our work" data-ko="우리 활동의 순간들">Moments from our work</h2>
+
+      <div class="gallery-grid">
+        <img src="images/gallery-1.svg" alt="Gallery placeholder 1" />
+        <img src="images/gallery-2.svg" alt="Gallery placeholder 2" />
+        <img src="images/gallery-3.svg" alt="Gallery placeholder 3" />
+        <img src="images/gallery-4.svg" alt="Gallery placeholder 4" />
+      </div>
+    </section>
+
+    <!-- =========================
+         TEAM
+         If you don't want names/photos public yet, you can hide this section.
+         ========================= -->
+    <section id="team" class="section">
+      <p class="section-label" data-en="Team" data-ko="팀">Team</p>
+      <h2 data-en="Meet our team" data-ko="팀 소개">Meet our team</h2>
+
+      <div class="card-grid three">
+        <article class="team-card">
+          <img src="images/team-placeholder.svg" alt="Team member placeholder" />
+          <h3 data-en="Founder / President" data-ko="창립자 / 대표">Founder / President</h3>
+          <p data-en="Leads strategy, partnerships, and campaign direction." data-ko="전략, 파트너십, 캠페인 방향을 이끕니다.">
+            Leads strategy, partnerships, and campaign direction.
+          </p>
+        </article>
+
+        <article class="team-card">
+          <img src="images/team-placeholder.svg" alt="Team member placeholder" />
+          <h3 data-en="Marketing Lead" data-ko="마케팅 담당">Marketing Lead</h3>
+          <p data-en="Manages Instagram, promotion, and public communication." data-ko="인스타그램, 홍보, 외부 커뮤니케이션을 담당합니다.">
+            Manages Instagram, promotion, and public communication.
+          </p>
+        </article>
+
+        <article class="team-card">
+          <img src="images/team-placeholder.svg" alt="Team member placeholder" />
+          <h3 data-en="Finance Lead" data-ko="재무 담당">Finance Lead</h3>
+          <p data-en="Tracks budget, fundraising records, and financial transparency." data-ko="예산, 모금 기록, 재무 투명성을 관리합니다.">
+            Tracks budget, fundraising records, and financial transparency.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================
+         SPONSORSHIP
+         ========================= -->
+    <section id="sponsor" class="section highlight">
+      <div class="section-inner">
+        <p class="section-label" data-en="Sponsorship" data-ko="후원">Sponsorship</p>
+        <h2 data-en="Support our mission." data-ko="우리의 미션을 함께 지원해주세요.">Support our mission.</h2>
+        <p
+          data-en="We welcome sponsorships, donations, and collaborations from companies, organizations, and individuals who want to support youth-led social impact."
+          data-ko="청소년 주도의 사회적 임팩트를 지원하고 싶은 기업, 단체, 개인의 후원, 기부, 협력을 환영합니다.">
+          We welcome sponsorships, donations, and collaborations from companies, organizations, and individuals who want to support youth-led social impact.
+        </p>
+
+        <div class="button-row">
+          <a class="button primary light" href="mailto:fps.baseonhope@gmail.com"
+             data-en="Contact for Sponsorship"
+             data-ko="후원 문의하기">
+             Contact for Sponsorship
+          </a>
+          <a class="button outline-light" href="#contact"
+             data-en="View Contact Info"
+             data-ko="연락처 보기">
+             View Contact Info
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         SPONSOR LOGOS
+         Replace placeholder logos later.
+         Hide this section until you have sponsors if needed.
+         ========================= -->
+    <section class="section sponsors">
+      <p class="section-label" data-en="Partners" data-ko="파트너">Partners</p>
+      <h2 data-en="Sponsors and supporters" data-ko="후원사 및 서포터">Sponsors and supporters</h2>
+
+      <div class="logo-grid">
+        <div data-en="Sponsor Logo" data-ko="후원사 로고">Sponsor Logo</div>
+        <div data-en="Sponsor Logo" data-ko="후원사 로고">Sponsor Logo</div>
+        <div data-en="Sponsor Logo" data-ko="후원사 로고">Sponsor Logo</div>
+        <div data-en="Sponsor Logo" data-ko="후원사 로고">Sponsor Logo</div>
+      </div>
+    </section>
+
+    <!-- =========================
+         JOIN
+         Replace the Google Form link.
+         ========================= -->
+    <section id="join" class="section cta">
+      <p class="section-label" data-en="Get Involved" data-ko="참여하기">Get Involved</p>
+      <h2 data-en="Join the movement." data-ko="함께 참여해주세요.">Join the movement.</h2>
+      <p
+        data-en="If you want to participate in stadium fundraising, wear our organization T-shirt, help manage social media, or support our projects, fill out the form below."
+        data-ko="야구장 모금 캠페인에 참여하거나, 단체티를 입거나, 인스타그램 운영을 돕거나, 프로젝트를 지원하고 싶다면 아래 신청서를 작성해주세요.">
+        If you want to participate in stadium fundraising, wear our organization T-shirt, help manage social media, or support our projects, fill out the form below.
+      </p>
+
+      <!-- EDIT: Replace this Google Form link -->
+      <a class="button primary" href="https://forms.gle/ji7vez7LDhzz1Epn9" target="_blank"
+         data-en="Open Participation Form"
+         data-ko="참여 신청서 열기">
+         Open Participation Form
+      </a>
+    </section>
+
+    <!-- =========================
+         FAQ
+         ========================= -->
+    <section class="section">
+      <p class="section-label" data-en="FAQ" data-ko="자주 묻는 질문">FAQ</p>
+      <h2 data-en="Frequently Asked Questions" data-ko="자주 묻는 질문">Frequently Asked Questions</h2>
+
+      <div class="faq-list">
+        <details>
+          <summary data-en="Who can join Base on Hope?" data-ko="누가 Base on Hope에 참여할 수 있나요?">Who can join Base on Hope?</summary>
+          <p
+            data-en="Any student who wants to support our campaigns, help with fundraising, or contribute to our projects can join."
+            data-ko="캠페인, 모금 활동, 프로젝트 운영에 관심 있는 학생이라면 누구나 참여할 수 있습니다.">
+            Any student who wants to support our campaigns, help with fundraising, or contribute to our projects can join.
+          </p>
+        </details>
+
+        <details>
+          <summary data-en="How can companies support us?" data-ko="기업은 어떻게 후원할 수 있나요?">How can companies support us?</summary>
+          <p
+            data-en="Companies can support us through sponsorships, donations, product support, or collaboration opportunities."
+            data-ko="기업은 후원금, 물품 지원, 협업 기회, 홍보 지원 등을 통해 함께할 수 있습니다.">
+            Companies can support us through sponsorships, donations, product support, or collaboration opportunities.
+          </p>
+        </details>
+
+        <details>
+          <summary data-en="Where will the funds go?" data-ko="모금액은 어디에 사용되나요?">Where will the funds go?</summary>
+          <p
+            data-en="Funds will be used for campaign-related costs and donations to the cause we support. We aim to keep records transparent."
+            data-ko="모금액은 캠페인 운영 비용과 우리가 지원하는 목적을 위한 기부금으로 사용됩니다. 우리는 기록을 투명하게 관리하는 것을 목표로 합니다.">
+            Funds will be used for campaign-related costs and donations to the cause we support. We aim to keep records transparent.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- =========================
+         CONTACT
+         Replace email and Instagram link.
+         ========================= -->
+    <section id="contact" class="section contact">
+      <p class="section-label" data-en="Contact" data-ko="연락">Contact</p>
+      <h2 data-en="Contact Us" data-ko="문의하기">Contact Us</h2>
+
+      <div class="contact-card">
+        <p>
+          <span data-en="Email:" data-ko="이메일:">Email:</span>
+          <!-- EDIT: Replace email address in BOTH places -->
+          <a href="mailto:fps.baseonhope@gmail.com">fps.baseonhope@gmail.com</a>
+        </p>
+
+        <p>
+          <span data-en="Instagram:" data-ko="인스타그램:">Instagram:</span>
+          <!-- EDIT: Replace Instagram link and username -->
+          <a href="https://instagram.com/base.on.hope" target="_blank">@base.on.hope</a>
+        </p>
+
+        <p>
+          <span data-en="Location:" data-ko="활동 지역:">Location:</span>
+          <span data-en="South Korea" data-ko="대한민국">South Korea</span>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p
+      data-en="© 2026 Base on Hope. All rights reserved."
+      data-ko="© 2026 Base on Hope. All rights reserved.">
+      © 2026 Base on Hope. All rights reserved.
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
