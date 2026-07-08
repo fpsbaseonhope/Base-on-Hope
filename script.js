@@ -1,25 +1,31 @@
 /* =========================================================
    LANGUAGE SWITCH
-   This file controls the EN / Korean button.
-   You usually do not need to edit this.
+   Supports English, Korean, and Lao.
    ========================================================= */
 
 function setLanguage(language) {
-  const elements = document.querySelectorAll("[data-en][data-ko]");
+  const elements = document.querySelectorAll("[data-en]");
 
   elements.forEach((element) => {
-    element.textContent = element.getAttribute(`data-${language}`);
+    const translatedText = element.getAttribute(`data-${language}`);
+
+    // If a translation does not exist yet, keep English as fallback.
+    if (translatedText) {
+      element.textContent = translatedText;
+    } else {
+      element.textContent = element.getAttribute("data-en");
+    }
   });
 
   document.documentElement.lang = language;
   localStorage.setItem("selectedLanguage", language);
 
-  const enBtn = document.getElementById("enBtn");
-  const koBtn = document.getElementById("koBtn");
+  const buttons = document.querySelectorAll(".lang-btn");
+  buttons.forEach((button) => button.classList.remove("active"));
 
-  if (enBtn && koBtn) {
-    enBtn.classList.toggle("active", language === "en");
-    koBtn.classList.toggle("active", language === "ko");
+  const activeButton = document.getElementById(`${language}Btn`);
+  if (activeButton) {
+    activeButton.classList.add("active");
   }
 }
 
