@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- EDIT: Browser tab title -->
+  <title>Base on Hope</title>
+
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+
+  <!-- EDIT: Short description shown on Google/social previews -->
+  <meta name="description" content="Base on Hope is a student-led organization creating hope through fundraising, community campaigns, and youth-led action." />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- =========================
+       HEADER / NAVIGATION
+       ========================= -->
+  <header class="site-header">
+    <a class="logo" href="#home">
+      <!-- EDIT: Replace this text with your organization name or use an image logo -->
+      <span>Base on Hope</span>
+    </a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="about.html" data-en="About" data-ko="소개" data-lo="ແນະນໍາ">About</a>
+      <a href="projects.html" data-en="Projects" data-ko="프로젝트" data-lo="ໂຄງການ">Projects</a>
+      <a href="#gallery" data-en="Gallery" data-ko="갤러리" data-lo="ຄັງຮູບ">Gallery</a>
+      <a href="#sponsor" data-en="Sponsor" data-ko="후원" data-lo="ຊຸກຍູ້">Sponsor</a>
+      <a href="#join" data-en="Join" data-ko="참여" data-lo="ການມີສ່ວນຮ່ວມ">Join</a>
+      <a href="#contact" data-en="Contact" data-ko="연락" data-lo="ຕິດຕໍ່ພົວພັນ">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="enBtn" class="lang-btn active" onclick="setLanguage('en')">EN</button>
+      <button id="koBtn" class="lang-btn" onclick="setLanguage('ko')">한국어</button>
+      <button id="loBtn" class="lang-btn" onclick="setLanguage('lo')">ພາສາລາວ</button>
+    </div>
+  </header>
+
+  <main id="home">
+
+    <!-- =========================
+         ABOUT
+         ========================= -->
+    <section id="about" class="section two-column">
+      <div>
+        <p class="section-label" data-en="About Us" data-ko="소개">About Us</p>
+        <h2
+          data-en="We believe students can create meaningful change."
+          data-ko="우리는 학생들도 의미 있는 변화를 만들 수 있다고 믿습니다.">
+          We believe students can create meaningful change.
+        </h2>
+      </div>
+
+      <div>
+        <p
+          data-en="Our mission is to connect students, local communities, and supporters through fundraising projects that are simple, creative, and impactful. We use campaigns, events, and social media to make participation easier and more accessible."
+          data-ko="우리의 미션은 간단하면서도 창의적이고 영향력 있는 모금 프로젝트를 통해 학생, 지역사회, 후원자를 연결하는 것입니다. 우리는 캠페인, 이벤트, 소셜미디어를 활용해 더 많은 사람들이 쉽게 참여할 수 있도록 합니다.">
+          Our mission is to connect students, local communities, and supporters through fundraising projects that are simple, creative, and impactful. We use campaigns, events, and social media to make participation easier and more accessible.
+        </p>
+      </div>
+    </section>
+
+  <footer class="footer">
+    <p
+      data-en="© 2026 Base on Hope. All rights reserved."
+      data-ko="© 2026 Base on Hope. All rights reserved.">
+      © 2026 Base on Hope. All rights reserved.
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
