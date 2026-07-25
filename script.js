@@ -31,3 +31,23 @@ function setLanguage(language) {
 
 const savedLanguage = localStorage.getItem("selectedLanguage") || "en";
 setLanguage(savedLanguage);
+
+/* =========================
+   HERO IMAGE SLIDESHOW
+   ========================= */
+
+let currentSlide = 0;
+const slides = document.querySelectorAll(".hero-slider .slide");
+
+function showNextSlide() {
+  if (slides.length === 0) return;
+
+  slides[currentSlide].classList.remove("active");
+
+  currentSlide = (currentSlide + 1) % slides.length;
+
+  slides[currentSlide].classList.add("active");
+}
+
+// Change image every 3 seconds
+setInterval(showNextSlide, 3000);
