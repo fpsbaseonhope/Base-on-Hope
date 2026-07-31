@@ -101,8 +101,21 @@ a {
   font-weight: 800;
 }
 
+  /* pill button design */
+  padding: 9px 16px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
 .nav a:hover {
   color: var(--primary);
+  background: #eaf1ff;
+  border-color: #bfdbfe;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
 }
 
 .header-actions {
