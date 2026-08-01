@@ -33,21 +33,19 @@ const savedLanguage = localStorage.getItem("selectedLanguage") || "en";
 setLanguage(savedLanguage);
 
 /* =========================
-   HERO IMAGE SLIDESHOW
+   FULLSCREEN HERO SLIDESHOW
    ========================= */
 
-let currentSlide = 0;
-const slides = document.querySelectorAll(".hero-slider .slide");
+let currentHeroSlide = 0;
+const heroSlides = document.querySelectorAll(".hero-bg-slide");
 
-function showNextSlide() {
-  if (slides.length === 0) return;
+function showNextHeroSlide() {
+  if (heroSlides.length === 0) return;
 
-  slides[currentSlide].classList.remove("active");
-
-  currentSlide = (currentSlide + 1) % slides.length;
-
-  slides[currentSlide].classList.add("active");
+  heroSlides[currentHeroSlide].classList.remove("active");
+  currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+  heroSlides[currentHeroSlide].classList.add("active");
 }
 
-// Change image every 3 seconds
-setInterval(showNextSlide, 3000);
+// Change hero image every 4 seconds
+setInterval(showNextHeroSlide, 4000);
