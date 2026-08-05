@@ -843,3 +843,52 @@ details p {
     font-size: clamp(44px, 14vw, 70px);
   }
 }
+
+/* =========================
+   SUPPORT PAGE
+   ========================= */
+
+.support-card {
+  min-height: 250px;
+}
+
+.donation-card {
+  margin-top: 28px;
+  padding: 30px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 680px;
+}
+
+.donation-card h3 {
+  margin-top: 0;
+  color: var(--dark);
+}
+
+.donation-card p {
+  margin: 10px 0;
+}
+
+.small-note {
+  margin-top: 18px !important;
+  font-size: 14px !important;
+  color: var(--muted) !important;
+}
+
+.message-form-card {
+  margin-top: 28px;
+  padding: 14px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.message-form-card iframe {
+  display: block;
+  border-radius: 16px;
+  background: #ffffff;
+}
