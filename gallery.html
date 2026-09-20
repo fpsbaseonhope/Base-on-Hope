@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | Base on Hope</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta name="description" content="Photos and videos from Base on Hope and the Laos National Baseball Team." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero" style="background-image: url('images/stadium/gocheok-selfie.jpg');">
+      <div class="page-hero-inner">
+        <p class="eyebrow" data-en="Gallery" data-ko="갤러리" data-lo="ຄັງຮູບ">Gallery</p>
+        <h1 data-en="Moments from our work" data-ko="우리 활동의 순간들" data-lo="ຊ່ວງເວລາຈາກວຽກຂອງພວກເຮົາ">Moments from our work</h1>
+        <p data-en="Photos and videos from our stadium tour, school fundraisers, and the Laos National Baseball Team."
+           data-ko="교실, 모금 활동, 그리고 라오스 야구 국가대표팀의 사진과 영상."
+           data-lo="ຮູບ ແລະ ວິດີໂອ ຈາກຫ້ອງຮຽນ ແລະ ທີມຊາດລາວ.">Photos and videos from our classes, fundraisers, and the Laos National Baseball Team.</p>
+      </div>
+    </section>
+
+    <!-- =========================
+         PHOTOS
+         To add a photo:
+           1. Upload it to images/gallery/
+           2. Copy one <figure> block below and change src, alt, caption.
+           3. data-cat decides which filter button shows it:
+              stadium / laos / fundraiser / club
+         ========================= -->
+    <section class="section">
+      <p class="section-label" data-en="Photos" data-ko="사진" data-lo="ຮູບ">Photos</p>
+      <div class="filter-row">
+        <button class="filter-btn active" data-filter="all" data-en="All" data-ko="전체" data-lo="ທັງໝົດ">All</button>
+        <button class="filter-btn" data-filter="stadium" data-en="Stadium Tour" data-ko="야구장 투어" data-lo="ທົວສະໜາມ">Stadium Tour</button>
+        <button class="filter-btn" data-filter="laos" data-en="Laos" data-ko="라오스" data-lo="ລາວ">Laos</button>
+        <button class="filter-btn" data-filter="fundraiser" data-en="School Fundraisers" data-ko="교내 모금" data-lo="ລະດົມທຶນໃນໂຮງຮຽນ">School Fundraisers</button>
+        <button class="filter-btn" data-filter="club" data-en="Our Club" data-ko="우리 클럽" data-lo="ສະໂມສອນ">Our Club</button>
+      </div>
+
+      <div class="photo-wall">
+        <figure data-cat="stadium">
+          <img src="gallery-4.jpg" alt="Gocheok Sky Dome" loading="lazy" />
+          <figcaption data-en="Gocheok Sky Dome" data-ko="고척스카이돔">Gocheok Sky Dome</figcaption>
+        </figure>
+        <figure data-cat="laos">
+          <img src="images/laos/laos-flag.jpg" alt="Laos National Baseball Team" loading="lazy" />
+          <figcaption data-en="Laos National Baseball Team" data-ko="라오스 야구 국가대표팀">Laos National Baseball Team</figcaption>
+        </figure>
+        <figure data-cat="stadium">
+          <img src="images/stadium/yankee-duo.jpg" alt="Yankee Stadium, New York — Suhyun Park & Steve Oh" loading="lazy" />
+          <figcaption data-en="Yankee Stadium, New York — Suhyun Park & Steve Oh" data-ko="뉴욕 양키스타디움 — 박수현, 오승원">Yankee Stadium, New York — Suhyun Park & Steve Oh</figcaption>
+        </figure>
+        <figure data-cat="stadium">
+          <img src="images/stadium/jamsil-doosan.jpg" alt="Jamsil Baseball Stadium" loading="lazy" />
+          <figcaption data-en="Jamsil Baseball Stadium" data-ko="잠실야구장">Jamsil Baseball Stadium</figcaption>
+        </figure>
+        <figure data-cat="laos">
+          <img src="gallery-1.jpg" alt="Young Lao players with their medals" loading="lazy" />
+          <figcaption data-en="Young Lao players with their medals" data-ko="메달을 든 라오스 어린 선수들">Young Lao players with their medals</figcaption>
+        </figure>
+        <figure data-cat="stadium">
+          <img src="images/stadium/gocheok-selfie.jpg" alt="Inside Gocheok Sky Dome" loading="lazy" />
+          <figcaption data-en="Inside Gocheok Sky Dome" data-ko="고척스카이돔 안에서">Inside Gocheok Sky Dome</figcaption>
+        </figure>
+        <figure data-cat="laos">
+          <img src="images/laos/fayston-vientiane.jpg" alt="Fayston & Vientiane players together" loading="lazy" />
+          <figcaption data-en="Fayston & Vientiane players together" data-ko="페이스튼 & 비엔티안 선수들">Fayston & Vientiane players together</figcaption>
+        </figure>
+        <figure data-cat="stadium">
+          <img src="images/stadium/jamsil-fan.jpg" alt="Explaining the campaign at Jamsil" loading="lazy" />
+          <figcaption data-en="Explaining the campaign at Jamsil" data-ko="잠실에서 캠페인 설명">Explaining the campaign at Jamsil</figcaption>
+        </figure>
+        <figure data-cat="club">
+          <img src="gallery-2.jpg" alt="Base on Hope members" loading="lazy" />
+          <figcaption data-en="Base on Hope members" data-ko="Base on Hope 멤버들">Base on Hope members</figcaption>
+        </figure>
+        <figure data-cat="stadium">
+          <img src="images/stadium/gocheok-fan.jpg" alt="Sharing the story in the stands at Gocheok" loading="lazy" />
+          <figcaption data-en="Sharing the story in the stands at Gocheok" data-ko="고척 관중석에서">Sharing the story in the stands at Gocheok</figcaption>
+        </figure>
+        <figure data-cat="laos">
+          <img src="images/laos/laos-early.jpg" alt="The early days of baseball in Laos" loading="lazy" />
+          <figcaption data-en="The early days of baseball in Laos" data-ko="라오스 야구의 초창기">The early days of baseball in Laos</figcaption>
+        </figure>
+        <figure data-cat="stadium">
+          <img src="images/stadium/jamsil-qr.jpg" alt="A fan scanning our donation QR" loading="lazy" />
+          <figcaption data-en="A fan scanning our donation QR" data-ko="후원 QR을 찍는 팬">A fan scanning our donation QR</figcaption>
+        </figure>
+        <figure data-cat="laos">
+          <img src="gallery-3.jpg" alt="With players in Laos" loading="lazy" />
+          <figcaption data-en="With players in Laos" data-ko="라오스 선수들과 함께">With players in Laos</figcaption>
+        </figure>
+        <figure data-cat="stadium">
+          <img src="images/stadium/yankee-field.jpg" alt="Yankee Stadium at night" loading="lazy" />
+          <figcaption data-en="Yankee Stadium at night" data-ko="밤의 양키스타디움">Yankee Stadium at night</figcaption>
+        </figure>
+        <figure data-cat="stadium">
+          <img src="images/stadium/jamsil-team.jpg" alt="The Jamsil fundraising team" loading="lazy" />
+          <figcaption data-en="The Jamsil fundraising team" data-ko="잠실 모금 팀">The Jamsil fundraising team</figcaption>
+        </figure>
+        <figure data-cat="laos">
+          <img src="images/laos/laos-kids.jpg" alt="On the field in Laos" loading="lazy" />
+          <figcaption data-en="On the field in Laos" data-ko="라오스 경기장에서">On the field in Laos</figcaption>
+        </figure>
+        <figure data-cat="stadium">
+          <img src="images/stadium/gocheok-group.jpg" alt="With supporters at Gocheok" loading="lazy" />
+          <figcaption data-en="With supporters at Gocheok" data-ko="고척에서 서포터들과">With supporters at Gocheok</figcaption>
+        </figure>
+        <figure data-cat="stadium">
+          <img src="images/stadium/jamsil-subway.jpg" alt="Talking with fans at Sports Complex station" loading="lazy" />
+          <figcaption data-en="Talking with fans at Sports Complex station" data-ko="종합운동장역에서 팬들과">Talking with fans at Sports Complex station</figcaption>
+        </figure>
+        <figure data-cat="stadium">
+          <img src="images/stadium/gocheok-street.jpg" alt="Outside Gocheok before the game" loading="lazy" />
+          <figcaption data-en="Outside Gocheok before the game" data-ko="경기 전 고척 앞에서">Outside Gocheok before the game</figcaption>
+        </figure>
+        <figure data-cat="fundraiser">
+          <img src="images/projects/cookie-poster.jpg" alt="Dubai Chewy Cookie sale · sold out in 15 min" loading="lazy" />
+          <figcaption data-en="Dubai Chewy Cookie sale · sold out in 15 min" data-ko="두쫀쿠 판매 · 15분 완판">Dubai Chewy Cookie sale · sold out in 15 min</figcaption>
+        </figure>
+        <figure data-cat="stadium">
+          <img src="images/stadium/series.jpg" alt="Fundraising Series: all ten KBO ballparks" loading="lazy" />
+          <figcaption data-en="Fundraising Series: all ten KBO ballparks" data-ko="펀드레이징 시리즈: KBO 10개 구장">Fundraising Series: all ten KBO ballparks</figcaption>
+        </figure>
+        <!-- ADD NEW PHOTOS BELOW THIS LINE -->
+      </div>
+    </section>
+
+    <!-- =========================
+         VIDEOS — same rules as the home page:
+           data-youtube="https://youtu.be/XXXX"   or   data-mp4="videos/file.mp4"
+         ========================= -->
+    <section class="section soft-background">
+      <p class="section-label" data-en="Videos" data-ko="영상" data-lo="ວິດີໂອ">Videos</p>
+      <h2 data-en="Watch" data-ko="영상 보기" data-lo="ເບິ່ງ">Watch</h2>
+      <div class="video-grid">
+        <article class="video-card">
+          <div class="video-embed" data-youtube="" data-mp4="videos/laos-player.mp4" data-poster="videos/laos-player-poster.jpg"></div>
+          <div class="video-info">
+            <h3 data-en="From the field in Laos" data-ko="라오스 현장에서" data-lo="ຈາກສະໜາມໃນລາວ">From the field in Laos</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <div class="video-embed" data-youtube="" data-mp4=""></div>
+          <div class="video-info">
+            <h3 data-en="BOH Baseball Class Highlights" data-ko="BOH 야구교실 하이라이트" data-lo="ໄຮໄລທ໌ຫ້ອງຮຽນເບສບອນ">BOH Baseball Class Highlights</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <div class="video-embed" data-youtube="" data-mp4=""></div>
+          <div class="video-info">
+            <h3 data-en="Club Day 2026" data-ko="클럽데이 2026" data-lo="ວັນສະໂມສອນ 2026">Club Day 2026</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <div class="video-embed" data-youtube="" data-mp4=""></div>
+          <div class="video-info">
+            <h3 data-en="Message from the Laos Team" data-ko="라오스 대표팀의 메시지" data-lo="ຂໍ້ຄວາມຈາກທີມລາວ">Message from the Laos Team</h3>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    // Photo filter buttons
+    document.querySelectorAll(".filter-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const f = btn.dataset.filter;
+        document.querySelectorAll(".photo-wall figure").forEach((fig) => {
+          fig.style.display = f === "all" || fig.dataset.cat === f ? "" : "none";
+        });
+      });
+    });
+  </script>
+</body>
+</html>

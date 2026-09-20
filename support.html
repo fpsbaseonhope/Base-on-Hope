@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- EDIT: Browser tab title -->
-  <title>Base on Hope</title>
+  <title>Support | Base on Hope</title>
 
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="favicon.png" />
@@ -17,37 +17,9 @@
 </head>
 <body>
 
-  <!-- =========================
-       HEADER / NAVIGATION
-       ========================= -->
-  <header class="site-header">
-    <a class="logo" href="index.html">
-      <!-- EDIT: Replace this text with your organization name or use an image logo -->
-      <span>Base on Hope</span>
-    </a>
+  <div id="site-header"></div>
 
-    <nav class="nav" aria-label="Main navigation">
-      <a href="about.html" data-en="Laos National Baseball Team" data-ko="라오스 야구 국가대표팀" data-lo="ທີມເບສບານແຫ່ງຊາດລາວ">About Laos National Baseball Team</a>
-      <a href="commitment.html" data-en="Commitment" data-ko="목표" data-lo="ຄໍາຫມັ້ນສັນຍາ">Commitment</a>
-      <a href="projects.html" data-en="Projects" data-ko="프로젝트" data-lo="ໂຄງການ">Projects</a>
-      <a href="impact.html" data-en="Impact" data-ko="성과" data-lo="ຜົນກະທົບ">Impact</a>
-      <a href="gallery.html" data-en="Gallery" data-ko="갤러리" data-lo="ຄັງຮູບ">Gallery</a>
-      <a href="support.html" data-en="Support" data-ko="지원" data-lo="ສະຫນັບສະຫນູນ">Support</a>
-    </nav>
-
-    <div class="header-actions">
-      <button id="enBtn" class="lang-btn active" onclick="setLanguage('en')">ENG</button>
-      <button id="koBtn" class="lang-btn" onclick="setLanguage('ko')">한국어</button>
-      <button id="loBtn" class="lang-btn" onclick="setLanguage('lo')">ພາສາລາວ</button>
-    </div>
-  </header>
-
-  <!-- =========================
-       Support
-       ========================= -->
-  <main id="home">
-
-<main>
+  <main>
   <section class="section two-column">
     <div>
       <p class="section-label"
@@ -145,12 +117,16 @@
       If you would like to donate, please use the account below. We aim to manage all donations with responsibility and transparency.
     </p>
 
+    <p class="goal-line" data-en="₩500,000 (about $350) a month is enough for the Laos team to keep training on fuller, healthier meals."
+       data-ko="한 달 50만원이면 라오스 선수단이 더욱 풍족한 식단으로 야구 훈련을 이어갈 수 있습니다."
+       data-lo="₩500,000 (ປະມານ $350) ຕໍ່ເດືອນ ພຽງພໍໃຫ້ທີມລາວມີອາຫານທີ່ດີຂຶ້ນ.">₩500,000 (about $350) a month is enough for the Laos team to keep training on fuller, healthier meals.</p>
+
     <div class="donation-card">
       <h3 data-en="Donation Account" data-ko="후원 계좌" data-lo="ບັນຊີບໍລິຈາກ">Donation Account</h3>
 
-      <p><strong data-en="Bank:" data-ko="은행:" data-lo="ທະນາຄານ:">Bank:</strong> 은행 이름</p>
-      <p><strong data-en="Account Number:" data-ko="계좌번호:" data-lo="ເລກບັນຊີ:">Account Number:</strong> 000-0000-0000</p>
-      <p><strong data-en="Account Holder:" data-ko="예금주:" data-lo="ຊື່ບັນຊີ:">Account Holder:</strong> 예금주 이름</p>
+      <p><strong data-en="Bank:" data-ko="은행:" data-lo="ທະນາຄານ:">Bank:</strong> <span data-en="Toss Bank" data-ko="토스뱅크">Toss Bank</span></p>
+      <p><strong data-en="Account Number:" data-ko="계좌번호:" data-lo="ເລກບັນຊີ:">Account Number:</strong> <span class="acct">1002-4193-0017</span> <button class="copy-btn" type="button" onclick="navigator.clipboard && navigator.clipboard.writeText('100241930017').then(()=>{this.textContent='✓';setTimeout(()=>this.textContent='Copy',1500)})">Copy</button></p>
+      <p><strong data-en="Account Holder:" data-ko="예금주:" data-lo="ຊື່ບັນຊີ:">Account Holder:</strong> CLUB BOH</p>
 
       <p class="small-note"
          data-en="Please contact us after donating so we can confirm and record your contribution."
@@ -219,14 +195,14 @@
     </p>
 
     <div class="button-row hero-center-buttons">
-      <a class="button primary" href="mailto:baseonhope@example.com"
+      <a class="button primary" href="mailto:fps.baseonhope@gmail.com"
          data-en="Email Us"
          data-ko="이메일 보내기"
          data-lo="ສົ່ງອີເມວ">
          Email Us
       </a>
 
-      <a class="button secondary" href="https://instagram.com/REPLACE_THIS" target="_blank"
+      <a class="button secondary" href="https://instagram.com/base.on.hope" target="_blank" rel="noopener"
          data-en="Instagram"
          data-ko="인스타그램"
          data-lo="ອິນສະຕາແກຣມ">
@@ -236,14 +212,7 @@
   </section>
 </main>
 
-  <footer class="footer">
-    <p
-      data-en="© 2026 Base on Hope. All rights reserved."
-      data-ko="© 2026 Base on Hope. All rights reserved."
-      data-lo="© 2026 Base on Hope. All rights reserved.">
-      © 2026 Base on Hope. All rights reserved.
-    </p>
-  </footer>
+  <div id="site-footer"></div>
 
   <script src="script.js"></script>
 </body>

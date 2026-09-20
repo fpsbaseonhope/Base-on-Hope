@@ -1,125 +1,70 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- EDIT: Browser tab title -->
   <title>Base on Hope</title>
-
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="favicon.png" />
-
-  <!-- EDIT: Short description shown on Google/social previews -->
-  <meta name="description" content="Base on Hope is a student-led organization creating hope through fundraising, community campaigns, and youth-led action." />
-
+  <meta name="description" content="Base on Hope is a student-led club combining baseball education and service to support the Laos National Baseball Team." />
+  <meta property="og:title" content="Base on Hope" />
+  <meta property="og:description" content="Student-led club supporting the Laos National Baseball Team through baseball education and fundraising." />
+  <meta property="og:image" content="gallery-1.jpg" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- =========================
-       HEADER / NAVIGATION
-       ========================= -->
-  <header class="site-header">
-    <a class="logo" href="index.html">
-      <!-- EDIT: Replace this text with your organization name or use an image logo -->
-      <span>Base on Hope</span>
-    </a>
-
-    <nav class="nav" aria-label="Main navigation">
-      <a href="about.html" data-en="Laos National Baseball Team" data-ko="라오스 야구 국가대표팀" data-lo="ທີມເບສບານແຫ່ງຊາດລາວ">About Laos National Baseball Team</a>
-      <a href="commitment.html" data-en="Commitment" data-ko="목표" data-lo="ຄໍາຫມັ້ນສັນຍາ">Commitment</a>
-      <a href="projects.html" data-en="Projects" data-ko="프로젝트" data-lo="ໂຄງການ">Projects</a>
-      <a href="impact.html" data-en="Impact" data-ko="성과" data-lo="ຜົນກະທົບ">Impact</a>
-      <a href="gallery.html" data-en="Gallery" data-ko="갤러리" data-lo="ຄັງຮູບ">Gallery</a>
-      <a href="support.html" data-en="Support" data-ko="지원" data-lo="ສະຫນັບສະຫນູນ">Support</a>
-    </nav>
-
-    <div class="header-actions">
-      <button id="enBtn" class="lang-btn active" onclick="setLanguage('en')">ENG</button>
-      <button id="koBtn" class="lang-btn" onclick="setLanguage('ko')">한국어</button>
-      <button id="loBtn" class="lang-btn" onclick="setLanguage('lo')">ພາສາລາວ</button>
-    </div>
-  </header>
+  <!-- Header is built automatically by script.js (edit NAV_LINKS there) -->
+  <div id="site-header"></div>
 
   <main id="home">
 
     <!-- =========================
-         HERO SECTION
-         To change the main photo:
-         1. Put your image inside the images folder.
-         2. Change src="images/hero-placeholder.svg" to your file name.
-         Example: src="images/baseball-campaign.jpg"
+         HERO — fullscreen slideshow
+         To add a slide: copy one <img class="hero-bg-slide"> line and change src.
          ========================= -->
-    
-<section class="hero-fullscreen">
-  <div class="hero-bg-slider">
-    <img class="hero-bg-slide active" src="gallery-1.jpg" alt="Laos National Baseball Team photo 1" />
-    <img class="hero-bg-slide" src="gallery-2.jpg" alt="Laos National Baseball Team photo 2" />
-    <img class="hero-bg-slide" src="gallery-3.jpg" alt="Laos National Baseball Team photo 3" />
-    <img class="hero-bg-slide" src="gallery-4.jpg" alt="Laos National Baseball Team photo 4" />
-  </div>
+    <section class="hero-fullscreen">
+      <div class="hero-bg-slider">
+        <img class="hero-bg-slide active" src="gallery-4.jpg" alt="Base on Hope members fundraising at Gocheok Sky Dome" />
+        <img class="hero-bg-slide" src="images/laos/laos-flag.jpg" alt="Laos National Baseball Team with the Lao flag" />
+        <img class="hero-bg-slide" src="gallery-3.jpg" alt="Base on Hope members with players in Laos" />
+        <img class="hero-bg-slide" src="images/stadium/jamsil-doosan.jpg" alt="Fundraising at Jamsil Baseball Stadium" style="object-position: center 30%;" />
+        <img class="hero-bg-slide" src="gallery-1.jpg" alt="Young Lao players with their medals" />
+      </div>
+      <div class="hero-overlay"></div>
 
-  <div class="hero-overlay"></div>
+      <div class="hero-fullscreen-content">
+        <p class="eyebrow" data-en="Student-led nonprofit club" data-ko="학생 주도 비영리 클럽" data-lo="ສະໂມສອນບໍ່ຫວັງຜົນກຳໄລນຳໂດຍນັກຮຽນ">Student-led nonprofit club</p>
+        <h1 data-en="Turning small acts of hope into real impact."
+            data-ko="작은 희망의 행동을 실제 변화로."
+            data-lo="ປ່ຽນການກະທຳນ້ອຍໆແຫ່ງຄວາມຫວັງໃຫ້ເປັນຜົນກະທົບທີ່ແທ້ຈິງ.">Turning small acts of hope into real impact.</h1>
+        <p class="hero-text"
+           data-en="Base on Hope supports the Laos National Baseball Team through awareness, fundraising, and youth-led action."
+           data-ko="Base on Hope는 인식 확산, 모금 활동, 학생 주도 프로젝트를 통해 라오스 야구 국가대표팀을 지원합니다."
+           data-lo="Base on Hope ສະໜັບສະໜູນທີມເບສບອນແຫ່ງຊາດລາວຜ່ານການສ້າງການຮັບຮູ້ ການລະດົມທຶນ ແລະກິດຈະກຳນຳໂດຍນັກຮຽນ.">Base on Hope supports the Laos National Baseball Team through awareness, fundraising, and youth-led action.</p>
 
-  <div class="hero-fullscreen-content">
-    <p class="eyebrow"
-       data-en="Student-led nonprofit organization"
-       data-ko="학생 주도 비영리 단체"
-       data-lo="ອົງການບໍ່ຫວັງຜົນກຳໄລນຳໂດຍນັກຮຽນ">
-       Student-led nonprofit organization
-    </p>
-
-    <h1
-      data-en="Turning small acts of hope into real impact."
-      data-ko="작은 희망의 행동을 실제 변화로 만듭니다."
-      data-lo="ປ່ຽນການກະທຳນ້ອຍໆແຫ່ງຄວາມຫວັງໃຫ້ເປັນຜົນກະທົບທີ່ແທ້ຈິງ.">
-      Turning small acts of hope into real impact.
-    </h1>
-
-    <p class="hero-text"
-       data-en="Base on Hope supports the Laos National Baseball Team through awareness, fundraising, and youth-led action."
-       data-ko="Base on Hope는 인식 확산, 모금 활동, 학생 주도 프로젝트를 통해 라오스 야구 국가대표팀을 지원합니다."
-       data-lo="Base on Hope ສະໜັບສະໜູນທີມເບສບອນແຫ່ງຊາດລາວຜ່ານການສ້າງການຮັບຮູ້ ການລະດົມທຶນ ແລະກິດຈະກຳນຳໂດຍນັກຮຽນ.">
-       Base on Hope supports the Laos National Baseball Team through awareness, fundraising, and youth-led action.
-    </p>
-
-    <div class="button-row hero-center-buttons">
-      <a class="button primary" href="support.html"
-         data-en="Support the Team"
-         data-ko="팀 후원하기"
-         data-lo="ສະໜັບສະໜູນທີມ">
-         Support the Team
-      </a>
-
-      <a class="button secondary glass-button" href="about.html"
-         data-en="Learn More"
-         data-ko="더 알아보기"
-         data-lo="ຮຽນຮູ້ເພີ່ມ">
-         Learn More
-      </a>
-    </div>
-  </div>
-</section>
+        <div class="button-row hero-center-buttons">
+          <a class="button primary" href="support.html" data-en="Support the Team" data-ko="팀 후원하기" data-lo="ສະໜັບສະໜູນທີມ">Support the Team</a>
+          <a class="button secondary glass-button" href="projects.html" data-en="See Our Projects" data-ko="프로젝트 보기" data-lo="ເບິ່ງໂຄງການ">See Our Projects</a>
+        </div>
+      </div>
+    </section>
 
     <!-- =========================
-         IMPACT NUMBERS
-         You can edit the numbers directly.
-         If you do not need this section, add class="hidden" to the section tag.
-         Example: <section class="impact hidden">
+         NUMBERS — edit freely
          ========================= -->
     <section class="impact">
       <div class="impact-item">
-        <strong>3+</strong>
-        <span data-en="Core Projects" data-ko="핵심 프로젝트" data-lo="ໂຄງການຫຼັກ">Core Projects</span>
+        <strong>₩2M+</strong>
+        <span data-en="Raised so far" data-ko="누적 모금액" data-lo="ລະດົມທຶນໄດ້ແລ້ວ">Raised so far</span>
       </div>
       <div class="impact-item">
-        <strong>10+</strong>
-        <span data-en="Student Members" data-ko="학생 멤버" data-lo="ສະມາຊິກນັກສຶກສາ">Student Members</span>
+        <strong>29</strong>
+        <span data-en="Student members" data-ko="학생 멤버" data-lo="ສະມາຊິກນັກຮຽນ">Student members</span>
       </div>
       <div class="impact-item">
-        <strong>1</strong>
-        <span data-en="Shared Mission" data-ko="공통 미션" data-lo="ພາລະກິດຮ່ວມ">Shared Mission</span>
+        <strong data-en="15 min" data-ko="15분" data-lo="15 ນາທີ">15 min</strong>
+        <span data-en="Fastest sellout in school history" data-ko="학교 역사상 최단 완판" data-lo="ຂາຍໝົດໄວທີ່ສຸດ">Fastest sellout in school history</span>
       </div>
     </section>
 
@@ -128,205 +73,161 @@
          ========================= -->
     <section id="about" class="section two-column">
       <div>
-        <p class="section-label" data-en="About Us" data-ko="소개">About Us</p>
-        <h2
-          data-en="We believe students can create meaningful change."
-          data-ko="우리는 학생들도 의미 있는 변화를 만들 수 있다고 믿습니다.">
-          We believe students can create meaningful change.
-        </h2>
+        <p class="section-label" data-en="About Us" data-ko="소개" data-lo="ກ່ຽວກັບພວກເຮົາ">About Us</p>
+        <h2 data-en="We believe students can create meaningful change."
+            data-ko="우리는 학생들도 의미 있는 변화를 만들 수 있다고 믿습니다."
+            data-lo="ພວກເຮົາເຊື່ອວ່ານັກຮຽນສາມາດສ້າງການປ່ຽນແປງທີ່ມີຄວາມໝາຍ.">We believe students can create meaningful change.</h2>
       </div>
-
       <div>
-        <p
-          data-en="Our mission is to connect students, local communities, and supporters through fundraising projects that are simple, creative, and impactful. We use campaigns, events, and social media to make participation easier and more accessible."
-          data-ko="우리의 미션은 간단하면서도 창의적이고 영향력 있는 모금 프로젝트를 통해 학생, 지역사회, 후원자를 연결하는 것입니다. 우리는 캠페인, 이벤트, 소셜미디어를 활용해 더 많은 사람들이 쉽게 참여할 수 있도록 합니다.">
-          Our mission is to connect students, local communities, and supporters through fundraising projects that are simple, creative, and impactful. We use campaigns, events, and social media to make participation easier and more accessible.
-        </p>
+        <p data-en="Our mission is to build stable, ongoing funding for the nutrition and training environment of the Laos National Baseball Team. We work directly with the team, raise funds through campaigns and school events, and keep every record transparent."
+           data-ko="우리의 미션은 라오스 야구 국가대표팀의 영양과 훈련 환경을 위한 안정적이고 지속적인 기금을 만드는 것입니다. 대표팀과 직접 소통하고, 캠페인과 학교 행사로 기금을 마련하며, 모든 기록을 투명하게 관리합니다."
+           data-lo="ພາລະກິດຂອງພວກເຮົາແມ່ນສ້າງກອງທຶນທີ່ໝັ້ນຄົງ ເພື່ອອາຫານ ແລະ ການຝຶກຊ້ອມຂອງທີມເບສບອນແຫ່ງຊາດລາວ.">Our mission is to build stable, ongoing funding for the nutrition and training environment of the Laos National Baseball Team. We work directly with the team, raise funds through campaigns and school events, and keep every record transparent.</p>
+        <p class="goal-line" data-en="Our goal: ₩500,000 (about $350) a month — enough for the Laos team to keep training on fuller, healthier meals."
+           data-ko="우리의 목표: 한 달 50만원이면 라오스 선수단이 더욱 풍족한 식단으로 야구 훈련을 이어갈 수 있습니다."
+           data-lo="ເປົ້າໝາຍ: ₩500,000 (ປະມານ $350) ຕໍ່ເດືອນ ເພື່ອອາຫານທີ່ດີຂຶ້ນຂອງທີມລາວ.">Our goal: ₩500,000 (about $350) a month — enough for the Laos team to keep training on fuller, healthier meals.</p>
+        <a class="text-link" href="about.html" data-en="Meet the Laos National Team →" data-ko="라오스 국가대표팀 알아보기 →" data-lo="ຮູ້ຈັກທີມຊາດລາວ →">Meet the Laos National Team →</a>
       </div>
     </section>
 
     <!-- =========================
-         MISSION / VISION / VALUES
+         FOUNDERS
+         Photos go in images/founders/ with these exact names:
+           gyumin.jpg, suhyun.jpg, minseo.jpg
+         Until a photo exists, a circle with initials is shown.
          ========================= -->
-    <section class="section">
-      <p class="section-label" data-en="Identity" data-ko="정체성">Identity</p>
-      <h2 data-en="Mission, Vision, and Values" data-ko="미션, 비전, 핵심 가치">Mission, Vision, and Values</h2>
+    <section id="team" class="section soft-background">
+      <p class="section-label" data-en="Founders" data-ko="창립자" data-lo="ຜູ້ກໍ່ຕັ້ງ">Founders</p>
+      <h2 data-en="Meet the founders" data-ko="창립 멤버 소개" data-lo="ພົບກັບຜູ້ກໍ່ຕັ້ງ">Meet the founders</h2>
 
       <div class="card-grid three">
-        <article class="card">
-          <h3 data-en="Mission" data-ko="미션">Mission</h3>
-          <p
-            data-en="To create accessible fundraising opportunities where students can contribute to real community impact."
-            data-ko="학생들이 실제 지역사회 변화에 기여할 수 있는 참여하기 쉬운 모금 기회를 만드는 것입니다.">
-            To create accessible fundraising opportunities where students can contribute to real community impact.
-          </p>
+        <article class="team-card">
+          <img class="team-photo" src="images/founders/suhyun.jpg" data-initials="SP" alt="Suhyun (Kevin) Park" />
+          <p class="team-role" data-en="Co-President" data-ko="공동 회장" data-lo="ປະທານຮ່ວມ">Co-President</p>
+          <h3>Suhyun (Kevin) Park</h3>
+          <span class="team-name-ko">박수현</span>
+          <p data-en="Leads communication with the Laos National Baseball Team and its coaching staff, and oversees how funds are delivered and used."
+             data-ko="라오스 야구 국가대표팀 및 코칭스태프와의 연락을 담당하고, 후원금의 전달과 사용 과정을 총괄합니다."
+             data-lo="ຮັບຜິດຊອບການຕິດຕໍ່ກັບທີມເບສບອນແຫ່ງຊາດລາວ ແລະ ຄວບຄຸມການສົ່ງເງິນທຶນ.">Leads communication with the Laos National Baseball Team and its coaching staff, and oversees how funds are delivered and used.</p>
         </article>
 
-        <article class="card">
-          <h3 data-en="Vision" data-ko="비전">Vision</h3>
-          <p
-            data-en="To become a youth-led platform that connects compassion, creativity, and action."
-            data-ko="공감, 창의성, 행동을 연결하는 청소년 주도 플랫폼이 되는 것입니다.">
-            To become a youth-led platform that connects compassion, creativity, and action.
-          </p>
+        <article class="team-card">
+          <img class="team-photo" src="images/founders/gyumin.jpg" data-initials="GJ" alt="Gyumin Jeong" />
+          <p class="team-role" data-en="Co-President" data-ko="공동 회장" data-lo="ປະທານຮ່ວມ">Co-President</p>
+          <h3>Gyumin Jeong</h3>
+          <span class="team-name-ko">정규민</span>
+          <p data-en="Sets Base on Hope's overall direction and operating strategy, and coordinates decisions across departments."
+             data-ko="Base on Hope의 전체 방향성과 운영 전략을 총괄하고, 각 부서 간 조율과 의사결정을 맡습니다."
+             data-lo="ກຳນົດທິດທາງ ແລະ ຍຸດທະສາດຂອງ Base on Hope ແລະ ປະສານງານລະຫວ່າງພະແນກ.">Sets Base on Hope's overall direction and operating strategy, and coordinates decisions across departments.</p>
         </article>
 
-        <article class="card">
-          <h3 data-en="Values" data-ko="핵심 가치">Values</h3>
-          <p
-            data-en="Hope, responsibility, transparency, teamwork, and consistent action."
-            data-ko="희망, 책임감, 투명성, 팀워크, 꾸준한 실천을 중요하게 생각합니다.">
-            Hope, responsibility, transparency, teamwork, and consistent action.
-          </p>
+        <article class="team-card">
+          <img class="team-photo" src="images/founders/minseo.jpg" data-initials="MP" alt="Minseo Park" />
+          <p class="team-role" data-en="Vice President" data-ko="부회장" data-lo="ຮອງປະທານ">Vice President</p>
+          <h3>Minseo Park</h3>
+          <span class="team-name-ko">박민서</span>
+          <p data-en="Manages external partnerships and school communication, and sets and reviews our short-, mid-, and long-term goals."
+             data-ko="대외 협력과 학교 커뮤니케이션을 담당하고, 단·중·장기 목표를 설정하고 점검합니다."
+             data-lo="ຮັບຜິດຊອບການຮ່ວມມືພາຍນອກ ແລະ ກຳນົດເປົ້າໝາຍໄລຍະສັ້ນ ແລະ ຍາວ.">Manages external partnerships and school communication, and sets and reviews our short-, mid-, and long-term goals.</p>
         </article>
       </div>
     </section>
 
     <!-- =========================
-         PROJECTS
-         To change project images:
-         Replace the image files inside the images folder or change each src.
+         PROJECTS PREVIEW (full details on projects.html)
          ========================= -->
     <section id="projects" class="section">
-      <p class="section-label" data-en="Projects" data-ko="프로젝트">Projects</p>
-      <h2 data-en="What We Do" data-ko="우리가 하는 일">What We Do</h2>
+      <div class="section-head">
+        <div>
+          <p class="section-label" data-en="Projects" data-ko="프로젝트" data-lo="ໂຄງການ">Projects</p>
+          <h2 data-en="What we do" data-ko="우리가 하는 일" data-lo="ສິ່ງທີ່ພວກເຮົາເຮັດ">What we do</h2>
+        </div>
+        <a class="text-link" href="projects.html" data-en="All projects →" data-ko="전체 프로젝트 →" data-lo="ໂຄງການທັງໝົດ →">All projects →</a>
+      </div>
 
       <div class="card-grid three">
-        <article class="project-card">
-          <img src="images/project-1.svg" alt="Baseball stadium fundraising project" />
+        <a class="project-card" href="about.html">
+          <img src="gallery-3.jpg" alt="Laos National Baseball Team sharing a meal" loading="lazy" />
           <div class="project-content">
-            <h3 data-en="Baseball Stadium Fundraising" data-ko="야구장 모금 캠페인">Baseball Stadium Fundraising</h3>
-            <p
-              data-en="We plan to visit baseball stadiums across Korea, including Seoul and other major cities, to raise funds and bring more people into the campaign."
-              data-ko="우리는 서울을 비롯한 전국 주요 도시의 야구장을 방문하며 모금 활동을 진행하고, 더 많은 사람들이 캠페인에 참여할 수 있도록 할 계획입니다.">
-              We plan to visit baseball stadiums across Korea, including Seoul and other major cities, to raise funds and bring more people into the campaign.
-            </p>
+            <span class="tag" data-en="Core Mission" data-ko="핵심 미션" data-lo="ພາລະກິດຫຼັກ">Core Mission</span>
+            <h3 data-en="Meal Support for Laos" data-ko="라오스 대표팀 식비 지원" data-lo="ສະໜັບສະໜູນອາຫານທີມລາວ">Meal Support for Laos</h3>
+            <p data-en="Funds we raise go to the Laos national team for players' meals and training, and we stay in touch to see the difference."
+               data-ko="모금한 기금은 라오스 대표팀 선수들의 식비와 훈련에 쓰이고, 대표팀과 꾸준히 연락하며 변화를 확인합니다."
+               data-lo="ເງິນທຶນໄປຫາອາຫານ ແລະ ການຝຶກຊ້ອມຂອງທີມຊາດລາວ.">Funds we raise go to the Laos national team for players' meals and training, and we stay in touch to see the difference.</p>
           </div>
-        </article>
+        </a>
 
-        <article class="project-card">
-          <img src="images/project-2.svg" alt="Merchandise project" />
+        <a class="project-card" href="projects.html#cookie">
+          <img src="images/projects/cookie-poster.jpg" alt="Dubai Chewy Cookie fundraiser poster" loading="lazy" style="object-position: center 40%;" />
           <div class="project-content">
-            <h3 data-en="Merchandise Project" data-ko="굿즈 프로젝트">Merchandise Project</h3>
-            <p
-              data-en="We design organization T-shirts and goods to build identity, spread our message, and support our fundraising goals."
-              data-ko="우리는 단체티와 굿즈를 제작하여 단체의 정체성을 만들고, 메시지를 알리며, 모금 목표를 지원합니다.">
-              We design organization T-shirts and goods to build identity, spread our message, and support our fundraising goals.
-            </p>
+            <span class="tag" data-en="Fundraiser" data-ko="모금" data-lo="ລະດົມທຶນ">Fundraiser</span>
+            <h3 data-en="Dubai Chewy Cookie Sale" data-ko="두바이 쫀득 쿠키 판매" data-lo="ຂາຍຄຸກກີ້ດູໄບ">Dubai Chewy Cookie Sale</h3>
+            <p data-en="Handmade cookies sold out in 15 minutes — the fastest fundraiser sellout in our school's history. ₩400,000 raised."
+               data-ko="직접 만든 두쫀쿠가 15분 만에 완판 — 학교 역사상 최단 솔드아웃 펀드레이징. 40만원 모금."
+               data-lo="ຄຸກກີ້ຂາຍໝົດໃນ 15 ນາທີ. ລະດົມໄດ້ ₩400,000.">Handmade cookies sold out in 15 minutes — the fastest fundraiser sellout in our school's history. ₩400,000 raised.</p>
           </div>
-        </article>
+        </a>
 
-        <article class="project-card">
-          <img src="images/project-3.svg" alt="Corporate sponsorship project" />
+        <a class="project-card" href="projects.html#stadium">
+          <img src="images/stadium/jamsil-team.jpg" alt="Members fundraising at Jamsil Baseball Stadium" loading="lazy" style="object-position: center 35%;" />
           <div class="project-content">
-            <h3 data-en="Corporate Sponsorship" data-ko="기업 후원">Corporate Sponsorship</h3>
-            <p
-              data-en="We reach out to companies and local organizations to build partnerships, gain support, and expand the scale of our activities."
-              data-ko="우리는 기업과 지역 단체에 연락하여 파트너십을 만들고, 후원을 확보하며, 활동 규모를 확장합니다.">
-              We reach out to companies and local organizations to build partnerships, gain support, and expand the scale of our activities.
-            </p>
+            <span class="tag" data-en="Field Fundraising" data-ko="현장 모금" data-lo="ລະດົມທຶນພາກສະໜາມ">Field Fundraising</span>
+            <h3 data-en="Stadium Tour" data-ko="전국 야구장 투어" data-lo="ທົວສະໜາມກິລາ">Stadium Tour</h3>
+            <p data-en="From Jamsil and Gocheok to Yankee Stadium in New York — we bring the Laos team's story to baseball fans."
+               data-ko="잠실, 고척부터 뉴욕 양키스타디움까지 — 야구 팬들에게 라오스 대표팀의 이야기를 전합니다."
+               data-lo="ຈາກ Jamsil, Gocheok ເຖິງ Yankee Stadium — ເລົ່າເລື່ອງທີມລາວໃຫ້ແຟນເບສບອນ.">From Jamsil and Gocheok to Yankee Stadium in New York — we bring the Laos team's story to baseball fans.</p>
           </div>
-        </article>
+        </a>
       </div>
     </section>
 
     <!-- =========================
-         CAMPAIGN TIMELINE
+         VIDEOS
+         Two ways to add a video:
+           YouTube:  data-youtube="https://youtu.be/XXXXXXXX"  (shorts links work too)
+           mp4 file: data-mp4="videos/my-video.mp4"  (put the file in the videos folder, keep it under ~50MB)
+         Leave both empty to show "Video coming soon".
          ========================= -->
-    <section class="section soft-background">
-      <p class="section-label" data-en="Campaign Plan" data-ko="캠페인 계획">Campaign Plan</p>
-      <h2 data-en="How our campaign grows" data-ko="캠페인이 성장하는 방식">How our campaign grows</h2>
+    <section id="videos" class="section">
+      <p class="section-label" data-en="Videos" data-ko="영상" data-lo="ວິດີໂອ">Videos</p>
+      <h2 data-en="See us in action" data-ko="영상으로 보는 BOH" data-lo="ເບິ່ງພວກເຮົາໃນການເຄື່ອນໄຫວ">See us in action</h2>
 
-      <div class="timeline">
-        <div class="timeline-item">
-          <span>01</span>
-          <div>
-            <h3 data-en="Prepare" data-ko="준비">Prepare</h3>
-            <p
-              data-en="Build our brand identity, website, forms, merchandise plan, and outreach materials."
-              data-ko="브랜드 정체성, 웹사이트, 신청서, 굿즈 계획, 연락 자료를 준비합니다.">
-              Build our brand identity, website, forms, merchandise plan, and outreach materials.
-            </p>
+      <div class="video-grid">
+        <article class="video-card">
+          <div class="video-embed" data-youtube="" data-mp4="videos/laos-player.mp4" data-poster="videos/laos-player-poster.jpg"></div>
+          <div class="video-info">
+            <h3 data-en="From the field in Laos" data-ko="라오스 현장에서" data-lo="ຈາກສະໜາມໃນລາວ">From the field in Laos</h3>
+            <p data-en="One of the young players we play for." data-ko="우리가 응원하는 라오스의 어린 선수." data-lo="ນັກກິລາໜຸ່ມທີ່ພວກເຮົາສະໜັບສະໜູນ.">One of the young players we play for.</p>
           </div>
-        </div>
+        </article>
 
-        <div class="timeline-item">
-          <span>02</span>
-          <div>
-            <h3 data-en="Launch" data-ko="시작">Launch</h3>
-            <p
-              data-en="Begin social media promotion, recruit members, and organize fundraising activities."
-              data-ko="소셜미디어 홍보를 시작하고, 멤버를 모집하며, 모금 활동을 조직합니다.">
-              Begin social media promotion, recruit members, and organize fundraising activities.
-            </p>
+        <article class="video-card">
+          <div class="video-embed" data-youtube="" data-mp4=""></div>
+          <div class="video-info">
+            <h3 data-en="Our Fundraising Campaigns" data-ko="모금 캠페인 현장" data-lo="ແຄມເປນລະດົມທຶນ">Our Fundraising Campaigns</h3>
+            <p data-en="From school booths to baseball stadiums." data-ko="학교 부스부터 야구장까지." data-lo="ຈາກບູດໂຮງຮຽນເຖິງສະໜາມເບສບອນ.">From school booths to baseball stadiums.</p>
           </div>
-        </div>
-
-        <div class="timeline-item">
-          <span>03</span>
-          <div>
-            <h3 data-en="Expand" data-ko="확장">Expand</h3>
-            <p
-              data-en="Reach out to sponsors, visit more locations, and publish updates about our impact."
-              data-ko="후원자에게 연락하고, 더 많은 장소를 방문하며, 활동 결과를 공유합니다.">
-              Reach out to sponsors, visit more locations, and publish updates about our impact.
-            </p>
-          </div>
-        </div>
+        </article>
       </div>
     </section>
 
     <!-- =========================
-         GALLERY
-         To add your own photos:
-         1. Put photo in images folder.
-         2. Change src to your image path.
-         3. Edit alt text.
+         GALLERY PREVIEW (full gallery on gallery.html)
          ========================= -->
     <section id="gallery" class="section">
-      <p class="section-label" data-en="Gallery" data-ko="갤러리">Gallery</p>
-      <h2 data-en="Moments from our work" data-ko="우리 활동의 순간들">Moments from our work</h2>
+      <div class="section-head">
+        <div>
+          <p class="section-label" data-en="Gallery" data-ko="갤러리" data-lo="ຄັງຮູບ">Gallery</p>
+          <h2 data-en="Moments from our work" data-ko="우리 활동의 순간들" data-lo="ຊ່ວງເວລາຈາກວຽກຂອງພວກເຮົາ">Moments from our work</h2>
+        </div>
+        <a class="text-link" href="gallery.html" data-en="Full gallery →" data-ko="갤러리 전체 보기 →" data-lo="ຄັງຮູບທັງໝົດ →">Full gallery →</a>
+      </div>
 
       <div class="gallery-grid">
-        <img src="gallery-1.jpg" alt="Gallery placeholder 1" />
-        <img src="images/gallery-2.svg" alt="Gallery placeholder 2" />
-        <img src="images/gallery-3.svg" alt="Gallery placeholder 3" />
-        <img src="images/gallery-4.svg" alt="Gallery placeholder 4" />
-      </div>
-    </section>
-
-    <!-- =========================
-         TEAM
-         If you don't want names/photos public yet, you can hide this section.
-         ========================= -->
-    <section id="team" class="section">
-      <p class="section-label" data-en="Team" data-ko="팀">Team</p>
-      <h2 data-en="Meet our team" data-ko="팀 소개">Meet our team</h2>
-
-      <div class="card-grid three">
-        <article class="team-card">
-          <img src="images/team-placeholder.svg" alt="Team member placeholder" />
-          <h3 data-en="Founder / President" data-ko="창립자 / 대표">Founder / President</h3>
-          <p data-en="Leads strategy, partnerships, and campaign direction." data-ko="전략, 파트너십, 캠페인 방향을 이끕니다.">
-            Leads strategy, partnerships, and campaign direction.
-          </p>
-        </article>
-
-        <article class="team-card">
-          <img src="images/team-placeholder.svg" alt="Team member placeholder" />
-          <h3 data-en="Marketing Lead" data-ko="마케팅 담당">Marketing Lead</h3>
-          <p data-en="Manages Instagram, promotion, and public communication." data-ko="인스타그램, 홍보, 외부 커뮤니케이션을 담당합니다.">
-            Manages Instagram, promotion, and public communication.
-          </p>
-        </article>
-
-        <article class="team-card">
-          <img src="images/team-placeholder.svg" alt="Team member placeholder" />
-          <h3 data-en="Finance Lead" data-ko="재무 담당">Finance Lead</h3>
-          <p data-en="Tracks budget, fundraising records, and financial transparency." data-ko="예산, 모금 기록, 재무 투명성을 관리합니다.">
-            Tracks budget, fundraising records, and financial transparency.
-          </p>
-        </article>
+        <img src="gallery-4.jpg" alt="Base on Hope at Gocheok Sky Dome" loading="lazy" />
+        <img src="images/stadium/jamsil-doosan.jpg" alt="Fundraising at Jamsil Baseball Stadium" loading="lazy" />
+        <img src="images/laos/laos-flag.jpg" alt="Laos National Baseball Team with the Lao flag" loading="lazy" />
+        <img src="images/stadium/yankee-duo.jpg" alt="Suhyun Park and Steve Oh at Yankee Stadium" loading="lazy" />
+        <img src="images/stadium/gocheok-selfie.jpg" alt="Members inside Gocheok Sky Dome" loading="lazy" />
       </div>
     </section>
 
@@ -335,142 +236,89 @@
          ========================= -->
     <section id="sponsor" class="section highlight">
       <div class="section-inner">
-        <p class="section-label" data-en="Sponsorship" data-ko="후원">Sponsorship</p>
-        <h2 data-en="Support our mission." data-ko="우리의 미션을 함께 지원해주세요.">Support our mission.</h2>
-        <p
-          data-en="We welcome sponsorships, donations, and collaborations from companies, organizations, and individuals who want to support youth-led social impact."
-          data-ko="청소년 주도의 사회적 임팩트를 지원하고 싶은 기업, 단체, 개인의 후원, 기부, 협력을 환영합니다.">
-          We welcome sponsorships, donations, and collaborations from companies, organizations, and individuals who want to support youth-led social impact.
-        </p>
-
+        <p class="section-label" data-en="Sponsorship" data-ko="후원" data-lo="ການສະໜັບສະໜູນ">Sponsorship</p>
+        <h2 data-en="Support our mission." data-ko="우리의 미션을 함께 지원해주세요." data-lo="ສະໜັບສະໜູນພາລະກິດຂອງພວກເຮົາ.">Support our mission.</h2>
+        <p data-en="We welcome sponsorships, donations, and collaborations from companies, organizations, and individuals who want to support youth-led social impact."
+           data-ko="청소년 주도의 사회적 임팩트를 지원하고 싶은 기업, 단체, 개인의 후원, 기부, 협력을 환영합니다."
+           data-lo="ພວກເຮົາຍິນດີຕ້ອນຮັບການສະໜັບສະໜູນ ແລະ ການຮ່ວມມືຈາກທຸກຄົນ.">We welcome sponsorships, donations, and collaborations from companies, organizations, and individuals who want to support youth-led social impact.</p>
         <div class="button-row">
-          <a class="button primary light" href="mailto:fps.baseonhope@gmail.com"
-             data-en="Contact for Sponsorship"
-             data-ko="후원 문의하기">
-             Contact for Sponsorship
-          </a>
-          <a class="button outline-light" href="#contact"
-             data-en="View Contact Info"
-             data-ko="연락처 보기">
-             View Contact Info
-          </a>
+          <a class="button primary light" href="support.html" data-en="Ways to Support" data-ko="후원 방법 보기" data-lo="ວິທີສະໜັບສະໜູນ">Ways to Support</a>
+          <a class="button outline-light" href="mailto:fps.baseonhope@gmail.com" data-en="Email Us" data-ko="이메일 문의" data-lo="ສົ່ງອີເມວ">Email Us</a>
         </div>
       </div>
     </section>
 
     <!-- =========================
-         SPONSOR LOGOS
-         Replace placeholder logos later.
-         Hide this section until you have sponsors if needed.
+         PARTNERS — add a logo: copy one .partner-card block
          ========================= -->
-    <section class="section sponsors">
-      <p class="section-label" data-en="Partners" data-ko="파트너">Partners</p>
-      <h2 data-en="Sponsors and supporters" data-ko="후원사 및 서포터">Sponsors and supporters</h2>
-
-      <div class="logo-grid">
-        <div data-en="Sponsor Logo" data-ko="후원사 로고">Sponsor Logo</div>
-        <div data-en="Sponsor Logo" data-ko="후원사 로고">Sponsor Logo</div>
-        <div data-en="Sponsor Logo" data-ko="후원사 로고">Sponsor Logo</div>
-        <div data-en="Sponsor Logo" data-ko="후원사 로고">Sponsor Logo</div>
+    <section id="partners" class="section">
+      <p class="section-label" data-en="Partners" data-ko="파트너" data-lo="ຄູ່ຮ່ວມງານ">Partners</p>
+      <h2 data-en="With the support of" data-ko="함께하는 곳" data-lo="ດ້ວຍການສະໜັບສະໜູນຈາກ">With the support of</h2>
+      <div class="partner-grid">
+        <div class="partner-card" style="background:#c3291b;">
+          <img src="images/partners/hanyang.png" alt="Hanyang Camp Baseball" />
+          <p>Hanyang Camp · Body Upgrade</p>
+        </div>
+        <div class="partner-card" style="background:#0f1f3d;">
+          <img src="images/partners/fayston.png" alt="Fayston Preparatory School of Suji" />
+          <p>Fayston Preparatory School of Suji</p>
+        </div>
       </div>
     </section>
 
     <!-- =========================
          JOIN
-         Replace the Google Form link.
          ========================= -->
     <section id="join" class="section cta">
-      <p class="section-label" data-en="Get Involved" data-ko="참여하기">Get Involved</p>
-      <h2 data-en="Join the movement." data-ko="함께 참여해주세요.">Join the movement.</h2>
-      <p
-        data-en="If you want to participate in stadium fundraising, wear our organization T-shirt, help manage social media, or support our projects, fill out the form below."
-        data-ko="야구장 모금 캠페인에 참여하거나, 단체티를 입거나, 인스타그램 운영을 돕거나, 프로젝트를 지원하고 싶다면 아래 신청서를 작성해주세요.">
-        If you want to participate in stadium fundraising, wear our organization T-shirt, help manage social media, or support our projects, fill out the form below.
-      </p>
-
-      <!-- EDIT: Replace this Google Form link -->
-      <a class="button primary" href="https://forms.gle/ji7vez7LDhzz1Epn9" target="_blank"
-         data-en="Open Participation Form"
-         data-ko="참여 신청서 열기">
-         Open Participation Form
-      </a>
+      <p class="section-label" data-en="Get Involved" data-ko="참여하기" data-lo="ມີສ່ວນຮ່ວມ">Get Involved</p>
+      <h2 data-en="Join the movement." data-ko="함께 참여해주세요." data-lo="ເຂົ້າຮ່ວມກັບພວກເຮົາ.">Join the movement.</h2>
+      <p data-en="Want to help at a fundraiser, join the stadium tour, design merch, or run our Instagram? Fill out the form below."
+         data-ko="모금 행사, 야구장 투어, 굿즈 디자인, 인스타그램 운영에 함께하고 싶다면 아래 신청서를 작성해주세요."
+         data-lo="ຢາກເປັນຄູຝຶກ ຫຼື ຊ່ວຍງານລະດົມທຶນບໍ? ກະລຸນາຕື່ມແບບຟອມຂ້າງລຸ່ມ.">Want to help at a fundraiser, join the stadium tour, design merch, or run our Instagram? Fill out the form below.</p>
+      <a class="button primary" href="https://forms.gle/ji7vez7LDhzz1Epn9" target="_blank" rel="noopener" data-en="Open Participation Form" data-ko="참여 신청서 열기" data-lo="ເປີດແບບຟອມ">Open Participation Form</a>
     </section>
 
     <!-- =========================
          FAQ
          ========================= -->
     <section class="section">
-      <p class="section-label" data-en="FAQ" data-ko="자주 묻는 질문">FAQ</p>
-      <h2 data-en="Frequently Asked Questions" data-ko="자주 묻는 질문">Frequently Asked Questions</h2>
+      <p class="section-label" data-en="FAQ" data-ko="자주 묻는 질문" data-lo="ຄຳຖາມທີ່ພົບເລື້ອຍ">FAQ</p>
+      <h2 data-en="Frequently Asked Questions" data-ko="자주 묻는 질문" data-lo="ຄຳຖາມທີ່ພົບເລື້ອຍ">Frequently Asked Questions</h2>
 
       <div class="faq-list">
         <details>
-          <summary data-en="Who can join Base on Hope?" data-ko="누가 Base on Hope에 참여할 수 있나요?">Who can join Base on Hope?</summary>
-          <p
-            data-en="Any student who wants to support our campaigns, help with fundraising, or contribute to our projects can join."
-            data-ko="캠페인, 모금 활동, 프로젝트 운영에 관심 있는 학생이라면 누구나 참여할 수 있습니다.">
-            Any student who wants to support our campaigns, help with fundraising, or contribute to our projects can join.
-          </p>
+          <summary data-en="Who can join Base on Hope?" data-ko="누가 Base on Hope에 참여할 수 있나요?" data-lo="ໃຜສາມາດເຂົ້າຮ່ວມໄດ້?">Who can join Base on Hope?</summary>
+          <p data-en="Any student who wants to support our campaigns, help with fundraising, or contribute to our projects can join."
+             data-ko="캠페인, 모금 활동, 프로젝트 운영에 관심 있는 학생이라면 누구나 참여할 수 있습니다.">Any student who wants to support our campaigns, help with fundraising, or contribute to our projects can join.</p>
         </details>
-
         <details>
-          <summary data-en="How can companies support us?" data-ko="기업은 어떻게 후원할 수 있나요?">How can companies support us?</summary>
-          <p
-            data-en="Companies can support us through sponsorships, donations, product support, or collaboration opportunities."
-            data-ko="기업은 후원금, 물품 지원, 협업 기회, 홍보 지원 등을 통해 함께할 수 있습니다.">
-            Companies can support us through sponsorships, donations, product support, or collaboration opportunities.
-          </p>
+          <summary data-en="Where will the funds go?" data-ko="모금액은 어디에 사용되나요?" data-lo="ເງິນທຶນຈະໄປໃສ?">Where will the funds go?</summary>
+          <p data-en="Donations and fundraising proceeds go toward meals and the training environment of the Laos National Baseball Team, after basic program costs. Our Treasury department records all income and spending."
+             data-ko="후원금과 모금액은 기본 운영비를 제외하고 라오스 야구 국가대표팀의 식비와 훈련 환경 지원에 사용됩니다. 모든 수입과 지출은 재무부에서 투명하게 기록합니다.">Donations and fundraising proceeds go toward meals and the training environment of the Laos National Baseball Team, after basic program costs. Our Treasury department records all income and spending.</p>
         </details>
-
         <details>
-          <summary data-en="Where will the funds go?" data-ko="모금액은 어디에 사용되나요?">Where will the funds go?</summary>
-          <p
-            data-en="Funds will be used for campaign-related costs and donations to the cause we support. We aim to keep records transparent."
-            data-ko="모금액은 캠페인 운영 비용과 우리가 지원하는 목적을 위한 기부금으로 사용됩니다. 우리는 기록을 투명하게 관리하는 것을 목표로 합니다.">
-            Funds will be used for campaign-related costs and donations to the cause we support. We aim to keep records transparent.
-          </p>
+          <summary data-en="How can companies support us?" data-ko="기업은 어떻게 후원할 수 있나요?" data-lo="ບໍລິສັດສາມາດສະໜັບສະໜູນແນວໃດ?">How can companies support us?</summary>
+          <p data-en="Companies can support us through sponsorships, donations, equipment, or collaboration opportunities."
+             data-ko="기업은 후원금, 장비 지원, 협업 기회 등을 통해 함께할 수 있습니다.">Companies can support us through sponsorships, donations, equipment, or collaboration opportunities.</p>
         </details>
       </div>
     </section>
 
     <!-- =========================
          CONTACT
-         Replace email and Instagram link.
          ========================= -->
     <section id="contact" class="section contact">
-      <p class="section-label" data-en="Contact" data-ko="연락">Contact</p>
-      <h2 data-en="Contact Us" data-ko="문의하기">Contact Us</h2>
-
+      <p class="section-label" data-en="Contact" data-ko="연락" data-lo="ຕິດຕໍ່">Contact</p>
+      <h2 data-en="Contact Us" data-ko="문의하기" data-lo="ຕິດຕໍ່ພວກເຮົາ">Contact Us</h2>
       <div class="contact-card">
-        <p>
-          <span data-en="Email:" data-ko="이메일:">Email:</span>
-          <!-- EDIT: Replace email address in BOTH places -->
-          <a href="mailto:fps.baseonhope@gmail.com">fps.baseonhope@gmail.com</a>
-        </p>
-
-        <p>
-          <span data-en="Instagram:" data-ko="인스타그램:">Instagram:</span>
-          <!-- EDIT: Replace Instagram link and username -->
-          <a href="https://instagram.com/base.on.hope" target="_blank">@base.on.hope</a>
-        </p>
-        
-        <p>
-          <span data-en="Base on Hope is a student-led initiative founded by students at Fayston Preparatory of Suji" data-ko="Base on Hope는 페이스튼 국제학원 학생들이 설립한 학생 주도형 단체입니다" data-lo="Base on Hope ເປັນການລິເລີ່ມໂດຍນັກສຶກສາທີ່ສ້າງຂຶ້ນໂດຍນັກສຶກສາທີ່ Fayston Preparatory of Suji">School</span>
-        </p>
+        <p><span data-en="Email:" data-ko="이메일:" data-lo="ອີເມວ:">Email:</span> <a href="mailto:fps.baseonhope@gmail.com">fps.baseonhope@gmail.com</a></p>
+        <p><span data-en="Instagram:" data-ko="인스타그램:" data-lo="ອິນສະຕາແກຣມ:">Instagram:</span> <a href="https://instagram.com/base.on.hope" target="_blank" rel="noopener">@base.on.hope</a></p>
       </div>
     </section>
 
   </main>
 
-  <footer class="footer">
-    <p
-      data-en="© 2026 Base on Hope. All rights reserved."
-      data-ko="© 2026 Base on Hope. All rights reserved."
-      data-lo="© 2026 Base on Hope. All rights reserved.">
-      © 2026 Base on Hope. All rights reserved.
-    </p>
-  </footer>
-
+  <div id="site-footer"></div>
   <script src="script.js"></script>
 </body>
 </html>
