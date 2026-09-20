@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impact | Base on Hope</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta name="description" content="What Base on Hope has done so far and where the money goes." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .log-table { width: 100%; border-collapse: collapse; margin-top: 24px; background: var(--white); border-radius: 16px; overflow: hidden; border: 1px solid var(--line); }
+    .log-table th, .log-table td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--line); font-size: 15px; }
+    .log-table th { background: #f1f5f9; color: var(--dark); font-weight: 900; }
+    .log-table td.num { font-weight: 900; color: var(--primary); white-space: nowrap; }
+    .log-table tr:last-child td { border-bottom: none; }
+    .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; counter-reset: step; }
+    .flow .card { position: relative; }
+    .table-wrap { overflow-x: auto; }
+    @media (max-width: 980px) { .flow { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero" style="background-image: url('gallery-3.jpg');">
+      <div class="page-hero-inner">
+        <p class="eyebrow" data-en="Impact" data-ko="성과" data-lo="ຜົນກະທົບ">Impact</p>
+        <h1 data-en="Every class, every cookie, every cup counts." data-ko="수업 하나, 쿠키 하나, 스무디 한 잔까지." data-lo="ທຸກຫ້ອງຮຽນ, ທຸກຄຸກກີ້ ລ້ວນມີຄວາມໝາຍ.">Every class, every cookie, every cup counts.</h1>
+        <p data-en="What we've built so far, and exactly where the money goes."
+           data-ko="지금까지 만들어온 것, 그리고 기금이 어디로 가는지."
+           data-lo="ສິ່ງທີ່ພວກເຮົາສ້າງມາ ແລະ ເງິນໄປໃສ.">What we've built so far, and exactly where the money goes.</p>
+      </div>
+    </section>
+
+    <!-- NUMBERS — update these as you go -->
+    <section class="section">
+      <p class="section-label" data-en="So Far" data-ko="지금까지" data-lo="ມາຮອດປັດຈຸບັນ">So Far</p>
+      <h2 data-en="Base on Hope in numbers" data-ko="숫자로 보는 BOH" data-lo="BOH ເປັນຕົວເລກ">Base on Hope in numbers</h2>
+      <div class="stat-grid">
+        <div class="stat-card"><strong>7</strong><span data-en="Projects & programs" data-ko="프로젝트 & 프로그램" data-lo="ໂຄງການ">Projects & programs</span></div>
+        <div class="stat-card"><strong>10+</strong><span data-en="Student members" data-ko="학생 멤버" data-lo="ສະມາຊິກນັກຮຽນ">Student members</span></div>
+        <div class="stat-card"><strong>3</strong><span data-en="Education programs for kids" data-ko="아이들을 위한 교육 프로그램" data-lo="ໂຄງການການສຶກສາ">Education programs for kids</span></div>
+        <div class="stat-card"><strong>100%</strong><span data-en="Summer class fees to Laos team meals" data-ko="여름 교실 수강비 → 라오스 대표팀 식비" data-lo="ຄ່າຮຽນໄປຫາອາຫານທີມລາວ">Summer class fees to Laos team meals</span></div>
+      </div>
+    </section>
+
+    <!-- WHERE THE MONEY GOES -->
+    <section class="section soft-background">
+      <p class="section-label" data-en="Where the money goes" data-ko="기금의 흐름" data-lo="ເງິນໄປໃສ">Where the money goes</p>
+      <h2 data-en="From our school to their table" data-ko="우리 학교에서 그들의 식탁까지" data-lo="ຈາກໂຮງຮຽນເຖິງໂຕະອາຫານ">From our school to their table</h2>
+      <div class="flow">
+        <article class="card">
+          <span class="tag">1</span>
+          <h3 data-en="We raise" data-ko="모금" data-lo="ລະດົມທຶນ">We raise</h3>
+          <p data-en="Class fees, bake sales, Club Day booths, stadium fundraising, and donations."
+             data-ko="교실 수강비, 베이킹 판매, 클럽데이 부스, 야구장 모금, 후원금.">Class fees, bake sales, Club Day booths, stadium fundraising, and donations.</p>
+        </article>
+        <article class="card">
+          <span class="tag">2</span>
+          <h3 data-en="We record" data-ko="기록" data-lo="ບັນທຶກ">We record</h3>
+          <p data-en="Our Treasury department logs every income and expense and prepares financial reports."
+             data-ko="재무부가 모든 수입과 지출을 기록하고 재정 보고서를 작성합니다.">Our Treasury department logs every income and expense and prepares financial reports.</p>
+        </article>
+        <article class="card">
+          <span class="tag">3</span>
+          <h3 data-en="We send & check" data-ko="송금 & 확인" data-lo="ສົ່ງ & ກວດສອບ">We send & check</h3>
+          <p data-en="Funds go to the Laos national team's coach for players' meals, and we follow up on how meals improve."
+             data-ko="기금은 라오스 대표팀 감독님께 전달되어 선수 식비로 쓰이고, 식사 환경 개선 여부를 확인합니다.">Funds go to the Laos national team's coach for players' meals, and we follow up on how meals improve.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FUNDRAISING LOG
+         Fill in the "Raised" column after each event.
+         To add a row, copy one <tr>...</tr> block. -->
+    <section class="section">
+      <p class="section-label" data-en="Activity Log" data-ko="활동 기록" data-lo="ບັນທຶກກິດຈະກຳ">Activity Log</p>
+      <h2 data-en="What we've done" data-ko="지금까지의 활동" data-lo="ສິ່ງທີ່ພວກເຮົາໄດ້ເຮັດ">What we've done</h2>
+      <div class="table-wrap">
+        <table class="log-table">
+          <thead>
+            <tr>
+              <th data-en="Date" data-ko="날짜" data-lo="ວັນທີ">Date</th>
+              <th data-en="Activity" data-ko="활동" data-lo="ກິດຈະກຳ">Activity</th>
+              <th data-en="Raised" data-ko="모금액" data-lo="ລະດົມໄດ້">Raised</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2026.02.12</td>
+              <td data-en="Dubai Chewy Cookie Fundraiser" data-ko="두바이 쫀득 쿠키 모금">Dubai Chewy Cookie Fundraiser</td>
+              <td class="num" data-en="Updating" data-ko="업데이트 예정" data-lo="ກຳລັງອັບເດດ">Updating</td>
+            </tr>
+            <tr>
+              <td>2026.04.10</td>
+              <td data-en="Club Day — smoothie booth & bat game" data-ko="클럽데이 — 스무디 부스 & 배트 게임">Club Day — smoothie booth & bat game</td>
+              <td class="num" data-en="Updating" data-ko="업데이트 예정" data-lo="ກຳລັງອັບເດດ">Updating</td>
+            </tr>
+            <tr>
+              <td data-en="Summer 2026" data-ko="2026 여름">Summer 2026</td>
+              <td data-en="BOH Play Class & Summer Explorer Class" data-ko="BOH 놀이교실 & 여름방학 탐구교실">BOH Play Class & Summer Explorer Class</td>
+              <td class="num" data-en="Updating" data-ko="업데이트 예정" data-lo="ກຳລັງອັບເດດ">Updating</td>
+            </tr>
+            <tr>
+              <td data-en="Ongoing" data-ko="진행 중" data-lo="ກຳລັງດຳເນີນ">Ongoing</td>
+              <td data-en="Nationwide stadium tour" data-ko="전국 야구장 투어">Nationwide stadium tour</td>
+              <td class="num" data-en="Updating" data-ko="업데이트 예정" data-lo="ກຳລັງອັບເດດ">Updating</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small-note" data-en="Totals are updated after each event once the Treasury department confirms them." data-ko="각 행사 후 재무부 확인을 거쳐 금액이 업데이트됩니다." data-lo="ຍອດລວມຈະອັບເດດຫຼັງຈາກແຕ່ລະງານ.">Totals are updated after each event once the Treasury department confirms them.</p>
+    </section>
+
+    <section class="section highlight">
+      <div class="section-inner">
+        <h2 data-en="Help us fill this page." data-ko="이 페이지를 함께 채워주세요." data-lo="ຊ່ວຍພວກເຮົາຕື່ມໜ້ານີ້.">Help us fill this page.</h2>
+        <p data-en="Every donation and every shared post adds to what we can send to Laos." data-ko="모든 후원과 공유가 라오스로 보낼 수 있는 힘이 됩니다." data-lo="ທຸກການບໍລິຈາກ ແລະ ການແບ່ງປັນ ຊ່ວຍໄດ້.">Every donation and every shared post adds to what we can send to Laos.</p>
+        <div class="button-row">
+          <a class="button primary light" href="support.html" data-en="Support the Team" data-ko="팀 후원하기" data-lo="ສະໜັບສະໜູນທີມ">Support the Team</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+</body>
+</html>

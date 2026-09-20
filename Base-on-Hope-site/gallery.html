@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | Base on Hope</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta name="description" content="Photos and videos from Base on Hope and the Laos National Baseball Team." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero" style="background-image: url('gallery-4.jpg');">
+      <div class="page-hero-inner">
+        <p class="eyebrow" data-en="Gallery" data-ko="갤러리" data-lo="ຄັງຮູບ">Gallery</p>
+        <h1 data-en="Moments from our work" data-ko="우리 활동의 순간들" data-lo="ຊ່ວງເວລາຈາກວຽກຂອງພວກເຮົາ">Moments from our work</h1>
+        <p data-en="Photos and videos from our classes, fundraisers, and the Laos National Baseball Team."
+           data-ko="교실, 모금 활동, 그리고 라오스 야구 국가대표팀의 사진과 영상."
+           data-lo="ຮູບ ແລະ ວິດີໂອ ຈາກຫ້ອງຮຽນ ແລະ ທີມຊາດລາວ.">Photos and videos from our classes, fundraisers, and the Laos National Baseball Team.</p>
+      </div>
+    </section>
+
+    <!-- =========================
+         PHOTOS
+         To add a photo:
+           1. Upload it to images/gallery/
+           2. Copy one <figure> block below and change src, alt, caption.
+           3. data-cat decides which filter button shows it:
+              laos / club / fundraiser / class
+         ========================= -->
+    <section class="section">
+      <p class="section-label" data-en="Photos" data-ko="사진" data-lo="ຮູບ">Photos</p>
+      <div class="filter-row">
+        <button class="filter-btn active" data-filter="all" data-en="All" data-ko="전체" data-lo="ທັງໝົດ">All</button>
+        <button class="filter-btn" data-filter="laos" data-en="Laos Team" data-ko="라오스 대표팀" data-lo="ທີມລາວ">Laos Team</button>
+        <button class="filter-btn" data-filter="club" data-en="Our Club" data-ko="우리 클럽" data-lo="ສະໂມສອນ">Our Club</button>
+        <button class="filter-btn" data-filter="fundraiser" data-en="Fundraisers" data-ko="모금 활동" data-lo="ລະດົມທຶນ">Fundraisers</button>
+        <button class="filter-btn" data-filter="class" data-en="Classes" data-ko="교실" data-lo="ຫ້ອງຮຽນ">Classes</button>
+      </div>
+
+      <div class="photo-wall">
+        <figure data-cat="laos">
+          <img src="gallery-1.jpg" alt="Laos National Baseball Team players with medals" loading="lazy" />
+          <figcaption data-en="Laos National Baseball Team" data-ko="라오스 야구 국가대표팀" data-lo="ທີມເບສບອນແຫ່ງຊາດລາວ">Laos National Baseball Team</figcaption>
+        </figure>
+        <figure data-cat="club">
+          <img src="gallery-2.jpg" alt="Base on Hope members together" loading="lazy" />
+          <figcaption data-en="Base on Hope members" data-ko="Base on Hope 멤버들" data-lo="ສະມາຊິກ Base on Hope">Base on Hope members</figcaption>
+        </figure>
+        <figure data-cat="laos">
+          <img src="gallery-3.jpg" alt="Laos team sharing a meal" loading="lazy" />
+          <figcaption data-en="Meal time with the Laos team" data-ko="라오스 대표팀의 식사 시간" data-lo="ເວລາອາຫານກັບທີມລາວ">Meal time with the Laos team</figcaption>
+        </figure>
+        <figure data-cat="fundraiser">
+          <img src="gallery-4.jpg" alt="Members at a baseball stadium" loading="lazy" />
+          <figcaption data-en="Stadium fundraising" data-ko="야구장 모금 활동" data-lo="ລະດົມທຶນທີ່ສະໜາມ">Stadium fundraising</figcaption>
+        </figure>
+        <figure data-cat="fundraiser">
+          <img src="images/projects/cookie-poster.jpg" alt="Dubai Chewy Cookie fundraiser poster" loading="lazy" />
+          <figcaption data-en="Dubai Chewy Cookie sale · Feb 2026" data-ko="두쫀쿠 판매 · 2026년 2월" data-lo="ຂາຍຄຸກກີ້ · ກຸມພາ 2026">Dubai Chewy Cookie sale · Feb 2026</figcaption>
+        </figure>
+        <!-- ADD NEW PHOTOS BELOW THIS LINE -->
+      </div>
+    </section>
+
+    <!-- =========================
+         VIDEOS — same rules as the home page:
+           data-youtube="https://youtu.be/XXXX"   or   data-mp4="videos/file.mp4"
+         ========================= -->
+    <section class="section soft-background">
+      <p class="section-label" data-en="Videos" data-ko="영상" data-lo="ວິດີໂອ">Videos</p>
+      <h2 data-en="Watch" data-ko="영상 보기" data-lo="ເບິ່ງ">Watch</h2>
+      <div class="video-grid">
+        <article class="video-card">
+          <div class="video-embed" data-youtube="" data-mp4=""></div>
+          <div class="video-info">
+            <h3 data-en="Introducing Base on Hope" data-ko="Base on Hope 소개" data-lo="ແນະນຳ Base on Hope">Introducing Base on Hope</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <div class="video-embed" data-youtube="" data-mp4=""></div>
+          <div class="video-info">
+            <h3 data-en="BOH Baseball Class Highlights" data-ko="BOH 야구교실 하이라이트" data-lo="ໄຮໄລທ໌ຫ້ອງຮຽນເບສບອນ">BOH Baseball Class Highlights</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <div class="video-embed" data-youtube="" data-mp4=""></div>
+          <div class="video-info">
+            <h3 data-en="Club Day 2026" data-ko="클럽데이 2026" data-lo="ວັນສະໂມສອນ 2026">Club Day 2026</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <div class="video-embed" data-youtube="" data-mp4=""></div>
+          <div class="video-info">
+            <h3 data-en="Message from the Laos Team" data-ko="라오스 대표팀의 메시지" data-lo="ຂໍ້ຄວາມຈາກທີມລາວ">Message from the Laos Team</h3>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    // Photo filter buttons
+    document.querySelectorAll(".filter-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const f = btn.dataset.filter;
+        document.querySelectorAll(".photo-wall figure").forEach((fig) => {
+          fig.style.display = f === "all" || fig.dataset.cat === f ? "" : "none";
+        });
+      });
+    });
+  </script>
+</body>
+</html>
