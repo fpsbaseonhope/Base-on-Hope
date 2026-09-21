@@ -161,13 +161,32 @@ function captureViewportAnchor() {
   if (window.scrollY < 2) return null;
 
   const x = Math.round(window.innerWidth / 2);
-  const y = Math.round(window.innerHeight * 0.48);
-  const element = document.elementFromPoint(x, y);
+  const viewportY = Math.round(window.innerHeight * 0.48);
+  const hit = document.elementFromPoint(x, viewportY);
 
-  if (!element || element.closest(".site-header")) return null;
+  if (!hit || hit.closest(".site-header")) return null;
+
+  const element =
+    hit.closest(
+      ".project-block, .team-card, .timeline-item, .card, .project-card, " +
+      ".impact-item, .stat-card, .fact-item, .dept-card, .video-card, " +
+      ".photo-wall figure, .section, .page-hero, main"
+    ) || hit;
+
+  const rect = element.getBoundingClientRect();
+  const height = Math.max(rect.height, 1);
+  const positionRatio = Math.min(1, Math.max(0, (viewportY - rect.top) / height));
+  const bottomGap = Math.max(
+    0,
+    document.documentElement.scrollHeight - (window.scrollY + window.innerHeight)
+  );
+
   return {
     element,
-    top: element.getBoundingClientRect().top
+    viewportY,
+    positionRatio,
+    bottomGap,
+    keepBottom: bottomGap < 32
   };
 }
 
@@ -182,10 +201,21 @@ function applyLanguageWithoutLayoutShift(language) {
 
   applyLanguage(language);
 
-  if (anchor && document.body.contains(anchor.element)) {
-    const newTop = anchor.element.getBoundingClientRect().top;
-    const shift = newTop - anchor.top;
-    if (Math.abs(shift) > 0.5) window.scrollBy(0, shift);
+  if (anchor) {
+    if (anchor.keepBottom) {
+      const targetScrollY = Math.max(
+        0,
+        root.scrollHeight - window.innerHeight - anchor.bottomGap
+      );
+      const shift = targetScrollY - window.scrollY;
+      if (Math.abs(shift) > 0.5) window.scrollBy(0, shift);
+    } else if (document.body.contains(anchor.element)) {
+      const newRect = anchor.element.getBoundingClientRect();
+      const newAnchorY =
+        newRect.top + Math.max(newRect.height, 1) * anchor.positionRatio;
+      const shift = newAnchorY - anchor.viewportY;
+      if (Math.abs(shift) > 0.5) window.scrollBy(0, shift);
+    }
   }
 
   requestAnimationFrame(() => {
