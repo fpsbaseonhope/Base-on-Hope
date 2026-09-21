@@ -157,6 +157,43 @@ function applyLanguage(language) {
   });
 }
 
+function captureViewportAnchor() {
+  if (window.scrollY < 2) return null;
+
+  const x = Math.round(window.innerWidth / 2);
+  const y = Math.round(window.innerHeight * 0.48);
+  const element = document.elementFromPoint(x, y);
+
+  if (!element || element.closest(".site-header")) return null;
+  return {
+    element,
+    top: element.getBoundingClientRect().top
+  };
+}
+
+function applyLanguageWithoutLayoutShift(language) {
+  const anchor = captureViewportAnchor();
+  const root = document.documentElement;
+  const previousScrollBehavior = root.style.scrollBehavior;
+  const previousOverflowAnchor = root.style.overflowAnchor;
+
+  root.style.scrollBehavior = "auto";
+  root.style.overflowAnchor = "none";
+
+  applyLanguage(language);
+
+  if (anchor && document.body.contains(anchor.element)) {
+    const newTop = anchor.element.getBoundingClientRect().top;
+    const shift = newTop - anchor.top;
+    if (Math.abs(shift) > 0.5) window.scrollBy(0, shift);
+  }
+
+  requestAnimationFrame(() => {
+    root.style.scrollBehavior = previousScrollBehavior;
+    root.style.overflowAnchor = previousOverflowAnchor;
+  });
+}
+
 async function setLanguage(language) {
   const languageSwitcher = document.querySelector(".language-switcher");
   const languageToggle = document.getElementById("languageToggle");
@@ -173,7 +210,8 @@ async function setLanguage(language) {
   cancelLanguageAnimations();
 
   if (firstRender || reduceMotion) {
-    applyLanguage(language);
+    if (firstRender) applyLanguage(language);
+    else applyLanguageWithoutLayoutShift(language);
     document.documentElement.dataset.languageReady = "true";
     return;
   }
@@ -183,11 +221,11 @@ async function setLanguage(language) {
     element.animate(
       [
         { opacity: 1, transform: "translateY(0)" },
-        { opacity: 0, transform: "translateY(4px)" }
+        { opacity: 0, transform: "translateY(2px)" }
       ],
       {
-        duration: 130,
-        easing: "cubic-bezier(0.4, 0, 1, 1)",
+        duration: 180,
+        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
         fill: "forwards"
       }
     )
@@ -197,16 +235,16 @@ async function setLanguage(language) {
   if (transitionId !== languageTransitionId) return;
 
   cancelLanguageAnimations();
-  applyLanguage(language);
+  applyLanguageWithoutLayoutShift(language);
 
   activeLanguageAnimations = elements.map((element) =>
     element.animate(
       [
-        { opacity: 0, transform: "translateY(-3px)" },
+        { opacity: 0, transform: "translateY(-2px)" },
         { opacity: 1, transform: "translateY(0)" }
       ],
       {
-        duration: 190,
+        duration: 280,
         easing: "cubic-bezier(0.16, 1, 0.3, 1)"
       }
     )
