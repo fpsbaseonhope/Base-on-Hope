@@ -402,6 +402,7 @@ a { color: inherit; }
 .card-grid { display: grid; gap: 22px; margin-top: 28px; }
 .card-grid.two { grid-template-columns: repeat(2, 1fr); }
 .card-grid.three { grid-template-columns: repeat(3, 1fr); }
+.card-grid.four { grid-template-columns: repeat(4, 1fr); }
 
 .card {
   padding: 28px;
@@ -992,6 +993,7 @@ details p { margin-bottom: 0; }
   .impact-item span { font-size: 13px; }
   .card-grid.two,
   .card-grid.three,
+  .card-grid.four,
   .dept-grid,
   .video-grid { grid-template-columns: 1fr; }
   .stat-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1015,6 +1017,7 @@ details p { margin-bottom: 0; }
   .fact-item { grid-template-columns: 1fr; gap: 4px; }
   .page-hero { min-height: 300px; padding: 70px 16px 40px; }
   .impact { padding: 28px 16px 0; }
+  .card-grid.four { grid-template-columns: 1fr; }
   .project-photos { grid-template-columns: repeat(2, 1fr); }
 }
 
