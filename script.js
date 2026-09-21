@@ -129,7 +129,15 @@ buildFooter();
    Any element with data-en / data-ko / data-lo gets translated.
    If a translation is missing, English is used.
    ========================= */
-function setLanguage(language) {
+let activeLanguageAnimations = [];
+let languageTransitionId = 0;
+
+function cancelLanguageAnimations() {
+  activeLanguageAnimations.forEach((animation) => animation.cancel());
+  activeLanguageAnimations = [];
+}
+
+function applyLanguage(language) {
   document.querySelectorAll("[data-en]").forEach((element) => {
     const text = element.getAttribute(`data-${language}`) || element.getAttribute("data-en");
     element.textContent = text;
@@ -147,11 +155,67 @@ function setLanguage(language) {
     button.classList.toggle("active", active);
     button.setAttribute("aria-current", active ? "true" : "false");
   });
+}
 
+async function setLanguage(language) {
   const languageSwitcher = document.querySelector(".language-switcher");
   const languageToggle = document.getElementById("languageToggle");
   if (languageSwitcher) languageSwitcher.classList.remove("open");
   if (languageToggle) languageToggle.setAttribute("aria-expanded", "false");
+
+  const firstRender = document.documentElement.dataset.languageReady !== "true";
+  const currentLanguage = document.documentElement.lang || "en";
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!firstRender && currentLanguage === language) return;
+
+  const transitionId = ++languageTransitionId;
+  cancelLanguageAnimations();
+
+  if (firstRender || reduceMotion) {
+    applyLanguage(language);
+    document.documentElement.dataset.languageReady = "true";
+    return;
+  }
+
+  const elements = Array.from(document.querySelectorAll("[data-en]"));
+  activeLanguageAnimations = elements.map((element) =>
+    element.animate(
+      [
+        { opacity: 1, transform: "translateY(0)" },
+        { opacity: 0, transform: "translateY(4px)" }
+      ],
+      {
+        duration: 130,
+        easing: "cubic-bezier(0.4, 0, 1, 1)",
+        fill: "forwards"
+      }
+    )
+  );
+
+  await Promise.all(activeLanguageAnimations.map((animation) => animation.finished.catch(() => {})));
+  if (transitionId !== languageTransitionId) return;
+
+  cancelLanguageAnimations();
+  applyLanguage(language);
+
+  activeLanguageAnimations = elements.map((element) =>
+    element.animate(
+      [
+        { opacity: 0, transform: "translateY(-3px)" },
+        { opacity: 1, transform: "translateY(0)" }
+      ],
+      {
+        duration: 190,
+        easing: "cubic-bezier(0.16, 1, 0.3, 1)"
+      }
+    )
+  );
+
+  Promise.all(activeLanguageAnimations.map((animation) => animation.finished.catch(() => {})))
+    .then(() => {
+      if (transitionId === languageTransitionId) activeLanguageAnimations = [];
+    });
 }
 
 let savedLanguage = "en";
