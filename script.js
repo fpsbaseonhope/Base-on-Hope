@@ -291,6 +291,69 @@ try { savedLanguage = localStorage.getItem("selectedLanguage") || "en"; } catch 
 setLanguage(savedLanguage);
 
 /* =========================
+   LANDING IMPACT REVEAL
+   Keeps the cards in layout, then reveals them on the first downward scroll.
+   ========================= */
+function initLandingImpactReveal() {
+  const impact = document.querySelector(".landing-impact-reveal");
+  if (!impact) return;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.scrollY > 8) {
+    impact.classList.add("is-visible");
+    return;
+  }
+
+  const initialScrollY = window.scrollY;
+  let touchStartY = null;
+
+  const cleanup = () => {
+    window.removeEventListener("wheel", onWheel);
+    window.removeEventListener("touchstart", onTouchStart);
+    window.removeEventListener("touchmove", onTouchMove);
+    window.removeEventListener("keydown", onKeyDown);
+    window.removeEventListener("scroll", onScroll);
+  };
+
+  const reveal = () => {
+    if (impact.classList.contains("is-visible")) return;
+    impact.classList.add("is-visible");
+    cleanup();
+  };
+
+  const onWheel = (event) => {
+    if (event.deltaY > 0) reveal();
+  };
+
+  const onTouchStart = (event) => {
+    touchStartY = event.touches[0]?.clientY ?? null;
+  };
+
+  const onTouchMove = (event) => {
+    const currentY = event.touches[0]?.clientY;
+    if (touchStartY !== null && currentY !== undefined && touchStartY - currentY > 3) reveal();
+  };
+
+  const onKeyDown = (event) => {
+    const target = event.target;
+    const isTyping = target instanceof HTMLElement &&
+      (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
+    if (!isTyping && ["ArrowDown", "PageDown", "End", " "].includes(event.key)) reveal();
+  };
+
+  const onScroll = () => {
+    if (window.scrollY > initialScrollY + 2) reveal();
+  };
+
+  window.addEventListener("wheel", onWheel, { passive: true });
+  window.addEventListener("touchstart", onTouchStart, { passive: true });
+  window.addEventListener("touchmove", onTouchMove, { passive: true });
+  window.addEventListener("keydown", onKeyDown);
+  window.addEventListener("scroll", onScroll, { passive: true });
+}
+
+initLandingImpactReveal();
+
+/* =========================
    3. HERO SLIDESHOW
    ========================= */
 const heroSlides = document.querySelectorAll(".hero-bg-slide");
