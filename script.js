@@ -298,30 +298,24 @@ function initLandingImpactReveal() {
   const impact = document.querySelector(".landing-impact-reveal");
   if (!impact) return;
 
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.scrollY > 8) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     impact.classList.add("is-visible");
     return;
   }
 
-  const initialScrollY = window.scrollY;
   let touchStartY = null;
 
-  const cleanup = () => {
-    window.removeEventListener("wheel", onWheel);
-    window.removeEventListener("touchstart", onTouchStart);
-    window.removeEventListener("touchmove", onTouchMove);
-    window.removeEventListener("keydown", onKeyDown);
-    window.removeEventListener("scroll", onScroll);
+  const setVisible = (visible) => {
+    impact.classList.toggle("is-visible", visible);
   };
 
-  const reveal = () => {
-    if (impact.classList.contains("is-visible")) return;
-    impact.classList.add("is-visible");
-    cleanup();
+  const syncWithScroll = () => {
+    setVisible(window.scrollY > 2);
   };
 
   const onWheel = (event) => {
-    if (event.deltaY > 0) reveal();
+    if (event.deltaY > 0) setVisible(true);
+    else if (event.deltaY < 0 && window.scrollY <= 2) setVisible(false);
   };
 
   const onTouchStart = (event) => {
@@ -330,25 +324,30 @@ function initLandingImpactReveal() {
 
   const onTouchMove = (event) => {
     const currentY = event.touches[0]?.clientY;
-    if (touchStartY !== null && currentY !== undefined && touchStartY - currentY > 3) reveal();
+    if (touchStartY === null || currentY === undefined) return;
+    if (touchStartY - currentY > 3) setVisible(true);
+    else if (currentY - touchStartY > 3 && window.scrollY <= 2) setVisible(false);
   };
 
   const onKeyDown = (event) => {
     const target = event.target;
     const isTyping = target instanceof HTMLElement &&
       (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
-    if (!isTyping && ["ArrowDown", "PageDown", "End", " "].includes(event.key)) reveal();
+    if (isTyping) return;
+
+    if (["ArrowDown", "PageDown", "End", " "].includes(event.key)) setVisible(true);
+    if (event.key === "Home" && window.scrollY <= 2) setVisible(false);
   };
 
-  const onScroll = () => {
-    if (window.scrollY > initialScrollY + 2) reveal();
-  };
+  syncWithScroll();
+  requestAnimationFrame(syncWithScroll);
 
   window.addEventListener("wheel", onWheel, { passive: true });
   window.addEventListener("touchstart", onTouchStart, { passive: true });
   window.addEventListener("touchmove", onTouchMove, { passive: true });
   window.addEventListener("keydown", onKeyDown);
-  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("scroll", syncWithScroll, { passive: true });
+  window.addEventListener("pageshow", syncWithScroll);
 }
 
 initLandingImpactReveal();
