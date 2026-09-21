@@ -47,9 +47,25 @@ function buildHeader() {
     </button>
     <nav class="nav" aria-label="Main navigation">${links}</nav>
     <div class="header-actions">
-      <button id="enBtn" class="lang-btn" onclick="setLanguage('en')">EN</button>
-      <button id="koBtn" class="lang-btn" onclick="setLanguage('ko')">한국어</button>
-      <button id="loBtn" class="lang-btn" onclick="setLanguage('lo')">ລາວ</button>
+      <div class="language-switcher">
+        <button id="languageToggle" class="language-toggle" type="button"
+                aria-haspopup="true" aria-expanded="false" aria-controls="languageMenu"
+                aria-label="Change language">
+          <svg class="language-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M3.5 12h17M12 3c2.4 2.5 3.6 5.5 3.6 9S14.4 18.5 12 21M12 3C9.6 5.5 8.4 8.5 8.4 12s1.2 6.5 3.6 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <span id="currentLanguage">EN</span>
+          <svg class="language-chevron" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="m5 7.5 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div id="languageMenu" class="language-menu" role="menu">
+          <button class="lang-option" type="button" role="menuitem" data-language="en" onclick="setLanguage('en')">English</button>
+          <button class="lang-option" type="button" role="menuitem" data-language="ko" onclick="setLanguage('ko')">한국어</button>
+          <button class="lang-option" type="button" role="menuitem" data-language="lo" onclick="setLanguage('lo')">ພາສາລາວ</button>
+        </div>
+      </div>
     </div>
   </header>`;
 
@@ -58,6 +74,29 @@ function buildHeader() {
   toggle.addEventListener("click", () => {
     const open = header.classList.toggle("menu-open");
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  const languageSwitcher = header.querySelector(".language-switcher");
+  const languageToggle = header.querySelector("#languageToggle");
+
+  function closeLanguageMenu() {
+    languageSwitcher.classList.remove("open");
+    languageToggle.setAttribute("aria-expanded", "false");
+  }
+
+  languageToggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const open = languageSwitcher.classList.toggle("open");
+    languageToggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  languageSwitcher.addEventListener("click", (event) => event.stopPropagation());
+  document.addEventListener("click", closeLanguageMenu);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeLanguageMenu();
+      languageToggle.focus();
+    }
   });
 }
 
@@ -99,9 +138,20 @@ function setLanguage(language) {
   document.documentElement.lang = language;
   try { localStorage.setItem("selectedLanguage", language); } catch (e) {}
 
-  document.querySelectorAll(".lang-btn").forEach((b) => b.classList.remove("active"));
-  const activeButton = document.getElementById(`${language}Btn`);
-  if (activeButton) activeButton.classList.add("active");
+  const languageLabels = { en: "EN", ko: "한국어", lo: "ລາວ" };
+  const currentLanguage = document.getElementById("currentLanguage");
+  if (currentLanguage) currentLanguage.textContent = languageLabels[language] || "EN";
+
+  document.querySelectorAll(".lang-option").forEach((button) => {
+    const active = button.dataset.language === language;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-current", active ? "true" : "false");
+  });
+
+  const languageSwitcher = document.querySelector(".language-switcher");
+  const languageToggle = document.getElementById("languageToggle");
+  if (languageSwitcher) languageSwitcher.classList.remove("open");
+  if (languageToggle) languageToggle.setAttribute("aria-expanded", "false");
 }
 
 let savedLanguage = "en";
