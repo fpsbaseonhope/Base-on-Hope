@@ -876,6 +876,9 @@ a.project-card:hover { transform: translateY(-4px); }
    TEAM / FOUNDERS
    ========================= */
 .team-card {
+  display: grid;
+  grid-template-rows: auto 44px 64px 28px 1fr;
+  align-items: start;
   padding: 30px 26px;
   text-align: center;
   background: var(--white);
@@ -905,7 +908,11 @@ a.project-card:hover { transform: translateY(-4px); }
 }
 
 .team-role {
-  margin: 0 0 12px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  margin: 0 !important;
   color: var(--primary) !important;
   font-weight: 900;
   font-size: 14px !important;
@@ -913,8 +920,27 @@ a.project-card:hover { transform: translateY(-4px); }
   text-transform: uppercase;
 }
 
-.team-card .team-name-ko { display: block; margin-top: -6px; margin-bottom: 8px; color: var(--muted); font-weight: 700; }
+.team-card h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  margin: 0 !important;
+  line-height: 1.45;
+}
+
+.team-card .team-name-ko {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  margin: 0;
+  color: var(--muted);
+  font-weight: 700;
+}
+
 .team-card p { margin: 0; font-size: 15px; }
+.team-card > p:last-child { padding-top: 10px; }
 
 .dept-grid {
   display: grid;
@@ -1124,6 +1150,7 @@ details p { margin-bottom: 0; }
   .card-grid.four,
   .dept-grid,
   .video-grid { grid-template-columns: 1fr; }
+  .team-card { grid-template-rows: auto 40px auto 28px auto; }
   .stat-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: none; }
   .gallery-grid img,
