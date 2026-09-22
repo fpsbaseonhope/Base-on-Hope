@@ -1,6 +1,6 @@
 /* =========================================================
    BASE ON HOPE — SHARED SCRIPT
-   1. Header + footer (edit the menu ONCE here, every page updates)
+   1. Shared navbar component + footer
    2. Language switch (EN / 한국어 / ພາສາລາວ)
    3. Hero slideshow
    4. Videos (YouTube link or mp4 file)
@@ -9,75 +9,45 @@
    ========================================================= */
 
 /* =========================
-   1. HEADER / FOOTER
-   To add or rename a menu item, edit NAV_LINKS below.
+   1. SHARED NAVBAR / FOOTER
+   Edit navbar.html once to update the navigation on every page.
    ========================= */
-const NAV_LINKS = [
-  { href: "about.html",      en: "Laos National Team", ko: "라오스 국가대표팀", lo: "ທີມຊາດລາວ" },
-  { href: "commitment.html", en: "Commitment",         ko: "목표",            lo: "ຄໍາຫມັ້ນສັນຍາ" },
-  { href: "projects.html",   en: "Projects",           ko: "프로젝트",         lo: "ໂຄງການ" },
-  { href: "impact.html",     en: "Impact",             ko: "성과",            lo: "ຜົນກະທົບ" },
-  { href: "gallery.html",    en: "Gallery",            ko: "갤러리",           lo: "ຄັງຮູບ" },
-  { href: "support.html",    en: "Support",            ko: "후원",            lo: "ສະຫນັບສະຫນູນ" }
-];
+const SHARED_COMPONENT_BASE = new URL(
+  ".",
+  document.currentScript?.src || window.location.href
+);
 
 function currentPage() {
   const file = window.location.pathname.split("/").pop();
   return file === "" ? "index.html" : file;
 }
 
-function buildHeader() {
-  const slot = document.getElementById("site-header");
-  if (!slot) return;
-
-  const page = currentPage();
-  const links = NAV_LINKS.map((link) => {
-    const active = link.href === page ? ' class="active" aria-current="page"' : "";
-    return `<a href="${link.href}"${active} data-en="${link.en}" data-ko="${link.ko}" data-lo="${link.lo}">${link.en}</a>`;
-  }).join("");
-
-  slot.outerHTML = `
-  <header class="site-header">
-    <a class="logo" href="index.html">
-      <img src="favicon.png" alt="" width="36" height="36" />
-      <span>Base on Hope</span>
-    </a>
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="nav" aria-label="Main navigation">${links}</nav>
-    <div class="header-actions">
-      <div class="language-switcher">
-        <button id="languageToggle" class="language-toggle" type="button"
-                aria-haspopup="true" aria-expanded="false" aria-controls="languageMenu"
-                aria-label="Change language">
-          <svg class="language-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/>
-            <path d="M3.5 12h17M12 3c2.4 2.5 3.6 5.5 3.6 9S14.4 18.5 12 21M12 3C9.6 5.5 8.4 8.5 8.4 12s1.2 6.5 3.6 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-          <span id="currentLanguage">EN</span>
-          <svg class="language-chevron" viewBox="0 0 20 20" aria-hidden="true">
-            <path d="m5 7.5 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div id="languageMenu" class="language-menu" role="menu">
-          <button class="lang-option" type="button" role="menuitem" data-language="en" onclick="setLanguage('en')">English</button>
-          <button class="lang-option" type="button" role="menuitem" data-language="ko" onclick="setLanguage('ko')">한국어</button>
-          <button class="lang-option" type="button" role="menuitem" data-language="lo" onclick="setLanguage('lo')">ພາສາລາວ</button>
-        </div>
-      </div>
-    </div>
-  </header>`;
-
-  const header = document.querySelector(".site-header");
-  const toggle = header.querySelector(".menu-toggle");
-  toggle.addEventListener("click", () => {
-    const open = header.classList.toggle("menu-open");
-    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+function resolveNavbarUrls(header, componentBase) {
+  header.querySelectorAll("[href]").forEach((element) => {
+    const value = element.getAttribute("href");
+    if (!value || /^(?:#|mailto:|tel:|https?:)/i.test(value)) return;
+    element.setAttribute("href", new URL(value, componentBase).href);
   });
+
+  header.querySelectorAll("[src]").forEach((element) => {
+    const value = element.getAttribute("src");
+    if (!value || /^(?:data:|https?:)/i.test(value)) return;
+    element.setAttribute("src", new URL(value, componentBase).href);
+  });
+}
+
+function setupHeaderInteractions(header) {
+  const toggle = header.querySelector(".menu-toggle");
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      const open = header.classList.toggle("menu-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  }
 
   const languageSwitcher = header.querySelector(".language-switcher");
   const languageToggle = header.querySelector("#languageToggle");
+  if (!languageSwitcher || !languageToggle) return;
 
   function closeLanguageMenu() {
     languageSwitcher.classList.remove("open");
@@ -98,6 +68,47 @@ function buildHeader() {
       languageToggle.focus();
     }
   });
+}
+
+async function buildHeader() {
+  const slot = document.getElementById("site-header");
+  if (!slot) return null;
+
+  try {
+    const navbarUrl = new URL("navbar.html?v=20260922-1", SHARED_COMPONENT_BASE);
+    const response = await fetch(navbarUrl, { cache: "no-store" });
+    if (!response.ok) throw new Error(`Navbar request failed: ${response.status}`);
+
+    const template = document.createElement("template");
+    template.innerHTML = (await response.text()).trim();
+    const header = template.content.firstElementChild;
+    if (!header || !header.classList.contains("site-header")) {
+      throw new Error("navbar.html does not contain a valid .site-header element");
+    }
+
+    const componentBase = new URL(".", navbarUrl);
+    resolveNavbarUrls(header, componentBase);
+
+    const page = currentPage();
+    header.querySelectorAll(".nav a").forEach((link) => {
+      const linkPage = new URL(link.href).pathname.split("/").pop() || "index.html";
+      const active = linkPage === page;
+      link.classList.toggle("active", active);
+      if (active) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    });
+
+    slot.replaceWith(header);
+    setupHeaderInteractions(header);
+
+    // The page language may already be applied before the async navbar arrives.
+    applyLanguage(document.documentElement.lang || "en");
+    return header;
+  } catch (error) {
+    slot.classList.add("header-load-error");
+    console.error("Could not load navbar.html", error);
+    return null;
+  }
 }
 
 function buildFooter() {
