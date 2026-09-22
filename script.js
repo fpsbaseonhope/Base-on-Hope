@@ -14,11 +14,11 @@
    ========================= */
 const NAV_LINKS = [
   { href: "about.html",      en: "Laos National Team", ko: "라오스 국가대표팀", lo: "ທີມຊາດລາວ" },
-  { href: "commitment.html", en: "Commitment",         ko: "목표",            lo: "ຄໍາຫມັ້ນສັນຍາ" },
-  { href: "projects.html",   en: "Projects",           ko: "프로젝트",         lo: "ໂຄງການ" },
-  { href: "impact.html",     en: "Impact",             ko: "성과",            lo: "ຜົນກະທົບ" },
-  { href: "gallery.html",    en: "Gallery",            ko: "갤러리",           lo: "ຄັງຮູບ" },
-  { href: "support.html",    en: "Support",            ko: "후원",            lo: "ສະຫນັບສະຫນູນ" }
+  { href: "commitment.html", en: "How We Support",     ko: "지원 방식",        lo: "ວິທີສະໜັບສະໜູນ" },
+  { href: "projects.html",   en: "Our Activities",     ko: "주요 활동",        lo: "ກິດຈະກຳ" },
+  { href: "impact.html",     en: "Our Results",        ko: "활동 성과",        lo: "ຜົນງານ" },
+  { href: "gallery.html",    en: "Photos & Videos",    ko: "사진·영상",        lo: "ຮູບພາບ & ວິດີໂອ" },
+  { href: "support.html",    en: "Support Us",         ko: "후원하기",         lo: "ສະໜັບສະໜູນ" }
 ];
 
 function currentPage() {
