@@ -1,0 +1,67 @@
+<header class="site-header">
+  <a class="logo" href="index.html">
+    <img src="favicon.png" alt="" width="36" height="36" />
+    <span>Base on Hope</span>
+  </a>
+
+  <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="about.html"
+       data-en="Laos National Team"
+       data-ko="라오스 국가대표팀"
+       data-lo="ທີມຊາດລາວ">Laos National Team</a>
+    <a href="commitment.html"
+       data-en="Commitment"
+       data-ko="목표"
+       data-lo="ຄໍາຫມັ້ນສັນຍາ">Commitment</a>
+    <a href="projects.html"
+       data-en="Projects"
+       data-ko="프로젝트"
+       data-lo="ໂຄງການ">Projects</a>
+    <a href="impact.html"
+       data-en="Impact"
+       data-ko="성과"
+       data-lo="ຜົນກະທົບ">Impact</a>
+    <a href="gallery.html"
+       data-en="Gallery"
+       data-ko="갤러리"
+       data-lo="ຄັງຮູບ">Gallery</a>
+    <a href="support.html"
+       data-en="Support"
+       data-ko="후원"
+       data-lo="ສະຫນັບສະຫນູນ">Support</a>
+  </nav>
+
+  <div class="header-actions">
+    <div class="language-switcher">
+      <button id="languageToggle" class="language-toggle" type="button"
+              aria-haspopup="true" aria-expanded="false" aria-controls="languageMenu"
+              aria-label="Change language">
+        <svg class="language-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M3.5 12h17M12 3c2.4 2.5 3.6 5.5 3.6 9S14.4 18.5 12 21M12 3C9.6 5.5 8.4 8.5 8.4 12s1.2 6.5 3.6 9"
+                fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <span id="currentLanguage">EN</span>
+        <svg class="language-chevron" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="m5 7.5 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div id="languageMenu" class="language-menu" role="menu">
+        <button class="lang-option" type="button" role="menuitem"
+                data-language="en" onclick="setLanguage('en')">English</button>
+        <button class="lang-option" type="button" role="menuitem"
+                data-language="ko" onclick="setLanguage('ko')">한국어</button>
+        <button class="lang-option" type="button" role="menuitem"
+                data-language="lo" onclick="setLanguage('lo')">ພາສາລາວ</button>
+      </div>
+    </div>
+  </div>
+</header>
