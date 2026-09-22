@@ -47,6 +47,17 @@ a { color: inherit; }
 /* =========================
    HEADER
    ========================= */
+
+/* Reserve the shared navbar's space while navbar.html is loading. */
+#site-header {
+  display: block;
+  min-height: 64px;
+}
+
+#site-header.header-load-error {
+  min-height: 0;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -1201,6 +1212,7 @@ details p { margin-bottom: 0; }
 
 @media (max-width: 560px) {
   :root { --section-padding: 60px 16px; }
+  #site-header { min-height: 60px; }
   .site-header { padding: 12px 16px; }
   .logo { font-size: 18px; }
   .button { width: 100%; }
