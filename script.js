@@ -75,7 +75,7 @@ async function buildHeader() {
   if (!slot) return null;
 
   try {
-    const navbarUrl = new URL("navbar.html?v=20260922-1", SHARED_COMPONENT_BASE);
+    const navbarUrl = new URL("navbar.html?v=20260922-members1", SHARED_COMPONENT_BASE);
     const response = await fetch(navbarUrl, { cache: "no-store" });
     if (!response.ok) throw new Error(`Navbar request failed: ${response.status}`);
 
