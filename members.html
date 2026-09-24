@@ -8,234 +8,362 @@
   <meta name="description" content="Base on Hope members." />
   <link rel="stylesheet" href="style.css?v=20260922-members1" />
   <style>
-    /* Portrait directory: scoped to this page; the shared site background stays unchanged. */
-    .portrait-directory { max-width: 1440px; margin: 0 auto; padding: 60px 40px 84px; }
-    .portrait-directory h1 { margin: 0; font-size: clamp(36px, 5vw, 56px); line-height: 1.15; letter-spacing: -.04em; }
-    .roster-section { margin-top: 48px; }
-    .roster-section h2 { margin: 0 0 22px; font-size: clamp(20px, 2.4vw, 28px); line-height: 1.35; letter-spacing: -.025em; }
-    .portrait-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; }
-    .portrait-card { position: relative; width: 100%; min-width: 0; aspect-ratio: 0.88; overflow: hidden; border: 1px solid #d1d5db; border-radius: 24px; }
-    .portrait-placeholder { position: absolute; inset: 0; display: grid; place-items: center; padding-bottom: 82px; color: var(--primary); }
-    .portrait-placeholder span { display: grid; place-items: center; width: 124px; height: 124px; border: 1px solid var(--line); border-radius: 50%; font-size: 28px; font-weight: 700; letter-spacing: -.04em; }
-    .portrait-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
-    .portrait-caption { position: absolute; left: 8px; right: 8px; bottom: 8px; min-height: 78px; padding: 13px 10px; display: flex; flex-direction: column; justify-content: center; text-align: center; background: rgba(255,255,255,.94); backdrop-filter: blur(12px); border-radius: 16px; }
-    .portrait-caption h3 { margin: 0; color: var(--dark); font-size: clamp(19px, 1.8vw, 24px); font-weight: 700; line-height: 1.35; letter-spacing: -.035em; }
-    .portrait-caption p { margin: 3px 0 0; color: #4b5563; font-size: 16px; line-height: 1.4; }
-    @media (max-width: 1000px) {
-      .portrait-directory { padding: 48px 24px 64px; }
-      .portrait-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .members-night {
+      position: relative;
+      min-height: calc(100vh - 72px);
+      color: #fff;
+      background: #000 url("gallery-4.jpg") center 42% / cover no-repeat;
     }
+
+    .members-veil {
+      min-height: inherit;
+      padding: 72px 8% 84px;
+      background:
+        radial-gradient(ellipse 70% 58% at 50% 22%, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.36) 42%, rgba(0, 0, 0, 0.12) 76%, transparent 100%),
+        linear-gradient(to bottom, rgba(3, 7, 18, 0.34) 0%, rgba(3, 7, 18, 0.42) 46%, rgba(3, 7, 18, 0.72) 100%);
+    }
+
+    .members-veil > * {
+      max-width: 1120px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .members-night .eyebrow {
+      margin: 0;
+      color: #dbeafe;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.52);
+    }
+
+    .members-night h1 {
+      margin: 12px 0 0;
+      color: #fff;
+      font-size: clamp(44px, 6vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.48), 0 12px 34px rgba(0, 0, 0, 0.42);
+    }
+
+    .members-lede {
+      max-width: 640px;
+      margin: 14px 0 32px;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 18px;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.48);
+    }
+
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .members-grid section {
+      padding: 22px 22px 8px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+
+    .members-grid header {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .members-grid header > span {
+      color: #dbeafe;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .members-grid h2 {
+      margin: 0;
+      color: #fff;
+      font-size: 26px;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    .dept-en {
+      margin: 2px 0 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    html[lang="en"] .dept-en { display: none; }
+
+    .members-grid ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .members-grid li {
+      display: grid;
+      grid-template-columns: 36px minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .members-av {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 22%;
+    }
+
+    .members-mono {
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    img.members-av { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.88); }
+
+    .members-grid strong {
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .members-grid em {
+      font-style: normal;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 12px;
+      font-weight: 800;
+      text-align: right;
+    }
+
+    .members-grid li.lead em {
+      color: #dbeafe;
+      font-weight: 900;
+    }
+
+    @media (max-width: 1100px) {
+      .members-grid { grid-template-columns: 1fr 1fr; }
+    }
+
     @media (max-width: 720px) {
-      .portrait-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-      .portrait-directory { padding: 36px 16px 56px; }
-      .portrait-card { border-radius: 20px; min-height: 220px; }
-      .portrait-placeholder span { width: 92px; height: 92px; font-size: 23px; }
-      .portrait-caption { left: 6px; right: 6px; bottom: 6px; padding: 10px 6px; min-height: 70px; border-radius: 13px; }
-      .portrait-caption p { font-size: 14px; }
-    }
-    @media (max-width: 360px) {
-      .portrait-grid { grid-template-columns: 1fr; }
+      .members-veil { padding: 48px 16px 64px; }
+      .members-grid { grid-template-columns: 1fr; }
+      .members-night h1 { font-size: 40px; }
+      .members-lede { font-size: 16px; }
     }
   </style>
 </head>
 <body>
   <div id="site-header"></div>
 
-  <main class="portrait-directory" aria-labelledby="members-title">
-    <p class="section-label">Base on Hope</p>
-    <h1 id="members-title" data-en="Members" data-ko="멤버" data-lo="ສະມາຊິກ">Members</h1>
-      <section class="roster-section" aria-labelledby="department-0">
-        <h2 id="department-0" data-en="Department of Treasury" data-ko="재무부">Department of Treasury</h2>
-        <div class="portrait-grid">
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">채예나</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">채예나</h3>
-              <p data-en="Head" data-ko="부서장">Head</p>
-            </div>
-          </article>
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">최승한</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">최승한</h3>
-              <p data-en="Member" data-ko="부원">Member</p>
-            </div>
-          </article>
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">김태후</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">김태후</h3>
-              <p data-en="Member" data-ko="부원">Member</p>
-            </div>
-          </article>
-        </div>
-      </section>
+  <main class="members-night" aria-labelledby="members-title">
+    <div class="members-veil">
+      <p class="eyebrow">Base on Hope</p>
+      <h1 id="members-title" data-en="Members" data-ko="멤버" data-lo="ສະມາຊິກ">Members</h1>
+      <p class="members-lede"
+         data-en="Base on Hope members, organized into six teams."
+         data-ko="여섯 조직으로 나뉜 Base on Hope 멤버입니다."
+         data-lo="ສະມາຊິກ Base on Hope ແບ່ງເປັນ 6 ພະແນກ.">Base on Hope members, organized into six teams.</p>
 
-      <section class="roster-section" aria-labelledby="department-1">
-        <h2 id="department-1" data-en="Department of Planning and Management" data-ko="기획·관리부">Department of Planning and Management</h2>
-        <div class="portrait-grid">
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">황현지</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">황현지</h3>
-              <p data-en="Head" data-ko="부서장">Head</p>
+      <div class="members-grid">
+        <section aria-labelledby="department-0">
+          <header>
+            <span>01</span>
+            <div>
+              <h2 id="department-0" data-en="Department of Treasury" data-ko="재무부" data-lo="ພະແນກການເງິນ">Department of Treasury</h2>
+              <p class="dept-en">Treasury</p>
             </div>
-          </article>
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">정승훈</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">정승훈</h3>
-              <p data-en="Member" data-ko="부원">Member</p>
-            </div>
-          </article>
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">채다나</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">채다나</h3>
-              <p data-en="Member" data-ko="부원">Member</p>
-            </div>
-          </article>
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">제이든</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">제이든</h3>
-              <p data-en="Member" data-ko="부원">Member</p>
-            </div>
-          </article>
-        </div>
-      </section>
+          </header>
+          <ul>
+            <li class="lead">
+              <span class="members-av members-mono" aria-hidden="true">채</span>
+              <strong lang="ko">채예나</strong>
+              <em data-en="Head" data-ko="부서장" data-lo="ຫົວໜ້າ">Head</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">최</span>
+              <strong lang="ko">최승한</strong>
+              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">김</span>
+              <strong lang="ko">김태후</strong>
+              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+            </li>
+          </ul>
+        </section>
 
-      <section class="roster-section" aria-labelledby="department-2">
-        <h2 id="department-2" data-en="Department of Field Fundraising" data-ko="현장 모금부">Department of Field Fundraising</h2>
-        <div class="portrait-grid">
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">스티브오</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">스티브오</h3>
-              <p data-en="Head" data-ko="부서장">Head</p>
+        <section aria-labelledby="department-1">
+          <header>
+            <span>02</span>
+            <div>
+              <h2 id="department-1" data-en="Department of Planning and Management" data-ko="기획·관리부" data-lo="ພະແນກວາງແຜນ ແລະ ບໍລິຫານ">Department of Planning and Management</h2>
+              <p class="dept-en">Planning</p>
             </div>
-          </article>
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">권영준</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">권영준</h3>
-              <p data-en="Member" data-ko="부원">Member</p>
-            </div>
-          </article>
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">박수현</span></div>
-            <img class="portrait-image" src="images/founders/suhyun.jpg" alt="박수현" loading="lazy" />
-            <div class="portrait-caption">
-              <h3 lang="ko">박수현</h3>
-              <p data-en="Member" data-ko="부원">Member</p>
-            </div>
-          </article>
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">정규민</span></div>
-            <img class="portrait-image" src="images/founders/gyumin.jpg" alt="정규민" loading="lazy" />
-            <div class="portrait-caption">
-              <h3 lang="ko">정규민</h3>
-              <p data-en="Member" data-ko="부원">Member</p>
-            </div>
-          </article>
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">최승한</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">최승한</h3>
-              <p data-en="Member" data-ko="부원">Member</p>
-            </div>
-          </article>
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">박민서</span></div>
-            <img class="portrait-image" src="images/founders/minseo.jpg" alt="박민서" loading="lazy" />
-            <div class="portrait-caption">
-              <h3 lang="ko">박민서</h3>
-              <p data-en="Member" data-ko="부원">Member</p>
-            </div>
-          </article>
-        </div>
-      </section>
+          </header>
+          <ul>
+            <li class="lead">
+              <span class="members-av members-mono" aria-hidden="true">황</span>
+              <strong lang="ko">황현지</strong>
+              <em data-en="Head" data-ko="부서장" data-lo="ຫົວໜ້າ">Head</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">정</span>
+              <strong lang="ko">정승훈</strong>
+              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">채</span>
+              <strong lang="ko">채다나</strong>
+              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">제</span>
+              <strong lang="ko">제이든</strong>
+              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+            </li>
+          </ul>
+        </section>
 
-      <section class="roster-section" aria-labelledby="department-3">
-        <h2 id="department-3" data-en="Department of Public Relations" data-ko="홍보부">Department of Public Relations</h2>
-        <div class="portrait-grid">
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">전유지</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">전유지</h3>
-              <p data-en="Head" data-ko="부서장">Head</p>
+        <section aria-labelledby="department-2">
+          <header>
+            <span>03</span>
+            <div>
+              <h2 id="department-2" data-en="Department of Field Fundraising" data-ko="현장 모금부" data-lo="ພະແນກລະດົມທຶນພາກສະໜາມ">Department of Field Fundraising</h2>
+              <p class="dept-en">Field Fundraising</p>
             </div>
-          </article>
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">강민석</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">강민석</h3>
-              <p data-en="Member" data-ko="부원">Member</p>
-            </div>
-          </article>
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">최승환</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">최승환</h3>
-              <p data-en="Member" data-ko="부원">Member</p>
-            </div>
-          </article>
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">조시환</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">조시환</h3>
-              <p data-en="Member" data-ko="부원">Member</p>
-            </div>
-          </article>
-        </div>
-      </section>
+          </header>
+          <ul>
+            <li class="lead">
+              <span class="members-av members-mono" aria-hidden="true">스</span>
+              <strong lang="ko">스티브오</strong>
+              <em data-en="Head" data-ko="부서장" data-lo="ຫົວໜ້າ">Head</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">권</span>
+              <strong lang="ko">권영준</strong>
+              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+            </li>
+            <li>
+              <img class="members-av" src="images/founders/suhyun.jpg" alt="" />
+              <strong lang="ko">박수현</strong>
+              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+            </li>
+            <li>
+              <img class="members-av" src="images/founders/gyumin.jpg" alt="" />
+              <strong lang="ko">정규민</strong>
+              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">최</span>
+              <strong lang="ko">최승한</strong>
+              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+            </li>
+            <li>
+              <img class="members-av" src="images/founders/minseo.jpg" alt="" />
+              <strong lang="ko">박민서</strong>
+              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+            </li>
+          </ul>
+        </section>
 
-      <section class="roster-section" aria-labelledby="department-4">
-        <h2 id="department-4" data-en="Department of Design" data-ko="디자인부">Department of Design</h2>
-        <div class="portrait-grid">
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">김예령</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">김예령</h3>
-              <p data-en="Head" data-ko="부서장">Head</p>
+        <section aria-labelledby="department-3">
+          <header>
+            <span>04</span>
+            <div>
+              <h2 id="department-3" data-en="Department of Public Relations" data-ko="홍보부" data-lo="ພະແນກປະຊາສຳພັນ">Department of Public Relations</h2>
+              <p class="dept-en">Public Relations</p>
             </div>
-          </article>
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">노해준</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">노해준</h3>
-              <p data-en="Member" data-ko="부원">Member</p>
-            </div>
-          </article>
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">이지아</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">이지아</h3>
-              <p data-en="Member" data-ko="부원">Member</p>
-            </div>
-          </article>
-        </div>
-      </section>
+          </header>
+          <ul>
+            <li class="lead">
+              <span class="members-av members-mono" aria-hidden="true">전</span>
+              <strong lang="ko">전유지</strong>
+              <em data-en="Head" data-ko="부서장" data-lo="ຫົວໜ້າ">Head</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">강</span>
+              <strong lang="ko">강민석</strong>
+              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">최</span>
+              <strong lang="ko">최승환</strong>
+              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">조</span>
+              <strong lang="ko">조시환</strong>
+              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+            </li>
+          </ul>
+        </section>
 
-      <section class="roster-section" aria-labelledby="support-roles">
-        <h2 id="support-roles" data-en="Secretary &amp; Technical Support" data-ko="서기 · 기술 지원">Secretary &amp; Technical Support</h2>
-        <div class="portrait-grid">
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">최승한</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">최승한</h3>
-              <p data-en="Secretary" data-ko="서기">Secretary</p>
+        <section aria-labelledby="department-4">
+          <header>
+            <span>05</span>
+            <div>
+              <h2 id="department-4" data-en="Department of Design" data-ko="디자인부" data-lo="ພະແນກອອກແບບ">Department of Design</h2>
+              <p class="dept-en">Design</p>
             </div>
-          </article>
-          <article class="portrait-card">
-            <div class="portrait-placeholder" aria-hidden="true"><span lang="ko">강민석</span></div>
-            <div class="portrait-caption">
-              <h3 lang="ko">강민석</h3>
-              <p data-en="Technical Support" data-ko="기술 지원">Technical Support</p>
+          </header>
+          <ul>
+            <li class="lead">
+              <span class="members-av members-mono" aria-hidden="true">김</span>
+              <strong lang="ko">김예령</strong>
+              <em data-en="Head" data-ko="부서장" data-lo="ຫົວໜ້າ">Head</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">노</span>
+              <strong lang="ko">노해준</strong>
+              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">이</span>
+              <strong lang="ko">이지아</strong>
+              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+            </li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="support-roles">
+          <header>
+            <span>06</span>
+            <div>
+              <h2 id="support-roles" data-en="Secretary &amp; Technical Support" data-ko="서기 · 기술 지원" data-lo="ເລຂາ ແລະ ຊ່ວຍເຫຼືອດ້ານເຕັກນິກ">Secretary &amp; Technical Support</h2>
+              <p class="dept-en">Support</p>
             </div>
-          </article>
-        </div>
-      </section>
+          </header>
+          <ul>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">최</span>
+              <strong lang="ko">최승한</strong>
+              <em data-en="Secretary" data-ko="서기" data-lo="ເລຂາ">Secretary</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">강</span>
+              <strong lang="ko">강민석</strong>
+              <em data-en="Technical Support" data-ko="기술 지원" data-lo="ຊ່ວຍເຫຼືອດ້ານເຕັກນິກ">Technical Support</em>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
   </main>
 
   <div id="site-footer"></div>
