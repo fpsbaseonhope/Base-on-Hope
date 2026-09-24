@@ -25,8 +25,18 @@
       background: #fff;
       border-bottom: 1px solid var(--line);
     }
-    header strong { font-size: 18px; }
-    header select, .connect input, .editor input, .editor textarea {
+    header { flex-wrap: wrap; }
+    header strong { font-size: 18px; margin-right: 4px; }
+    .page-nav, .lang-switch { display: flex; flex-wrap: wrap; gap: 6px; }
+    .page-nav { flex: 1; }
+    .page-nav button, .lang-switch button {
+      background: #eef2ff;
+      color: #1e3a8a;
+      padding: 8px 10px;
+      font-size: 13px;
+    }
+    .page-nav button.active, .lang-switch button.active { background: var(--blue); color: #fff; }
+    .connect input, .editor input, .editor textarea {
       width: 100%;
       border: 1px solid var(--line);
       border-radius: 10px;
@@ -35,7 +45,6 @@
       color: var(--ink);
       background: #fff;
     }
-    header select { width: 220px; }
     button {
       border: 0;
       border-radius: 10px;
@@ -75,7 +84,12 @@
 <body>
   <header>
     <strong>사이트 편집</strong>
-    <select id="page" aria-label="페이지"></select>
+    <nav id="pages" class="page-nav" aria-label="페이지 이동"></nav>
+    <div class="lang-switch" role="group" aria-label="미리보기 언어">
+      <button type="button" data-preview-lang="en">EN</button>
+      <button type="button" data-preview-lang="ko">한국어</button>
+      <button type="button" data-preview-lang="lo">ລາວ</button>
+    </div>
     <button id="publish" type="button" disabled>이 페이지 저장</button>
     <a href="./">사이트로</a>
   </header>
@@ -88,7 +102,7 @@
     <iframe id="preview" title="페이지 미리보기"></iframe>
     <aside class="editor">
       <h2 id="editorTitle">요소를 클릭하세요</h2>
-      <p class="hint" id="editorHint">글이나 사진을 누르면 오른쪽에서 고칠 수 있습니다. 번역이 있는 글은 영어, 한국어, 라오어를 같이 수정합니다.</p>
+      <p class="hint" id="editorHint">글이나 사진을 누르면 오른쪽에서 고칠 수 있습니다. 다른 페이지로 가려면 위의 버튼을 누르세요. 메뉴는 한 덩어리로 수정합니다.</p>
       <p class="meta" id="editorMeta"></p>
       <div id="fields"></div>
     </aside>
@@ -206,7 +220,11 @@
       }
       const style = preview.createElement("style");
       style.setAttribute("data-editor-style", "1");
-      style.textContent = EDITOR_CSS;
+      style.textContent = EDITOR_CSS + (currentPath === "navbar.html" ? "" : `
+        header.site-header { cursor: pointer; }
+        header.site-header:hover { outline: 2px solid #2563eb; outline-offset: -2px; }
+        header.site-header * { pointer-events: none; }
+      `);
       preview.head.append(style);
       return "<!DOCTYPE html>\n" + preview.documentElement.outerHTML;
     }
@@ -234,6 +252,20 @@
       if (!doc.querySelector("[data-edit-id]")) return;
       doc.documentElement.dataset.editorBound = "1";
       doc.addEventListener("click", (event) => {
+        if (currentPath !== "navbar.html") {
+          const header = event.target.closest("header.site-header");
+          if (header) {
+            event.preventDefault();
+            event.stopPropagation();
+            selectNavbar(header);
+            return;
+          }
+        }
+        const link = event.target.closest("a[href]");
+        if (link) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
         const element = event.target.closest("[data-edit-id]");
         if (!element) return;
         event.preventDefault();
@@ -285,7 +317,9 @@
         });
       }
       showPreview(pages.get(path));
-      $("page").value = path;
+      document.querySelectorAll("#pages button").forEach((button) => {
+        button.classList.toggle("active", button.dataset.path === path);
+      });
       refreshPublish();
       setStatus(token ? "GitHub main에서 불러왔습니다." : "이 사이트의 파일을 불러왔습니다. 저장하려면 토큰을 연결하세요.", "ok");
     }
@@ -328,6 +362,96 @@
       }
     }
 
+    function selectNavbar(header) {
+      selectedId = "";
+      const doc = header.ownerDocument;
+      doc.querySelectorAll(".editor-selected").forEach((element) => element.classList.remove("editor-selected"));
+      header.classList.add("editor-selected");
+      $("editorHint").hidden = true;
+      $("editorTitle").textContent = "메뉴";
+      $("editorMeta").textContent = "메뉴 전체";
+      const fields = $("fields");
+      fields.replaceChildren();
+      const note = document.createElement("p");
+      note.className = "hint";
+      note.textContent = "메뉴는 한 덩어리입니다. 다른 페이지로 가는 일은 위의 버튼이 합니다. 메뉴 글과 로고를 고치려면 아래에서 메뉴 편집으로 들어가세요.";
+      const open = document.createElement("button");
+      open.type = "button";
+      open.className = "secondary";
+      open.textContent = "메뉴 편집";
+      open.addEventListener("click", () => {
+        loadPage("navbar.html").catch((error) => setStatus(error.message, "error"));
+      });
+      fields.append(note, open);
+    }
+
+    function relativePath(fromFile, toFile) {
+      const fromDir = fromFile.split("/").slice(0, -1);
+      const toParts = toFile.split("/");
+      let shared = 0;
+      while (shared < fromDir.length && shared < toParts.length && fromDir[shared] === toParts[shared]) shared += 1;
+      return "../".repeat(fromDir.length - shared) + toParts.slice(shared).join("/");
+    }
+
+    function encodeBytes(bytes) {
+      let binary = "";
+      const chunk = 0x8000;
+      for (let index = 0; index < bytes.length; index += chunk) {
+        binary += String.fromCharCode(...bytes.subarray(index, index + chunk));
+      }
+      return btoa(binary);
+    }
+
+    function fileToImage(file, maxEdge) {
+      return new Promise((resolve, reject) => {
+        const image = new Image();
+        const url = URL.createObjectURL(file);
+        image.onload = () => {
+          const scale = Math.min(1, maxEdge / Math.max(image.width, image.height));
+          const canvas = document.createElement("canvas");
+          canvas.width = Math.max(1, Math.round(image.width * scale));
+          canvas.height = Math.max(1, Math.round(image.height * scale));
+          canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
+          URL.revokeObjectURL(url);
+          canvas.toBlob((blob) => {
+            if (blob) {
+              resolve({ blob, ext: "webp" });
+              return;
+            }
+            canvas.toBlob((jpeg) => {
+              if (!jpeg) reject(new Error("사진을 변환하지 못했습니다."));
+              else resolve({ blob: jpeg, ext: "jpg" });
+            }, "image/jpeg", 0.72);
+          }, "image/webp", 0.72);
+        };
+        image.onerror = () => {
+          URL.revokeObjectURL(url);
+          reject(new Error("사진을 읽지 못했습니다."));
+        };
+        image.src = url;
+      });
+    }
+
+    async function uploadImage(file) {
+      token = $("token").value.trim();
+      if (!token) throw new Error("사진을 올리려면 GitHub token을 먼저 연결하세요.");
+      const maxEdge = currentPath.startsWith("members/") ? 480 : 1600;
+      const converted = await fileToImage(file, maxEdge);
+      const stem = file.name.replace(/\.[^.]+$/, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40);
+      const repoPath = "images/uploads/" + (stem || "photo") + "-" + Date.now().toString(36) + "." + converted.ext;
+      const bytes = new Uint8Array(await converted.blob.arrayBuffer());
+      await api(repoPath, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: "Add an image from the visual editor",
+          content: encodeBytes(bytes),
+          branch: BRANCH
+        })
+      });
+      return { relative: relativePath(currentPath, repoPath), blob: converted.blob };
+    }
+
     function selectElement(id) {
       selectedId = id;
       const source = sourceElement(id);
@@ -348,14 +472,47 @@
 
       if (image) {
         const srcAttr = source.hasAttribute("src") ? "src" : "data-src";
-        fields.append(field("사진 경로", source.getAttribute(srcAttr) || "", (value) => {
+        const pathField = field("사진 경로", source.getAttribute(srcAttr) || "", (value) => {
           source.setAttribute(srcAttr, value);
           frame.setAttribute(srcAttr, value);
           if (srcAttr === "data-src") frame.setAttribute("src", value);
           markDirty();
           const thumb = fields.querySelector(".thumb");
-          if (thumb) thumb.src = value;
-        }));
+          if (thumb) thumb.src = frame.src;
+        });
+        fields.append(pathField);
+        const upload = document.createElement("button");
+        upload.type = "button";
+        upload.className = "secondary";
+        upload.textContent = "사진 올리기";
+        const picker = document.createElement("input");
+        picker.type = "file";
+        picker.accept = "image/*";
+        picker.hidden = true;
+        upload.addEventListener("click", () => picker.click());
+        picker.addEventListener("change", () => {
+          const chosen = picker.files && picker.files[0];
+          picker.value = "";
+          if (!chosen) return;
+          upload.disabled = true;
+          setStatus("사진을 올리는 중…");
+          uploadImage(chosen).then((uploaded) => {
+            const previewUrl = URL.createObjectURL(uploaded.blob);
+            source.setAttribute(srcAttr, uploaded.relative);
+            frame.setAttribute(srcAttr, uploaded.relative);
+            frame.src = previewUrl;
+            pathField.querySelector("input, textarea").value = uploaded.relative;
+            const thumb = fields.querySelector(".thumb");
+            if (thumb) thumb.src = previewUrl;
+            markDirty();
+            setStatus("사진을 올렸습니다. 이 페이지 저장을 눌러야 글에 연결됩니다.", "ok");
+          }).catch((error) => {
+            setStatus(error.message, "error");
+          }).finally(() => {
+            upload.disabled = false;
+          });
+        });
+        fields.append(upload, picker);
         fields.append(field("대체 텍스트", source.getAttribute("alt") || "", (value) => {
           source.setAttribute("alt", value);
           frame.setAttribute("alt", value);
@@ -431,14 +588,34 @@
     }
 
     PAGES.forEach(([label, path]) => {
-      const option = document.createElement("option");
-      option.value = path;
-      option.textContent = label;
-      $("page").append(option);
+      const button = document.createElement("button");
+      button.type = "button";
+      button.dataset.path = path;
+      button.textContent = label;
+      button.addEventListener("click", () => {
+        loadPage(path).catch((error) => setStatus(error.message, "error"));
+      });
+      $("pages").append(button);
     });
 
-    $("page").addEventListener("change", () => {
-      loadPage($("page").value).catch((error) => setStatus(error.message, "error"));
+    document.querySelectorAll("[data-preview-lang]").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-preview-lang]").forEach((item) => {
+          item.classList.toggle("active", item === button);
+        });
+        const win = $("preview").contentWindow;
+        if (win && typeof win.setLanguage === "function") win.setLanguage(button.dataset.previewLang);
+      });
+    });
+    document.querySelector("[data-preview-lang='en']").classList.add("active");
+
+    $("preview").addEventListener("load", () => {
+      const doc = $("preview").contentDocument;
+      if (!doc) return;
+      const url = doc.URL || "";
+      if (url.startsWith("about:")) return;
+      const page = pages.get(currentPath);
+      if (page) showPreview(page);
     });
     $("connect").addEventListener("click", () => {
       if ([...pages.values()].some((page) => page.dirty) && !confirm("저장하지 않은 수정이 있습니다. 다시 불러올까요?")) return;
