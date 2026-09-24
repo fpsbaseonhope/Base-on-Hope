@@ -590,6 +590,8 @@
         lastFocus = document.activeElement;
         closing = false;
         modal.classList.remove("is-closing");
+        const scrollbarGap = window.innerWidth - document.documentElement.clientWidth;
+        document.body.style.paddingRight = scrollbarGap + "px";
         modal.hidden = false;
         document.body.classList.add("member-modal-open");
         requestAnimationFrame(() => {
@@ -602,6 +604,7 @@
         if (modal.hidden) return;
         modal.hidden = true;
         modal.classList.remove("is-open", "is-closing");
+        document.body.style.paddingRight = "";
         document.body.classList.remove("member-modal-open");
         closing = false;
         if (lastFocus && lastFocus.focus) lastFocus.focus();
