@@ -352,6 +352,7 @@ a { color: inherit; }
 }
 
 .hero-bg-slide.active { opacity: 1; transform: scale(1); }
+.hero-bg-slide:not([src]) { visibility: hidden; }
 
 .hero-overlay {
   position: absolute;

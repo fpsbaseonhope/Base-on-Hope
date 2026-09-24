@@ -78,7 +78,7 @@ async function buildHeader() {
   if (!slot) return null;
 
   try {
-    const navbarUrl = new URL("navbar.html?v=20260925-goal", SHARED_COMPONENT_BASE);
+    const navbarUrl = new URL("navbar.html?v=20260925-img", SHARED_COMPONENT_BASE);
     const response = await fetch(navbarUrl, { cache: "no-store" });
     if (!response.ok) throw new Error(`Navbar request failed: ${response.status}`);
 
@@ -369,14 +369,27 @@ initLandingImpactReveal();
 /* =========================
    3. HERO SLIDESHOW
    ========================= */
+function loadHeroSlide(slide) {
+  if (!slide || slide.getAttribute("src")) return;
+  const src = slide.dataset.src;
+  if (src) slide.src = src;
+}
+
 const heroSlides = document.querySelectorAll(".hero-bg-slide");
 let currentHeroSlide = 0;
 if (heroSlides.length > 1) {
-  setInterval(() => {
+  const SLIDE_MS = 4500;
+  const PREFETCH_MS = 1500;
+
+  window.setTimeout(() => loadHeroSlide(heroSlides[1]), SLIDE_MS - PREFETCH_MS);
+  window.setInterval(() => {
     heroSlides[currentHeroSlide].classList.remove("active");
     currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+    loadHeroSlide(heroSlides[currentHeroSlide]);
     heroSlides[currentHeroSlide].classList.add("active");
-  }, 4500);
+    const upcoming = heroSlides[(currentHeroSlide + 1) % heroSlides.length];
+    window.setTimeout(() => loadHeroSlide(upcoming), SLIDE_MS - PREFETCH_MS);
+  }, SLIDE_MS);
 }
 
 /* =========================
