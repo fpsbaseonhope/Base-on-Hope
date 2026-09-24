@@ -17,9 +17,12 @@ const SHARED_COMPONENT_BASE = new URL(
   document.currentScript?.src || window.location.href
 );
 
-function currentPage() {
-  const file = window.location.pathname.split("/").pop();
-  return file === "" ? "index.html" : file;
+function sectionName(url) {
+  const rootPath = SHARED_COMPONENT_BASE.pathname.replace(/\/$/, "");
+  let path = new URL(url, window.location.href).pathname;
+  if (rootPath && path.startsWith(rootPath)) path = path.slice(rootPath.length);
+  path = path.replace(/\/index\.html$/i, "").replace(/\.html$/i, "").replace(/\/$/, "");
+  return path.split("/").filter(Boolean)[0] || "index";
 }
 
 function resolveNavbarUrls(header, componentBase) {
@@ -75,7 +78,7 @@ async function buildHeader() {
   if (!slot) return null;
 
   try {
-    const navbarUrl = new URL("navbar.html?v=20260922-members1", SHARED_COMPONENT_BASE);
+    const navbarUrl = new URL("navbar.html?v=20260925-goal", SHARED_COMPONENT_BASE);
     const response = await fetch(navbarUrl, { cache: "no-store" });
     if (!response.ok) throw new Error(`Navbar request failed: ${response.status}`);
 
@@ -89,9 +92,9 @@ async function buildHeader() {
     const componentBase = new URL(".", navbarUrl);
     resolveNavbarUrls(header, componentBase);
 
-    const page = currentPage();
+    const page = sectionName(window.location.href);
     header.querySelectorAll(".nav a").forEach((link) => {
-      const linkPage = new URL(link.href).pathname.split("/").pop() || "index.html";
+      const linkPage = sectionName(link.href);
       const active = linkPage === page;
       link.classList.toggle("active", active);
       if (active) link.setAttribute("aria-current", "page");

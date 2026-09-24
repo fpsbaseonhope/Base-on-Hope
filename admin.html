@@ -22,7 +22,7 @@
   </style>
 </head>
 <body>
-<header><strong>Base on Hope · Admin</strong><a class="back" href="index.html">← Back to website</a></header>
+<header><strong>Base on Hope · Admin</strong><a class="back" href="./">← Back to website</a></header>
 <main>
   <div class="hero"><h1>Site Content Editor</h1><p>Edit founders and project article content, then commit the changes directly to the <code>main</code> branch. Your GitHub token is kept only in this browser tab and is never written into the website files.</p></div>
 
@@ -43,13 +43,13 @@
 
   <section class="panel">
     <h2>3. Project Articles</h2>
-    <p class="hint">These are the main project articles stored in <code>projects.html</code>. This editor changes the article title, status/tag, and main description in all three languages.</p>
+    <p class="hint">These are the main project articles stored in <code>projects/index.html</code>. This editor changes the article title, status/tag, and main description in all three languages.</p>
     <div id="articles"></div>
   </section>
 
   <section class="panel">
     <h2>4. Publish</h2>
-    <p class="hint">Nothing is published until you click the button below. The editor will commit the updated <code>index.html</code> and <code>projects.html</code> to <code>main</code>.</p>
+    <p class="hint">Nothing is published until you click the button below. The editor will commit the updated <code>index.html</code> and <code>projects/index.html</code> to <code>main</code>.</p>
     <div class="actions"><button class="button" id="publishBtn" disabled>Commit changes to GitHub</button></div>
   </section>
 </main>
@@ -181,8 +181,8 @@ function applyArticles(){
 async function load(){
   token=$("token").value.trim(); if(!token){status("Enter your GitHub token first.","error");return;}
   try{
-    status("Loading index.html and projects.html…");
-    indexFile=await api("index.html?ref="+BRANCH); projectsFile=await api("projects.html?ref="+BRANCH);
+    status("Loading index.html and projects/index.html…");
+    indexFile=await api("index.html?ref="+BRANCH); projectsFile=await api("projects/index.html?ref="+BRANCH);
     indexDoc=parseHTML(decodeContent(indexFile.content)); projectsDoc=parseHTML(decodeContent(projectsFile.content));
     renderMembers(); renderArticles(); $("publishBtn").disabled=false; status("Loaded successfully. You can edit the fields below, then publish.","ok");
   }catch(e){status(e.message,"error");}
@@ -200,7 +200,7 @@ $("publishBtn").addEventListener("click",async()=>{
     $("publishBtn").disabled=true; status("Preparing changes…"); applyMembers(); applyArticles();
     const indexContent=serialize(indexDoc); const projectsContent=serialize(projectsDoc);
     const r1=await api("index.html",{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:"Update site content from admin",content:encodeContent(indexContent),sha:indexFile.sha,branch:BRANCH})});
-    const r2=await api("projects.html",{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:"Update project articles from admin",content:encodeContent(projectsContent),sha:projectsFile.sha,branch:BRANCH})});
+    const r2=await api("projects/index.html",{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:"Update project articles from admin",content:encodeContent(projectsContent),sha:projectsFile.sha,branch:BRANCH})});
     indexFile.sha=r1.content.sha; projectsFile.sha=r2.content.sha;
     status("Published successfully to main. GitHub Pages may take a short time to rebuild.","ok");
   }catch(e){status(e.message,"error");}finally{$("publishBtn").disabled=false;}
