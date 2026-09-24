@@ -58,39 +58,50 @@
     .members-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
       gap: 18px;
     }
 
     .members-grid section {
-      padding: 22px 22px 8px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 20px 20px 14px;
       border-radius: 22px;
-      background: rgba(255, 255, 255, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.22);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
     }
 
     .members-grid header {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      margin-bottom: 8px;
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      gap: 8px;
+      align-items: start;
+      min-height: 62px;
+      margin-bottom: 4px;
     }
 
     .members-grid header > span {
+      padding-top: 5px;
       color: #dbeafe;
-      font-size: 13px;
-      font-weight: 900;
+      font-size: 12px;
+      font-weight: 800;
       letter-spacing: 0.08em;
+      line-height: 1.3;
     }
 
     .members-grid h2 {
       margin: 0;
       color: #fff;
-      font-size: 26px;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      word-break: normal;
+      text-wrap: balance;
     }
 
     .dept-en {
@@ -115,16 +126,25 @@
       grid-template-columns: 36px minmax(0, 1fr) auto;
       gap: 10px;
       align-items: center;
-      padding: 8px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      min-height: 52px;
+      padding: 8px 8px;
+      margin: 0 -8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .members-grid li:hover,
+    .members-grid li:focus-visible {
+      background: rgba(255, 255, 255, 0.08);
+      outline: none;
     }
 
     .members-av {
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      object-fit: cover;
-      object-position: center 22%;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9);
     }
 
     .members-mono {
@@ -132,29 +152,135 @@
       place-items: center;
       color: #fff;
       background: linear-gradient(135deg, #2563eb, #1e3a8a);
-      font-size: 14px;
-      font-weight: 800;
+      font-size: 13px;
+      font-weight: 700;
     }
 
-    img.members-av { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.88); }
+    img.members-av {
+      object-fit: cover;
+      object-position: center 22%;
+    }
 
     .members-grid strong {
-      font-size: 16px;
-      font-weight: 800;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: 0;
     }
 
     .members-grid em {
       font-style: normal;
-      color: rgba(255, 255, 255, 0.74);
+      color: rgba(255, 255, 255, 0.78);
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: 0;
       text-align: right;
+      white-space: nowrap;
     }
 
     .members-grid li.lead em {
       color: #dbeafe;
       font-weight: 900;
     }
+
+    .member-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(2, 6, 23, 0.62);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+
+    .member-modal[hidden] { display: none; }
+
+    .member-modal-card {
+      position: relative;
+      width: min(100%, 360px);
+      padding: 36px 28px 32px;
+      border-radius: 28px;
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      color: #fff;
+      text-align: center;
+    }
+
+    .member-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .member-modal-photo {
+      width: 168px;
+      height: 168px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.92);
+    }
+
+    .member-modal-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 22%;
+    }
+
+    .member-modal-photo span {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      color: #fff;
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      font-size: 64px;
+      font-weight: 700;
+    }
+
+    .member-modal-dept {
+      margin: 0;
+      color: #dbeafe;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .member-modal-card h3 {
+      margin: 8px 0 0;
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.2;
+    }
+
+    .member-modal-role {
+      display: inline-block;
+      margin: 14px 0 0;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #dbeafe;
+      color: #1e3a8a;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    body.member-modal-open { overflow: hidden; }
 
     @media (max-width: 1100px) {
       .members-grid { grid-template-columns: 1fr 1fr; }
@@ -185,7 +311,7 @@
           <header>
             <span>01</span>
             <div>
-              <h2 id="department-0" data-en="Department of Treasury" data-ko="재무부" data-lo="ພະແນກການເງິນ">Department of Treasury</h2>
+              <h2 id="department-0" data-en="Treasury" data-ko="재무부" data-lo="ພະແນກການເງິນ">Treasury</h2>
               <p class="dept-en">Treasury</p>
             </div>
           </header>
@@ -212,7 +338,7 @@
           <header>
             <span>02</span>
             <div>
-              <h2 id="department-1" data-en="Department of Planning and Management" data-ko="기획·관리부" data-lo="ພະແນກວາງແຜນ ແລະ ບໍລິຫານ">Department of Planning and Management</h2>
+              <h2 id="department-1" data-en="Planning and Management" data-ko="기획·관리부" data-lo="ພະແນກວາງແຜນ ແລະ ບໍລິຫານ">Planning and Management</h2>
               <p class="dept-en">Planning</p>
             </div>
           </header>
@@ -244,7 +370,7 @@
           <header>
             <span>03</span>
             <div>
-              <h2 id="department-2" data-en="Department of Field Fundraising" data-ko="현장 모금부" data-lo="ພະແນກລະດົມທຶນພາກສະໜາມ">Department of Field Fundraising</h2>
+              <h2 id="department-2" data-en="Field Fundraising" data-ko="현장 모금부" data-lo="ພະແນກລະດົມທຶນພາກສະໜາມ">Field Fundraising</h2>
               <p class="dept-en">Field Fundraising</p>
             </div>
           </header>
@@ -291,7 +417,7 @@
           <header>
             <span>04</span>
             <div>
-              <h2 id="department-3" data-en="Department of Public Relations" data-ko="홍보부" data-lo="ພະແນກປະຊາສຳພັນ">Department of Public Relations</h2>
+              <h2 id="department-3" data-en="Public Relations" data-ko="홍보부" data-lo="ພະແນກປະຊາສຳພັນ">Public Relations</h2>
               <p class="dept-en">Public Relations</p>
             </div>
           </header>
@@ -323,7 +449,7 @@
           <header>
             <span>05</span>
             <div>
-              <h2 id="department-4" data-en="Department of Design" data-ko="디자인부" data-lo="ພະແນກອອກແບບ">Department of Design</h2>
+              <h2 id="department-4" data-en="Design" data-ko="디자인부" data-lo="ພະແນກອອກແບບ">Design</h2>
               <p class="dept-en">Design</p>
             </div>
           </header>
@@ -372,6 +498,91 @@
   </main>
 
   <div id="site-footer"></div>
+
+  <div class="member-modal" id="memberModal" hidden>
+    <div class="member-modal-card" role="dialog" aria-modal="true" aria-labelledby="memberModalName">
+      <button class="member-modal-close" type="button" data-close aria-label="Close">×</button>
+      <div class="member-modal-photo" id="memberModalPhoto"></div>
+      <p class="member-modal-dept" id="memberModalDept"></p>
+      <h3 id="memberModalName" lang="ko"></h3>
+      <p class="member-modal-role" id="memberModalRole"></p>
+    </div>
+  </div>
+
   <script src="../script.js?v=20260925-img"></script>
+  <script>
+    (function () {
+      const modal = document.getElementById("memberModal");
+      const photo = document.getElementById("memberModalPhoto");
+      const dept = document.getElementById("memberModalDept");
+      const name = document.getElementById("memberModalName");
+      const role = document.getElementById("memberModalRole");
+      const closeButton = modal.querySelector("[data-close]");
+      let lastFocus = null;
+
+      function textFor(element) {
+        const language = document.documentElement.lang || "en";
+        return element.getAttribute("data-" + language) || element.getAttribute("data-en") || element.textContent;
+      }
+
+      function copyLanguage(from, to) {
+        ["en", "ko", "lo"].forEach((language) => {
+          to.setAttribute("data-" + language, from.getAttribute("data-" + language) || "");
+        });
+        to.textContent = textFor(from);
+      }
+
+      function openMember(row) {
+        const image = row.querySelector("img.members-av");
+        const monogram = row.querySelector(".members-mono");
+        const heading = row.closest("section").querySelector("h2");
+        photo.replaceChildren();
+        if (image) {
+          const portrait = document.createElement("img");
+          portrait.src = image.getAttribute("src");
+          portrait.alt = "";
+          photo.appendChild(portrait);
+        } else {
+          const mark = document.createElement("span");
+          mark.textContent = monogram ? monogram.textContent : "";
+          photo.appendChild(mark);
+        }
+        copyLanguage(heading, dept);
+        name.textContent = row.querySelector("strong").textContent;
+        copyLanguage(row.querySelector("em"), role);
+        const language = document.documentElement.lang || "en";
+        closeButton.setAttribute("aria-label", language === "ko" ? "닫기" : language === "lo" ? "ປິດ" : "Close");
+        lastFocus = document.activeElement;
+        modal.hidden = false;
+        document.body.classList.add("member-modal-open");
+        closeButton.focus();
+      }
+
+      function closeMember() {
+        modal.hidden = true;
+        document.body.classList.remove("member-modal-open");
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      document.querySelectorAll(".members-grid li").forEach((row) => {
+        row.tabIndex = 0;
+        row.setAttribute("role", "button");
+        row.addEventListener("click", () => openMember(row));
+        row.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openMember(row);
+          }
+        });
+      });
+
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal || event.target.closest("[data-close]")) closeMember();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !modal.hidden) closeMember();
+      });
+    })();
+  </script>
 </body>
 </html>
