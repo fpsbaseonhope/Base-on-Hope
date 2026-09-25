@@ -449,7 +449,7 @@ if (zoomable.length) {
 
   zoomable.forEach((img) => {
     img.addEventListener("click", () => {
-      big.src = img.currentSrc || img.src;
+      big.src = img.getAttribute("data-full") || img.currentSrc || img.src;
       big.alt = img.alt;
       caption.textContent = img.alt;
       box.classList.add("open");

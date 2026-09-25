@@ -402,7 +402,7 @@
       return btoa(binary);
     }
 
-    function fileToImage(file, maxEdge) {
+    function fileToImage(file, maxEdge, quality) {
       return new Promise((resolve, reject) => {
         const image = new Image();
         const url = URL.createObjectURL(file);
@@ -421,8 +421,8 @@
             canvas.toBlob((jpeg) => {
               if (!jpeg) reject(new Error("사진을 변환하지 못했습니다."));
               else resolve({ blob: jpeg, ext: "jpg" });
-            }, "image/jpeg", 0.72);
-          }, "image/webp", 0.72);
+            }, "image/jpeg", quality);
+          }, "image/webp", quality);
         };
         image.onerror = () => {
           URL.revokeObjectURL(url);
@@ -432,14 +432,20 @@
       });
     }
 
-    async function uploadImage(file) {
-      token = $("token").value.trim();
-      if (!token) throw new Error("사진을 올리려면 GitHub token을 먼저 연결하세요.");
-      const maxEdge = currentPath.startsWith("members/") ? 480 : 1600;
-      const converted = await fileToImage(file, maxEdge);
-      const stem = file.name.replace(/\.[^.]+$/, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40);
-      const repoPath = "images/uploads/" + (stem || "photo") + "-" + Date.now().toString(36) + "." + converted.ext;
-      const bytes = new Uint8Array(await converted.blob.arrayBuffer());
+    function imageSlot(frame) {
+      const rect = frame.getBoundingClientRect();
+      const css = Math.max(rect.width, rect.height, 1);
+      const avatar = frame.classList.contains("members-av") || frame.classList.contains("team-photo");
+      const hero = frame.classList.contains("hero-bg-slide") || css >= 720;
+      const zoom = frame.closest(".gallery-grid, .photo-wall, .project-photos, .stop-photos, .zoomable");
+      if (avatar || currentPath.startsWith("members/")) return { edge: 400, quality: 0.72, full: false };
+      if (hero) return { edge: 1280, quality: 0.52, full: false };
+      if (zoom) return { edge: 640, quality: 0.58, full: true };
+      return { edge: Math.min(960, Math.max(480, Math.ceil(css * 2))), quality: 0.58, full: false };
+    }
+
+    async function putImage(blob, repoPath) {
+      const bytes = new Uint8Array(await blob.arrayBuffer());
       await api(repoPath, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -449,7 +455,25 @@
           branch: BRANCH
         })
       });
-      return { relative: relativePath(currentPath, repoPath), blob: converted.blob };
+    }
+
+    async function uploadImage(file, frame) {
+      token = $("token").value.trim();
+      if (!token) throw new Error("사진을 올리려면 GitHub token을 먼저 연결하세요.");
+      const slot = imageSlot(frame);
+      const stem = file.name.replace(/\.[^.]+$/, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 32);
+      const id = (stem || "photo") + "-" + Date.now().toString(36);
+      const display = await fileToImage(file, slot.edge, slot.quality);
+      const repoPath = "images/uploads/" + id + "." + display.ext;
+      await putImage(display.blob, repoPath);
+      const uploaded = { relative: relativePath(currentPath, repoPath), blob: display.blob, full: "" };
+      if (slot.full) {
+        const large = await fileToImage(file, 1400, 0.62);
+        const fullPath = "images/uploads/" + id + "-full." + large.ext;
+        await putImage(large.blob, fullPath);
+        uploaded.full = relativePath(currentPath, fullPath);
+      }
+      return uploaded;
     }
 
     function selectElement(id) {
@@ -496,16 +520,17 @@
           if (!chosen) return;
           upload.disabled = true;
           setStatus("사진을 올리는 중…");
-          uploadImage(chosen).then((uploaded) => {
+          uploadImage(chosen, frame).then((uploaded) => {
             const previewUrl = URL.createObjectURL(uploaded.blob);
             source.setAttribute(srcAttr, uploaded.relative);
             frame.setAttribute(srcAttr, uploaded.relative);
+            if (uploaded.full) source.setAttribute("data-full", uploaded.full);
             frame.src = previewUrl;
             pathField.querySelector("input, textarea").value = uploaded.relative;
             const thumb = fields.querySelector(".thumb");
             if (thumb) thumb.src = previewUrl;
             markDirty();
-            setStatus("사진을 올렸습니다. 이 페이지 저장을 눌러야 글에 연결됩니다.", "ok");
+            setStatus("사진을 화면 크기에 맞게 줄여 올렸습니다. 이 페이지 저장을 눌러야 글에 연결됩니다.", "ok");
           }).catch((error) => {
             setStatus(error.message, "error");
           }).finally(() => {
