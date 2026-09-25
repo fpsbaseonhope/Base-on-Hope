@@ -78,8 +78,8 @@ async function buildHeader() {
   if (!slot) return null;
 
   try {
-    const navbarUrl = new URL("navbar.html?v=20260925-img", SHARED_COMPONENT_BASE);
-    const response = await fetch(navbarUrl, { cache: "no-store" });
+    const navbarUrl = new URL("navbar.html?v=20260925-lite", SHARED_COMPONENT_BASE);
+    const response = await fetch(navbarUrl);
     if (!response.ok) throw new Error(`Navbar request failed: ${response.status}`);
 
     const template = document.createElement("template");
@@ -424,8 +424,13 @@ document.querySelectorAll(".video-embed").forEach((box) => {
     box.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${yt}" title="Base on Hope video" loading="lazy"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
   } else if (mp4) {
-    const poster = box.dataset.poster ? ` poster="${box.dataset.poster}"` : "";
-    box.innerHTML = `<video controls playsinline preload="metadata"${poster}><source src="${mp4}" type="video/mp4" /></video>`;
+    const poster = box.dataset.poster
+      ? `<img src="${box.dataset.poster}" alt="" loading="lazy" decoding="async" />`
+      : "";
+    box.innerHTML = `<button type="button" class="video-play" aria-label="Play video">${poster}<span class="play-icon" aria-hidden="true"></span></button>`;
+    box.querySelector(".video-play").addEventListener("click", () => {
+      box.innerHTML = `<video controls autoplay playsinline preload="none"><source src="${mp4}" type="video/mp4" /></video>`;
+    }, { once: true });
   } else {
     box.classList.add("empty");
     box.innerHTML = `<div class="video-placeholder"><span class="play-icon" aria-hidden="true"></span>
