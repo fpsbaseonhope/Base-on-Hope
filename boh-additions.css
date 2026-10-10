@@ -124,3 +124,15 @@ html[lang="ko"] .letter-card .letter-quote { font-size: 19px !important; font-st
 .partner-card.light p { color: var(--dark) !important; }
 .impact.four { grid-template-columns: repeat(4, 1fr); }
 @media (max-width: 860px) { .impact.four { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---------- Not-held projects ---------- */
+.tag.notheld { background: #f1f2f4; color: #6b7280; }
+.notheld-note {
+  background: #f8fafc;
+  border-left: 3px solid #9ca3af;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px !important;
+  color: #4b5563 !important;
+  margin: 10px 0 14px;
+}
