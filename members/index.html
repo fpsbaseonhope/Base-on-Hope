@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Members | Base on Hope</title>
+  <title>Departments | Base on Hope</title>
   <link rel="icon" type="image/png" href="../favicon.png" />
   <meta name="description" content="Base on Hope members." />
   <link rel="stylesheet" href="../style.css?v=20260925-lite" />
@@ -325,6 +325,10 @@
       .members-night h1 { font-size: 40px; }
       .members-lede { font-size: 16px; }
     }
+
+    .members-grid ul.dept-duties { list-style: disc; padding: 0 0 12px 18px; margin: 0 0 4px; }
+    .members-grid ul.dept-duties li { display: list-item; min-height: 0; padding: 2px 0; margin: 0; border: 0; cursor: default; color: rgba(255,255,255,0.82); font-size: 13.5px; line-height: 1.5; }
+    .members-grid ul.dept-duties li:hover { background: none; }
   </style>
 </head>
 <body>
@@ -333,36 +337,41 @@
   <main class="members-night" aria-labelledby="members-title">
     <div class="members-veil">
       <p class="eyebrow">Base on Hope</p>
-      <h1 id="members-title" data-en="Members" data-ko="멤버" data-lo="ສະມາຊິກ">Members</h1>
+      <h1 id="members-title" data-en="Departments" data-ko="부서" data-lo="ພະແນກ">Departments</h1>
       <p class="members-lede"
-         data-en="Base on Hope members, organized into six teams."
-         data-ko="여섯 조직으로 나뉜 Base on Hope 멤버입니다."
-         data-lo="ສະມາຊິກ Base on Hope ແບ່ງເປັນ 6 ພະແນກ.">Base on Hope members, organized into six teams.</p>
+         data-en="How Base on Hope is organized: what each department does, who leads it, and every member."
+         data-ko="Base on Hope의 조직: 부서별 역할과 부서장, 그리고 모든 멤버를 소개합니다.">How Base on Hope is organized: what each department does, who leads it, and every member.</p>
 
       <div class="members-grid">
         <section aria-labelledby="department-0">
           <header>
             <span>01</span>
             <div>
-              <h2 id="department-0" data-en="Treasury" data-ko="재무부" data-lo="ພະແນກການເງິນ">Treasury</h2>
-              <p class="dept-en">Treasury</p>
+              <h2 id="department-0" data-en="Executive" data-ko="운영진">Executive</h2>
+              <p class="dept-en">Executive</p>
             </div>
           </header>
+          <ul class="dept-duties">
+              <li data-en="Lead Base on Hope's overall direction and operating strategy" data-ko="BOH 전체 방향성과 운영 전략 총괄">Lead Base on Hope's overall direction and operating strategy</li>
+              <li data-en="Coordinate and decide across departments" data-ko="각 부서 간 조율 및 의사결정">Coordinate and decide across departments</li>
+              <li data-en="External partnerships and school communication" data-ko="대외 협력 및 학교 커뮤니케이션">External partnerships and school communication</li>
+              <li data-en="Set and review short-, mid-, and long-term goals" data-ko="단·중·장기 목표 설정 및 점검">Set and review short-, mid-, and long-term goals</li>
+          </ul>
           <ul>
             <li class="lead">
-              <img class="members-av" src="picture/yena_chae.webp" alt="" />
-              <strong data-en="Yena Chae" data-ko="채예나" data-lo="Yena Chae">Yena Chae</strong>
-              <em data-en="Head" data-ko="부서장" data-lo="ຫົວໜ້າ">Head</em>
+              <img class="members-av" src="../images/founders/suhyun.webp" alt="" />
+              <strong data-en="Suhyun (Kevin) Park" data-ko="박수현" data-lo="Suhyun (Kevin) Park">Suhyun (Kevin) Park</strong>
+              <em data-en="President" data-ko="회장">President</em>
             </li>
-            <li>
-              <span class="members-av members-mono" aria-hidden="true">최</span>
-              <strong data-en="Seunghan Choi" data-ko="최승한" data-lo="Seunghan Choi">Seunghan Choi</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+            <li class="lead">
+              <img class="members-av" src="../images/founders/gyumin.webp" alt="" />
+              <strong data-en="Gyumin Jeong" data-ko="정규민" data-lo="Gyumin Jeong">Gyumin Jeong</strong>
+              <em data-en="President" data-ko="회장">President</em>
             </li>
-            <li>
-              <span class="members-av members-mono" aria-hidden="true">김</span>
-              <strong data-en="Taehu Kim" data-ko="김태후" data-lo="Taehu Kim">Taehu Kim</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+            <li class="lead">
+              <img class="members-av" src="../images/founders/minseo.webp" alt="" />
+              <strong data-en="Minseo (Mason) Park" data-ko="박민서" data-lo="Minseo (Mason) Park">Minseo (Mason) Park</strong>
+              <em data-en="Vice President" data-ko="부회장">Vice President</em>
             </li>
           </ul>
         </section>
@@ -371,35 +380,33 @@
           <header>
             <span>02</span>
             <div>
-              <h2 id="department-1" data-en="Planning and Management" data-ko="기획·관리부" data-lo="ພະແນກວາງແຜນ ແລະ ບໍລິຫານ">Planning and Management</h2>
-              <p class="dept-en">Planning</p>
+              <h2 id="department-1" data-en="Field Fundraising" data-ko="현장 모금부">Field Fundraising</h2>
+              <p class="dept-en">Field Fundraising</p>
             </div>
           </header>
+          <ul class="dept-duties">
+              <li data-en="Nationwide baseball stadium tour" data-ko="전국 야구장 투어">Nationwide baseball stadium tour</li>
+          </ul>
           <ul>
             <li class="lead">
+              <img class="members-av" src="picture/steve_oh.webp" alt="" />
+              <strong data-en="Steve (Seungwon) Oh" data-ko="스티브오" data-lo="Steve (Seungwon) Oh">Steve (Seungwon) Oh</strong>
+              <em data-en="Head" data-ko="부서장">Head</em>
+            </li>
+            <li>
+              <img class="members-av" src="picture/youngjune_kwon.webp" alt="" />
+              <strong data-en="Youngjune Kwon" data-ko="권영준" data-lo="Youngjune Kwon">Youngjune Kwon</strong>
+              <em data-en="Member" data-ko="부원">Member</em>
+            </li>
+            <li>
               <span class="members-av members-mono" aria-hidden="true">최</span>
-              <strong data-en="Yeonwoo Choi" data-ko="최연우" data-lo="Yeonwoo Choi">Yeonwoo Choi</strong>
-              <em data-en="Head" data-ko="부서장" data-lo="ຫົວໜ້າ">Head</em>
+              <strong data-en="Seunghan Choi" data-ko="최승한" data-lo="Seunghan Choi">Seunghan Choi</strong>
+              <em data-en="Member" data-ko="부원">Member</em>
             </li>
             <li>
-              <span class="members-av members-mono" aria-hidden="true">황</span>
-              <strong data-en="Hyunji Hwang" data-ko="황현지" data-lo="Hyunji Hwang">Hyunji Hwang</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
-            </li>
-            <li>
-              <span class="members-av members-mono" aria-hidden="true">정</span>
-              <strong data-en="Seunghoon Jeong" data-ko="정승훈" data-lo="Seunghoon Jeong">Seunghoon Jeong</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
-            </li>
-            <li>
-              <span class="members-av members-mono" aria-hidden="true">채</span>
-              <strong data-en="Dana Chae" data-ko="채다나" data-lo="Dana Chae">Dana Chae</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
-            </li>
-            <li>
-              <span class="members-av members-mono" aria-hidden="true">제</span>
-              <strong data-en="Jayden" data-ko="제이든" data-lo="Jayden">Jayden</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+              <img class="members-av" src="picture/heesu_yun.webp" alt="" />
+              <strong data-en="Heesu Yun" data-ko="윤희수" data-lo="Heesu Yun">Heesu Yun</strong>
+              <em data-en="Member" data-ko="부원">Member</em>
             </li>
           </ul>
         </section>
@@ -408,45 +415,42 @@
           <header>
             <span>03</span>
             <div>
-              <h2 id="department-2" data-en="Field Fundraising" data-ko="현장 모금부" data-lo="ພະແນກລະດົມທຶນພາກສະໜາມ">Field Fundraising</h2>
-              <p class="dept-en">Field Fundraising</p>
+              <h2 id="department-2" data-en="Planning &amp; Management" data-ko="기획·관리부">Planning &amp; Management</h2>
+              <p class="dept-en">Planning &amp; Management</p>
             </div>
           </header>
+          <ul class="dept-duties">
+              <li data-en="Plan and manage the club's activity schedule" data-ko="클럽 활동 일정 기획 및 관리">Plan and manage the club's activity schedule</li>
+              <li data-en="Build long-term operating plans" data-ko="장기 운영 계획 수립">Build long-term operating plans</li>
+              <li data-en="Design partnerships with parents and outside groups" data-ko="외부 협력(학부모, 단체 등) 구조 설계">Design partnerships with parents and outside groups</li>
+              <li data-en="Review efficiency and propose improvements" data-ko="활동 효율성 점검 및 개선안 제시">Review efficiency and propose improvements</li>
+              <li data-en="Plan fundraisers" data-ko="펀드레이징 활동 기획">Plan fundraisers</li>
+          </ul>
           <ul>
             <li class="lead">
-              <img class="members-av" src="picture/steve_oh.webp" alt="" />
-              <strong data-en="Steve (Seung Won) Oh" data-ko="스티브오" data-lo="Steve (Seung Won) Oh">Steve (Seung Won) Oh</strong>
-              <em data-en="Head" data-ko="부서장" data-lo="ຫົວໜ້າ">Head</em>
-            </li>
-            <li>
-              <img class="members-av" src="picture/youngjune_kwon.webp" alt="" />
-              <strong data-en="Youngjune Kwon" data-ko="권영준" data-lo="Youngjune Kwon">Youngjune Kwon</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
-            </li>
-            <li>
-              <img class="members-av" src="../images/founders/suhyun.webp" alt="" />
-              <strong data-en="Suhyun (Kevin) Park" data-ko="박수현" data-lo="Suhyun (Kevin) Park">Suhyun (Kevin) Park</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
-            </li>
-            <li>
-              <img class="members-av" src="../images/founders/gyumin.webp" alt="" />
-              <strong data-en="Gyumin Jeong" data-ko="정규민" data-lo="Gyumin Jeong">Gyumin Jeong</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
-            </li>
-            <li>
               <span class="members-av members-mono" aria-hidden="true">최</span>
-              <strong data-en="Seunghan Choi" data-ko="최승한" data-lo="Seunghan Choi">Seunghan Choi</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+              <strong data-en="Yeonwoo Choi" data-ko="최연우" data-lo="Yeonwoo Choi">Yeonwoo Choi</strong>
+              <em data-en="Head" data-ko="부서장">Head</em>
             </li>
             <li>
-              <img class="members-av" src="../images/founders/minseo.webp" alt="" />
-              <strong data-en="Minseo (Mason) Park" data-ko="박민서" data-lo="Minseo (Mason) Park">Minseo (Mason) Park</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+              <span class="members-av members-mono" aria-hidden="true">황</span>
+              <strong data-en="Hyunji Hwang" data-ko="황현지" data-lo="Hyunji Hwang">Hyunji Hwang</strong>
+              <em data-en="Member" data-ko="부원">Member</em>
             </li>
             <li>
-              <img class="members-av" src="picture/heesu_yun.webp" alt="" />
-              <strong data-en="Heesu Yun" data-ko="윤희수" data-lo="Heesu Yun">Heesu Yun</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+              <span class="members-av members-mono" aria-hidden="true">정</span>
+              <strong data-en="Seunghoon Jeong" data-ko="정승훈" data-lo="Seunghoon Jeong">Seunghoon Jeong</strong>
+              <em data-en="Member" data-ko="부원">Member</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">채</span>
+              <strong data-en="Dana Chae" data-ko="채다나" data-lo="Dana Chae">Dana Chae</strong>
+              <em data-en="Member" data-ko="부원">Member</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">제</span>
+              <strong data-en="Jayden" data-ko="제이든" data-lo="Jayden">Jayden</strong>
+              <em data-en="Member" data-ko="부원">Member</em>
             </li>
           </ul>
         </section>
@@ -455,35 +459,26 @@
           <header>
             <span>04</span>
             <div>
-              <h2 id="department-3" data-en="Public Relations" data-ko="홍보부" data-lo="ພະແນກປະຊາສຳພັນ">Public Relations</h2>
-              <p class="dept-en">Public Relations</p>
+              <h2 id="department-3" data-en="Treasury" data-ko="재무부">Treasury</h2>
+              <p class="dept-en">Treasury</p>
             </div>
           </header>
+          <ul class="dept-duties">
+              <li data-en="Manage all income and spending" data-ko="모든 수익 및 지출 관리">Manage all income and spending</li>
+              <li data-en="Record every transaction transparently" data-ko="수입·지출 내역 투명하게 기록">Record every transaction transparently</li>
+              <li data-en="Manage transfers to the Laos national team" data-ko="라오스 야구팀 후원금 송금 관리">Manage transfers to the Laos national team</li>
+              <li data-en="Prepare financial reports" data-ko="재정 보고 자료 작성">Prepare financial reports</li>
+          </ul>
           <ul>
             <li class="lead">
-              <span class="members-av members-mono" aria-hidden="true">정</span>
-              <strong data-en="Hyejoon Jeong" data-ko="정혜준" data-lo="Hyejoon Jeong">Hyejoon Jeong</strong>
-              <em data-en="Head" data-ko="부서장" data-lo="ຫົວໜ້າ">Head</em>
+              <img class="members-av" src="picture/yena_chae.webp" alt="" />
+              <strong data-en="Yena Chae" data-ko="채예나" data-lo="Yena Chae">Yena Chae</strong>
+              <em data-en="Head" data-ko="부서장">Head</em>
             </li>
             <li>
-              <span class="members-av members-mono" aria-hidden="true">전</span>
-              <strong data-en="Yuji Jeon" data-ko="전유지" data-lo="Yuji Jeon">Yuji Jeon</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
-            </li>
-            <li>
-              <span class="members-av members-mono" aria-hidden="true">강</span>
-              <strong data-en="Minseok Kang" data-ko="강민석" data-lo="Minseok Kang">Minseok Kang</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
-            </li>
-            <li>
-              <span class="members-av members-mono" aria-hidden="true">최</span>
-              <strong data-en="Seunghwan Choi" data-ko="최승환" data-lo="Seunghwan Choi">Seunghwan Choi</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
-            </li>
-            <li>
-              <span class="members-av members-mono" aria-hidden="true">조</span>
-              <strong data-en="Sihwan Cho" data-ko="조시환" data-lo="Sihwan Cho">Sihwan Cho</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+              <span class="members-av members-mono" aria-hidden="true">김</span>
+              <strong data-en="Taehu Kim" data-ko="김태후" data-lo="Taehu Kim">Taehu Kim</strong>
+              <em data-en="Member" data-ko="부원">Member</em>
             </li>
           </ul>
         </section>
@@ -492,50 +487,120 @@
           <header>
             <span>05</span>
             <div>
-              <h2 id="department-4" data-en="Design" data-ko="디자인부" data-lo="ພະແນກອອກແບບ">Design</h2>
+              <h2 id="department-4" data-en="Design" data-ko="디자인부">Design</h2>
               <p class="dept-en">Design</p>
             </div>
           </header>
+          <ul class="dept-duties">
+              <li data-en="Set the direction for photo and video content" data-ko="사진·영상 콘텐츠 기획 방향 설정">Set the direction for photo and video content</li>
+              <li data-en="Manage the club logo and visual identity" data-ko="클럽 로고 및 비주얼 아이덴티티 관리">Manage the club logo and visual identity</li>
+              <li data-en="Design posters, T-shirts, and digital materials" data-ko="포스터, 티셔츠, 디지털 홍보물 디자인">Design posters, T-shirts, and digital materials</li>
+              <li data-en="Shoot, edit, and produce photos and videos" data-ko="훈련·행사 사진·영상 촬영 및 편집">Shoot, edit, and produce photos and videos</li>
+              <li data-en="Create content for social media" data-ko="SNS 업로드용 자료 제작">Create content for social media</li>
+          </ul>
           <ul>
             <li class="lead">
               <img class="members-av" src="picture/yeryung_kim.webp" alt="" />
               <strong data-en="Yeryung Kim" data-ko="김예령" data-lo="Yeryung Kim">Yeryung Kim</strong>
-              <em data-en="Head" data-ko="부서장" data-lo="ຫົວໜ້າ">Head</em>
+              <em data-en="Head" data-ko="부서장">Head</em>
             </li>
             <li>
               <span class="members-av members-mono" aria-hidden="true">노</span>
               <strong data-en="Haejun Noh" data-ko="노해준" data-lo="Haejun Noh">Haejun Noh</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+              <em data-en="Member" data-ko="부원">Member</em>
             </li>
             <li>
               <span class="members-av members-mono" aria-hidden="true">이</span>
               <strong data-en="Jia Lee" data-ko="이지아" data-lo="Jia Lee">Jia Lee</strong>
-              <em data-en="Member" data-ko="부원" data-lo="ສະມາຊິກ">Member</em>
+              <em data-en="Member" data-ko="부원">Member</em>
             </li>
           </ul>
         </section>
 
-        <section aria-labelledby="support-roles">
+        <section aria-labelledby="department-5">
           <header>
             <span>06</span>
             <div>
-              <h2 id="support-roles" data-en="Secretary &amp; Technical Support" data-ko="서기 · 기술 지원" data-lo="ເລຂາ ແລະ ຊ່ວຍເຫຼືອດ້ານເຕັກນິກ">Secretary &amp; Technical Support</h2>
-              <p class="dept-en">Support</p>
+              <h2 id="department-5" data-en="Secretary &amp; Documentation" data-ko="서기·기록부">Secretary &amp; Documentation</h2>
+              <p class="dept-en">Secretary &amp; Documentation</p>
             </div>
           </header>
+          <ul class="dept-duties">
+              <li data-en="Write and keep meeting minutes" data-ko="회의록 작성 및 보관">Write and keep meeting minutes</li>
+              <li data-en="Organize each department's activity records" data-ko="부서별 활동 기록 정리">Organize each department's activity records</li>
+              <li data-en="Archive documents and club history" data-ko="문서 아카이빙 및 히스토리 관리">Archive documents and club history</li>
+              <li data-en="Prepare materials for outside submission" data-ko="외부 제출용 자료 정리 지원">Prepare materials for outside submission</li>
+          </ul>
           <ul>
-            <li>
+            <li class="lead">
               <span class="members-av members-mono" aria-hidden="true">최</span>
               <strong data-en="Seunghan Choi" data-ko="최승한" data-lo="Seunghan Choi">Seunghan Choi</strong>
-              <em data-en="Secretary" data-ko="서기" data-lo="ເລຂາ">Secretary</em>
+              <em data-en="Head" data-ko="부서장">Head</em>
+            </li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="department-6">
+          <header>
+            <span>07</span>
+            <div>
+              <h2 id="department-6" data-en="Public Relations" data-ko="홍보부">Public Relations</h2>
+              <p class="dept-en">Public Relations</p>
+            </div>
+          </header>
+          <ul class="dept-duties">
+              <li data-en="Manage our public image through social media" data-ko="SNS를 이용한 대외 이미지 관리">Manage our public image through social media</li>
+          </ul>
+          <ul>
+            <li class="lead">
+              <span class="members-av members-mono" aria-hidden="true">정</span>
+              <strong data-en="Hyejoon Jeong" data-ko="정혜준" data-lo="Hyejoon Jeong">Hyejoon Jeong</strong>
+              <em data-en="Head" data-ko="부서장">Head</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">전</span>
+              <strong data-en="Yuji Jeon" data-ko="전유지" data-lo="Yuji Jeon">Yuji Jeon</strong>
+              <em data-en="Member" data-ko="부원">Member</em>
             </li>
             <li>
               <span class="members-av members-mono" aria-hidden="true">강</span>
               <strong data-en="Minseok Kang" data-ko="강민석" data-lo="Minseok Kang">Minseok Kang</strong>
-              <em data-en="Technical Support" data-ko="기술 지원" data-lo="ຊ່ວຍເຫຼືອດ້ານເຕັກນິກ">Technical Support</em>
+              <em data-en="Member" data-ko="부원">Member</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">최</span>
+              <strong data-en="Seunghwan Choi" data-ko="최승환" data-lo="Seunghwan Choi">Seunghwan Choi</strong>
+              <em data-en="Member" data-ko="부원">Member</em>
+            </li>
+            <li>
+              <span class="members-av members-mono" aria-hidden="true">조</span>
+              <strong data-en="Sihwan Cho" data-ko="조시환" data-lo="Sihwan Cho">Sihwan Cho</strong>
+              <em data-en="Member" data-ko="부원">Member</em>
             </li>
           </ul>
         </section>
+
+        <section aria-labelledby="department-7">
+          <header>
+            <span>08</span>
+            <div>
+              <h2 id="department-7" data-en="Technology Support" data-ko="기술지원부">Technology Support</h2>
+              <p class="dept-en">Technology Support</p>
+            </div>
+          </header>
+          <ul class="dept-duties">
+              <li data-en="Manage and run the website" data-ko="웹사이트 관리 및 운영">Manage and run the website</li>
+              <li data-en="Lead Base on Hope's technology" data-ko="Base on Hope의 기술 담당">Lead Base on Hope's technology</li>
+          </ul>
+          <ul>
+            <li class="lead">
+              <span class="members-av members-mono" aria-hidden="true">강</span>
+              <strong data-en="Minseok Kang" data-ko="강민석" data-lo="Minseok Kang">Minseok Kang</strong>
+              <em data-en="Head" data-ko="부서장">Head</em>
+            </li>
+          </ul>
+        </section>
+
       </div>
     </div>
   </main>
@@ -639,7 +704,7 @@
         });
       }
 
-      document.querySelectorAll(".members-grid li").forEach((row) => {
+      document.querySelectorAll(".members-grid ul:not(.dept-duties) > li").forEach((row) => {
         row.tabIndex = 0;
         row.setAttribute("role", "button");
         row.addEventListener("click", () => openMember(row));

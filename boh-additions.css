@@ -136,3 +136,13 @@ html[lang="ko"] .letter-card .letter-quote { font-size: 19px !important; font-st
   color: #4b5563 !important;
   margin: 10px 0 14px;
 }
+
+/* ---------- Instagram reel embed ---------- */
+.ig-embed { display: flex; justify-content: center; }
+.ig-embed .instagram-media {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 420px !important;
+  margin: 0 auto !important;
+  border-radius: 16px !important;
+}
